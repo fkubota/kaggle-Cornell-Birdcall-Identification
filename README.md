@@ -68,3 +68,6 @@ Cornell Birdcall Identification コンペのリポジトリ
   - bird_seen がNoなのは、声は聞いたが見ていないということ。
   - filetypeはわずかだが、mp3以外もあるようだ
   
+### 20200729
+- discussionにlibroa.load()について投げた
+    - https://www.kaggle.com/c/birdsong-recognition/discussion/170749
