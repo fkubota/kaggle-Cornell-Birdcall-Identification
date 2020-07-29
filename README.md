@@ -51,7 +51,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 |                                                                             |                                                                             |
 
 - なんか音声ファイルにコメントがあったぞ。
-![4691ce6c.png](:storage/ae3066bc-e853-4a0b-9902-339ce3201be6/4691ce6c.png)
+![4691ce6c.png](./data/info/images/readme/008.png)
 - うーん。とりあえず、提出方法を理解してみよう。
 
 ### 20200727
