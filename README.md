@@ -38,15 +38,16 @@ Cornell Birdcall Identification コンペのリポジトリ
 隠されたtest_audioディレクトリには、MP3形式の約150の録音が含まれています。これらの録音はノートパソコンのメモリには同時に収まりません。録音は北米の3つの離れた場所で行われました。サイト1と2は5秒単位でラベル付けされており、予測値と一致する必要がありますが、ラベル付けプロセスに時間がかかるため、サイト3のファイルはファイルレベルでのみラベル付けされています。そのため、サイト3はテストセットの行数が比較的少なく、より低い時間分解能の予測が必要です。 別のデータソースからの2つのサウンドスケープの例も、サウンドスケープがどのようにラベル付けされているかと、隠しデータセットのフォルダ構造を説明するために提供されています。2つの例の音声ファイルはBLKFR-10-CPL_20190611_093000.pt540.mp3とORANGE-7-CAP_20190606_093000.pt623.mp3です。これらのサウンドスケープは、カリフォルニア科学アカデミー鳥類哺乳類学科のJack Dumbacher氏のご厚意により提供されました。
 
 ### train.csv colomn infomaiton
+example: https://www.xeno-canto.org/134874
 
 |name|Explanation|
 |----|----|
-|rating|hoge|
-|playback_sed||
-|ebird_cod||
-|channels||
-|date||
-|pitch||
+|rating|録音の質を表す(A,B,C,D,Eの5段階)|
+|playback_sed|...|
+|ebird_code|名前。nunique=264|
+|channels|チャンネル数。2種類('1 (mono)', '2 (stereo)')|
+|date|録音日。yyyy-mm-ddで記述されている。<-- すべてそうなってるかは確認していない。|
+|pitch|'Not specified', 'both', 'increasing', 'level', 'decreasing'の5種類。|
 |duration||
 |filename||
 |speed ||
