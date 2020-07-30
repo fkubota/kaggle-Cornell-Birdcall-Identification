@@ -47,10 +47,10 @@ example: https://www.xeno-canto.org/134874
 |ebird_code|名前。nunique=264|
 |channels|チャンネル数。2種類('1 (mono)', '2 (stereo)')|
 |date|録音日。yyyy-mm-ddで記述されている。<-- すべてそうなってるかは確認していない。|
-|pitch|'Not specified', 'both', 'increasing', 'level', 'decreasing'の5種類。|
-|duration||
-|filename||
-|speed ||
+|pitch|'Not specified', 'both', 'increasing', 'level', 'decreasing'の5種類。nb001でそれぞれの音を聞いてみた。(log20200730), 正直何を表しているかわからん。|
+|duration|audioファイルの再生時間。単位はseconds。|
+|filename|そのままの意味。filenameにかぶりはなし(nb001)。|
+|speed |Not specified, level, both, accelerating, decelerating の5種類。音を聞いたけど何が違うのか全然わからん。 |
 |species||
 |number_ofnotes||
 |title||
@@ -112,3 +112,14 @@ example: https://www.xeno-canto.org/134874
 ### 20200729
 - discussionにlibroa.load()について投げた
     - https://www.kaggle.com/c/birdsong-recognition/discussion/170749
+
+### 20200730
+- xeno-cantoのレーティングの目安
+    A: Loud and Clear
+    B: Clear, but bird a bit distant, or some interference with other sound sources
+    C: Moderately clear, or quite some interference
+    D: Faint recording, or much interference
+    E: Barely audible
+
+- nb001
+    - pitchの、increasing, decreasing, both, level の確認を行った
