@@ -52,7 +52,7 @@ example: https://www.xeno-canto.org/134874
 |filename|そのままの意味。filenameにかぶりはなし(nb001)。|
 |speed |Not specified, level, both, accelerating, decelerating の5種類。音を聞いたけど何が違うのか全然わからん。 |
 |species|264種類。今回のクラス数と一緒だな。ebird_codeと一対一？|
-|number_ofnotes||
+|number_of_notes|サイト見たけど、何の数かわからん。['Not specified', '1-3', '4-6', '7-20', '>20']の5種類|
 |title||
 |secondarylabels||
 |bird_seen||
@@ -123,3 +123,5 @@ example: https://www.xeno-canto.org/134874
 
 - nb001
     - pitchの、increasing, decreasing, both, level の確認を行った
+    - ebird_codeと鳥名の関係がわかった。ebird_codeは鳥名の略。
+      ![ebird](./data/info/images/readme/009.png)
