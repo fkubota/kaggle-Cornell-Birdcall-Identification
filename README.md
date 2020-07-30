@@ -51,7 +51,7 @@ example: https://www.xeno-canto.org/134874
 |duration|audioファイルの再生時間。単位はseconds。|
 |filename|そのままの意味。filenameにかぶりはなし(nb001)。|
 |speed |Not specified, level, both, accelerating, decelerating の5種類。音を聞いたけど何が違うのか全然わからん。 |
-|species||
+|species|264種類。今回のクラス数と一緒だな。ebird_codeと一対一？|
 |number_ofnotes||
 |title||
 |secondarylabels||
