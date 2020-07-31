@@ -130,3 +130,5 @@ example: https://www.xeno-canto.org/134874
 ### 20200731
 - nb001
   - secondaly_labelsはxeno_cantに情報がなかった。たぶんaudiofileのメタデータから取得したっぽいな。
+  - 集音場所をマップに落とすことやってみたかったので、issueにした。
+  - secondaly_labelsとbackgroundの違いがよくわからなかったのでissueにした。
