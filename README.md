@@ -53,26 +53,26 @@ example: https://www.xeno-canto.org/134874
 |speed |Not specified, level, both, accelerating, decelerating の5種類。音を聞いたけど何が違うのか全然わからん。 |
 |species|264種類。今回のクラス数と一緒だな。ebird_codeと一対一？|
 |number_of_notes|サイト見たけど、何の数かわからん。['Not specified', '1-3', '4-6', '7-20', '>20']の5種類|
-|title||
-|secondarylabels||
-|bird_seen||
-|sci_name||
-|location||
-|latitude||
-|sampling_ate||
-|type||
-|elevation||
-|descriptin||
-|bitrate_o_mp4||
-|file_type||
-|volume||
-|backgroun||
+|title|\<filename> \<鳥名> ?? の形式で書かれている。|
+|secondary_labels|メインの鳥の鳴き声以外のラベル。|
+|bird_seen|集音時に鳥を見たかどうか。|
+|sci_name|学名？|
+|location|集音場所|
+|latitude|緯度|
+|sampling_late|サンプリングレート|
+|type|song, call, fightなどある|
+|elevation|標高。'1400 m' みたいな感じで入ってるが、string型。'? m' もある。|
+|descriptin|audiofileにかかれているメタデータ。|
+|bitrate_o_mp3|stringで'128000 (bps)'のように格納されているが、8個だけNaNになっている(nb001)|
+|file_type|4種類。それぞれの個数はmp3=21367, wav=6, mp2=1, aac=1となっている。|
+|volume|'Not specified', 'both', 'increasing', 'level', 'decreasing'の5種類。またこの指標出た。意味がわからん。|
+|background|背景音。xeno-cantにも記述されている。secondaly_labelsとどう違うのだろうか。|
 |xc_id||
 |url    ||
 |country||
 |author||
 |primary_lbel||
-|longitude||
+|longitude|経度|
 |length||
 |time   ||
 |recordist||
@@ -125,3 +125,8 @@ example: https://www.xeno-canto.org/134874
     - pitchの、increasing, decreasing, both, level の確認を行った
     - ebird_codeと鳥名の関係がわかった。ebird_codeは鳥名の略。
       ![ebird](./data/info/images/readme/009.png)
+
+
+### 20200731
+- nb001
+  - secondaly_labelsはxeno_cantに情報がなかった。たぶんaudiofileのメタデータから取得したっぽいな。
