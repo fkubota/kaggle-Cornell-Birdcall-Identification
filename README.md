@@ -139,3 +139,9 @@ example: https://www.xeno-canto.org/134874
   - siteは3つある
     - 1,2は5secごとにラベルがふられている。
     - site 2 は file単位でラベルが振られている。
+
+- このノートブックではチェック用のデータ・セットが配られている。
+  - https://www.kaggle.com/shonenkov/sample-submission-using-custom-check
+  - submit する前のチェックに使える。
+
+- libros.load() の引数にres_typeというものがある。リサンプルのタイプだ。res_type=’kaiser_fast’で早くすることもできる。
