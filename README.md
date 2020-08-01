@@ -132,3 +132,10 @@ example: https://www.xeno-canto.org/134874
   - secondaly_labelsはxeno_cantに情報がなかった。たぶんaudiofileのメタデータから取得したっぽいな。
   - 集音場所をマップに落とすことやってみたかったので、issueにした。
   - secondaly_labelsとbackgroundの違いがよくわからなかったのでissueにした。
+
+### 20200801
+- pub-kaggle-nbを見ながらどうやってサブするのかを見た。
+  - prv-kaggle-nb でテストデータにアクセスできるが、ここには3つのデータしか開示されない。
+  - このサンプルを参考にprv-kaggle-nbを提出する。
+  - すると、提出先では完全なテストデータがノートブックに与えられてしっかり評価される。
+  - なるほどこういう仕組みか。
