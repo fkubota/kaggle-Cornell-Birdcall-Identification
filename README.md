@@ -139,3 +139,4 @@ example: https://www.xeno-canto.org/134874
   - このサンプルを参考にprv-kaggle-nbを提出する。
   - すると、提出先では完全なテストデータがノートブックに与えられてしっかり評価される。
   - なるほどこういう仕組みか。
+  - kaggle-nb でsubする場合は、internet=Off にする必用がある。
