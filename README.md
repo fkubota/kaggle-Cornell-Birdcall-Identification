@@ -8,7 +8,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 ## Features
 |Name|Explanation|
 |---|---|
-|nb004_librosa_mfcc.csv|librosaのmfcc。wavfile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
+|nb004_librosa_mfcc.csv|librosaのmfcc(2~12)。wavfile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
 
 ## ref
 
@@ -146,8 +146,8 @@ example: https://www.xeno-canto.org/134874
 
 - libros.load() の引数にres_typeというものがある。リサンプルのタイプだ。res_type=’kaiser_fast’で早くすることもできる。
 
-- dulationのminに0秒があるな
-  ![dulation](./data/info/images/readme/010.png)
+- durationのminに0秒があるな
+  ![duration](./data/info/images/readme/010.png)
 
 - kagglenb_02_sub
   - first sub
@@ -160,3 +160,12 @@ example: https://www.xeno-canto.org/134874
 - 外部データ・セット(726424_1262046_bundle_archive.zip)をダウンロード
   - url: https://www.kaggle.com/shonenkov/birdcall-check
   - birdcall check と呼ばれてる
+
+- nb004
+  - 初めての特徴量を作成した。
+  - librosaのmfcc(2~12)。
+  - m_feat/m_audiofile/1_ebird
+  - 1つのwavからはフレームごとにmfccを得られるがそれを平均化した。
+
+- nb005
+  - スペクトログラムを画像で保存するためのコード
