@@ -145,3 +145,6 @@ example: https://www.xeno-canto.org/134874
   - submit する前のチェックに使える。
 
 - libros.load() の引数にres_typeというものがある。リサンプルのタイプだ。res_type=’kaiser_fast’で早くすることもできる。
+
+- dulationのminに0秒があるな
+  ![dulation](./data/info/images/readme/010.png)
