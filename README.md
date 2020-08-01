@@ -148,3 +148,15 @@ example: https://www.xeno-canto.org/134874
 
 - dulationのminに0秒があるな
   ![dulation](./data/info/images/readme/010.png)
+
+- kagglenb_02_sub
+  - first sub
+  - このノートブック動かしただけ: https://www.kaggle.com/cwthompson/birdsong-making-a-prediction
+  - score
+    - cv: xxx
+    - sub: 0.002
+    - rank: 591/601
+
+- 外部データ・セット(726424_1262046_bundle_archive.zip)をダウンロード
+  - url: https://www.kaggle.com/shonenkov/birdcall-check
+  - birdcall check と呼ばれてる
