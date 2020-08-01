@@ -8,7 +8,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 ## Features
 |Name|Explanation|
 |---|---|
-|||
+|nb004_librosa_mfcc.csv|librosaのmfcc。wavfile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
 
 ## ref
 
