@@ -6,9 +6,10 @@ Cornell Birdcall Identification コンペのリポジトリ
 
 
 ## Features
-|Name|Explanation|
+|Name|Detail|
 |---|---|
-|nb004_librosa_mfcc.csv|librosaのmfcc(2~12)。wavfile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
+|nb004_librosa_mfcc.csv|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
+|nb007_librosa_mfcc02.csv|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。レコード数(4779859)|
 
 ## ref
 
@@ -175,6 +176,17 @@ example: https://www.xeno-canto.org/134874
 ### 20200802
 - nb006
   - nb004 で作成した特徴量を使ってrfcモデルを作成する。
+  - saveするときはディクショナリでsaveする
+    - key
+      - featsets (今回は、nb004_librosa_mfcc.csv)
+      - feat_names (↑のfeatsetsから何かを除いたりすることもあると思うので)
+      - models (モデルがfold分格納されている)
 
+- nb007
+  - nb004で作成した特徴量の拡張版
+  - n_feat/m_wav/1_bird にした。
+  - window_sizeとstrideは0.5, 0.25 sec
+  - nb004の特徴量よりデータ数がかなり多い。
+    - レコード数: 4779859
 
 
