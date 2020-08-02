@@ -176,12 +176,12 @@ example: https://www.xeno-canto.org/134874
 ### 20200802
 - nb006
   - nb004 で作成した特徴量を使ってrfcモデルを作成する。
-  - saveするときはディクショナリでsaveする
-    - key
+  - モデルを5つ、infoを1つ保存した。
+    - info
       - featsets (今回は、nb004_librosa_mfcc.csv)
       - feat_names (↑のfeatsetsから何かを除いたりすることもあると思うので)
-      - models (モデルがfold分格納されている)
-      - size: 180MB(クソでかい...)
+    - models (モデルがfold分格納されている)
+      - size: 37x5MB
 
 - nb007
   - nb004で作成した特徴量の拡張版
