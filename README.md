@@ -181,12 +181,13 @@ example: https://www.xeno-canto.org/134874
       - featsets (今回は、nb004_librosa_mfcc.csv)
       - feat_names (↑のfeatsetsから何かを除いたりすることもあると思うので)
       - models (モデルがfold分格納されている)
+      - size: 180MB(クソでかい...)
 
 - nb007
   - nb004で作成した特徴量の拡張版
   - n_feat/m_wav/1_bird にした。
   - window_sizeとstrideは0.5, 0.25 sec
   - nb004の特徴量よりデータ数がかなり多い。
-    - レコード数: 4779859
+    - レコード数: 4,779,859
 
 
