@@ -6,12 +6,15 @@ Cornell Birdcall Identification コンペのリポジトリ
 
 
 ## Features
-|Name|Detail|
-|---|---|
-|nb004_librosa_mfcc.csv|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
-|nb007_librosa_mfcc02.csv|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。レコード数(4779859)|
+|Name|shape (feat only)|size(MB)|Detail|
+|---|---|---|---|
+|nb004_librosa_mfcc.csv|(21,375, 11)|2.0|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
+|nb007_librosa_mfcc02.csv|(4,779,859, 11)|436.1|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。|
+|nb008_librosa_basic|(4,779,859, 12)|482.7|['rms', 'centroid', 'sc_1', 'sc_2', 'sc_3', 'sc_4', 'sc_5', 'sc_6', 'sb', 'sf', 'sr', 'zcr']。nb004と同じくsrを揃えていない問題がある。|
 
-## ref
+## memo
+- public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
+- 
 
 ## Basics
 **overview(DeepL)**
@@ -147,7 +150,7 @@ example: https://www.xeno-canto.org/134874
 
 - libros.load() の引数にres_typeというものがある。リサンプルのタイプだ。res_type=’kaiser_fast’で早くすることもできる。
 
-- durationのminに0秒があるな
+- durationのminに0秒があるな  
   ![duration](./data/info/images/readme/010.png)
 
 - kagglenb_02_sub
@@ -188,6 +191,28 @@ example: https://www.xeno-canto.org/134874
   - n_feat/m_wav/1_bird にした。
   - window_sizeとstrideは0.5, 0.25 sec
   - nb004の特徴量よりデータ数がかなり多い。
-    - レコード数: 4,779,859
+    - shape: (4,779,859, 11)
+    - time: 2:51:06
+
+### 20200803
+- kagglenb_02_nocall_only
+  - nocall だけでsubmitしてみた
+  - result
+    - cv: none
+    - sub: 0.544
+
+- このSample Submission File(公式) 見る感じ、複数の鳥が鳴いていればそれを予測するということか。
+  - ![duration](./data/info/images/readme/011.png)
+
+- 今後使いそうなNNの初手
+  - https://twitter.com/mlaass1/status/1290131798735781890/retweets/with_comments
+
+- nb008
+  - librosaの基本的な特徴量を実装。
+  - n_feat/m_wav/1_bird
+  - w_size=0.5, w_stride=0.25 sec
+  - feats
+    - ['librosa_rms', 'librosa_centroid', 'librosa_sc_1', 'librosa_sc_2', 'librosa_sc_3', 'librosa_sc_4', 'librosa_sc_5', 'librosa_sc_6', 'librosa_sb', 'librosa_sf', 'librosa_sr', 'librosa_zcr']
 
 
+  ### 20200804
