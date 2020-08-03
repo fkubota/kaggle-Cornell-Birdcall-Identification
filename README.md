@@ -150,7 +150,7 @@ example: https://www.xeno-canto.org/134874
 
 - libros.load() の引数にres_typeというものがある。リサンプルのタイプだ。res_type=’kaiser_fast’で早くすることもできる。
 
-- durationのminに0秒があるな
+- durationのminに0秒があるな  
   ![duration](./data/info/images/readme/010.png)
 
 - kagglenb_02_sub
@@ -207,11 +207,12 @@ example: https://www.xeno-canto.org/134874
 - 今後使いそうなNNの初手
   - https://twitter.com/mlaass1/status/1290131798735781890/retweets/with_comments
 
-- pytorchの入門に良さそうなNoteBook
-
 - nb008
   - librosaの基本的な特徴量を実装。
   - n_feat/m_wav/1_bird
   - w_size=0.5, w_stride=0.25 sec
   - feats
     - ['librosa_rms', 'librosa_centroid', 'librosa_sc_1', 'librosa_sc_2', 'librosa_sc_3', 'librosa_sc_4', 'librosa_sc_5', 'librosa_sc_6', 'librosa_sb', 'librosa_sf', 'librosa_sr', 'librosa_zcr']
+
+
+  ### 20200804
