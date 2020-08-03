@@ -6,12 +6,15 @@ Cornell Birdcall Identification コンペのリポジトリ
 
 
 ## Features
-|Name|Detail|
-|---|---|
-|nb004_librosa_mfcc.csv|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
-|nb007_librosa_mfcc02.csv|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。レコード数(4779859)|
+|Name|shape \n (feat only)|Detail|
+|---|---|---|
+|nb004_librosa_mfcc.csv|(21375, 13)|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
+|nb007_librosa_mfcc02.csv|4779859|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。レコード数(4779859)|
+|nb008_librosa_basic|...|nb004と同じくsrを揃えていない問題がある。|
 
-## ref
+## memo
+- public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
+- 
 
 ## Basics
 **overview(DeepL)**
@@ -189,5 +192,17 @@ example: https://www.xeno-canto.org/134874
   - window_sizeとstrideは0.5, 0.25 sec
   - nb004の特徴量よりデータ数がかなり多い。
     - レコード数: 4,779,859
+    - time: 2:51:06
 
+### 20200803
+- kagglenb_02_nocall_only
+  - nocall だけでsubmitしてみた
+  - result
+    - cv: none
+    - sub: 0.544
 
+- このSample Submission File(公式) 見る感じ、複数の鳥が鳴いていればそれを予測するということか。
+  - ![duration](./data/info/images/readme/011.png)
+
+- 今後使いそうなNNの初手
+  - https://twitter.com/mlaass1/status/1290131798735781890/retweets/with_comments
