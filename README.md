@@ -242,3 +242,8 @@ example: https://www.xeno-canto.org/134874
   
 - カエル先生がそれぞれどのような戦略をとればいいかアドバイスしてくれてる。
   - https://www.kaggle.com/c/birdsong-recognition/discussion/170959#951943
+
+### 20200806
+- tawaraさんのリサンプリングデータセットをダウンロードした
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/164197
+  - size: 72GB
