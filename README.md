@@ -247,3 +247,18 @@ example: https://www.xeno-canto.org/134874
 - tawaraさんのリサンプリングデータセットをダウンロードした
   - https://www.kaggle.com/c/birdsong-recognition/discussion/164197
   - size: 72GB
+- 今日はディスカッションを眺めるだけで終わってもうた。
+
+### 20200807
+- 今日は、pytorchの本でdataloderの勉強とかしてた。
+- ノイズ除去を扱ってるノートブック
+  - https://www.kaggle.com/takamichitoda/birdcall-noise-reduction
+  - noisereduceというライブラリがあるらしい。
+- ノイズ除去を扱ってるディスカション
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/169582#946072
+
+
+### 20200809
+- tawaraさんのResNestのTrainingノートブックを見てた
+  - fold 0 で学習(fold 1to4) で評価というのをやってた。
+  - モデル2つで推論とか厳しいのかな...
