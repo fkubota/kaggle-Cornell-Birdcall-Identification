@@ -262,3 +262,10 @@ example: https://www.xeno-canto.org/134874
 - tawaraさんのResNestのTrainingノートブックを見てた
   - fold 0 で学習(fold 1to4) で評価というのをやってた。
   - モデル2つで推論とか厳しいのかな...
+
+### 20200810
+- mono_to_color は画像ごとに行っているけど大丈夫かな...
+
+- nb009
+  - tawaraさんの[trainingノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast?)を理解するためのトートブック
+  - ある程度理解できたと思う。
