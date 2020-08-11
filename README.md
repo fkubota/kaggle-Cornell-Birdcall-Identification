@@ -267,5 +267,22 @@ example: https://www.xeno-canto.org/134874
 - mono_to_color は画像ごとに行っているけど大丈夫かな...
 
 - nb009
-  - tawaraさんの[trainingノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast?)を理解するためのトートブック
+  - tawaraさんの[trainingノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast?)を理解するためのノートブック
   - ある程度理解できたと思う。
+- pytorch でCNNつくってるノートブック(https://www.kaggle.com/radek1/esp-starter-pack-from-training-to-submission)
+  - これも参考になる。
+
+- nb010
+  - nb009を参考にresnetでモデルを学習してみる
+  - めっちゃ遅い。1epoch 12minぐらいかかる。
+  - tawaraさんのやつは1minぐらいっぽいけどほんとか？
+
+
+### 20200811
+- nb010
+  - 昨日でてきた疑問(1epoch 12min問題に取り組む)
+    - issue: https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/50
+    - kaggle-notebook で動かしてみたけど同じぐらい遅かった。他に原因あり？
+    - tawaraさんのノートブックちゃんと見たら学習に8hほどかかっていたことがわかった。
+    - 1epochあたり10min前後。
+    - こんなもんか。
