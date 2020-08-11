@@ -215,4 +215,74 @@ example: https://www.xeno-canto.org/134874
     - ['librosa_rms', 'librosa_centroid', 'librosa_sc_1', 'librosa_sc_2', 'librosa_sc_3', 'librosa_sc_4', 'librosa_sc_5', 'librosa_sc_6', 'librosa_sb', 'librosa_sf', 'librosa_sr', 'librosa_zcr']
 
 
-  ### 20200804
+ ### 20200804
+  - nb006
+    - nb004で作成した特徴量を使ってrfcモデルを作成する。
+    - feat: nb004_librosa_mfcc
+    - model: rfc
+    - cv: 5-fold
+
+  - kagglenb_04_sub
+    - nb006のモデルを1つだけ使ってsubしてみた
+    - result
+      - pub: 0.544 (<---閾値大きすぎて全部nocallだったっぽい)
+
+
+### 20200805
+- timeoutになった場合でもsucseedになる可能性がある？
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/172042
+  - でもこれ議論がわかれてるな。
+
+- カエル先生のことほんとに見習わないといけない
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/169538
+  - 3/2にデータにはセカンダリラベルがないが、他の種類の鳥が鳴いていることがある。
+    - arai さんの対応方法
+      > これまでのところ、私のモデルは潜在的な二次ラベルのためにすべての0を出力するようにしています。私は一次二次ラベルを明確に分離していないので、各サンプルに対して264次元の1ホットベクトルを提供し、一次二次ラベルに対応する位置に1を配置します。サンプルが二次ラベルを持たない場合は、一次ラベルに対応する位置を除いてすべての要素が0であるベクトルを作成します。
+
+  
+- カエル先生がそれぞれどのような戦略をとればいいかアドバイスしてくれてる。
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/170959#951943
+
+### 20200806
+- tawaraさんのリサンプリングデータセットをダウンロードした
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/164197
+  - size: 72GB
+- 今日はディスカッションを眺めるだけで終わってもうた。
+
+### 20200807
+- 今日は、pytorchの本でdataloderの勉強とかしてた。
+- ノイズ除去を扱ってるノートブック
+  - https://www.kaggle.com/takamichitoda/birdcall-noise-reduction
+  - noisereduceというライブラリがあるらしい。
+- ノイズ除去を扱ってるディスカション
+  - https://www.kaggle.com/c/birdsong-recognition/discussion/169582#946072
+
+
+### 20200809
+- tawaraさんのResNestのTrainingノートブックを見てた
+  - fold 0 で学習(fold 1to4) で評価というのをやってた。
+  - モデル2つで推論とか厳しいのかな...
+
+### 20200810
+- mono_to_color は画像ごとに行っているけど大丈夫かな...
+
+- nb009
+  - tawaraさんの[trainingノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast?)を理解するためのノートブック
+  - ある程度理解できたと思う。
+- pytorch でCNNつくってるノートブック(https://www.kaggle.com/radek1/esp-starter-pack-from-training-to-submission)
+  - これも参考になる。
+
+- nb010
+  - nb009を参考にresnetでモデルを学習してみる
+  - めっちゃ遅い。1epoch 12minぐらいかかる。
+  - tawaraさんのやつは1minぐらいっぽいけどほんとか？
+
+
+### 20200811
+- nb010
+  - 昨日でてきた疑問(1epoch 12min問題に取り組む)
+    - issue: https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/50
+    - kaggle-notebook で動かしてみたけど同じぐらい遅かった。他に原因あり？
+    - tawaraさんのノートブックちゃんと見たら学習に8hほどかかっていたことがわかった。
+    - 1epochあたり10min前後。
+    - こんなもんか。
