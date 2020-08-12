@@ -4,6 +4,8 @@
 Cornell Birdcall Identification コンペのリポジトリ
 
 
+# Info
+- google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
 
 ## Features
 |Name|shape (feat only)|size(MB)|Detail|
@@ -11,8 +13,9 @@ Cornell Birdcall Identification コンペのリポジトリ
 |nb004_librosa_mfcc.csv|(21,375, 11)|2.0|librosaのmfcc(2~12)。audiofile1つにつき1ベクトル。srを揃えてないので周波数空間の大きさに差が有り問題がありそう。srを16kHzとかにそろえたほうがいいと思う。|
 |nb007_librosa_mfcc02.csv|(4,779,859, 11)|436.1|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。|
 |nb008_librosa_basic|(4,779,859, 12)|482.7|['rms', 'centroid', 'sc_1', 'sc_2', 'sc_3', 'sc_4', 'sc_5', 'sc_6', 'sb', 'sf', 'sr', 'zcr']。nb004と同じくsrを揃えていない問題がある。|
+|nb010_librosa_rms.csv|(4779859, 3)|144|event部分だけ抽出する際のthresholdとして使う。|
 
-## memo
+## Memo
 - public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
 - 
 
@@ -286,3 +289,26 @@ example: https://www.xeno-canto.org/134874
     - tawaraさんのノートブックちゃんと見たら学習に8hほどかかっていたことがわかった。
     - 1epochあたり10min前後。
     - こんなもんか。
+    - result
+      - n_epoch: 50
+      - time: 10 h
+      ![loss](./data/info/images/readme/012_resnet18_loss.png)
+
+
+### 20200812
+- 評価指標について説明されてる[ディスカッション](https://www.kaggle.com/shonenkov/competition-metrics)
+  - サンプル平均？のf1_score?
+
+- かえる先生がvalidationについて言及している[ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/170959#951943)
+  - ↑に対しての[アライさんのコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/171247)
+
+- kagglenb05(www.kaggle.com/fkubota/kagglenb05-from-nb010)
+  - nb010で作成したモデルを提出してみる
+  - version5
+    - probaあたりでミスってスコア0.326だった
+  - version7
+    - version5のミスを修正した
+    - スコアは0.490
+
+- nb011
+  - bawwar/XC472332.mp3 でエンジン音？のようなものが聞こえた。bawwarのデータが大体そうなのかを確認してみる。
