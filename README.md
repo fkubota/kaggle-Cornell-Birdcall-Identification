@@ -286,3 +286,23 @@ example: https://www.xeno-canto.org/134874
     - tawaraさんのノートブックちゃんと見たら学習に8hほどかかっていたことがわかった。
     - 1epochあたり10min前後。
     - こんなもんか。
+    - result
+      - n_epoch: 50
+      - time: 10 h
+      ![loss](./data/info/images/readme/012_resnet18_loss.png)
+
+
+### 20200812
+- 評価指標について説明されてる[ディスカッション](https://www.kaggle.com/shonenkov/competition-metrics)
+  - サンプル平均？のf1_score?
+
+- かえる先生がvalidationについて言及している[ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/170959#951943)
+  - ↑に対しての[アライさんのコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/171247)
+
+- kagglenb05(www.kaggle.com/fkubota/kagglenb05-from-nb010)
+  - nb010で作成したモデルを提出してみる
+  - version5
+    - probaあたりでミスってスコア0.326だった
+  - version7
+    - version5のミスを修正した
+    - スコアは0.490
