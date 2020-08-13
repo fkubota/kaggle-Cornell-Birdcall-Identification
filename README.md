@@ -4,7 +4,7 @@
 Cornell Birdcall Identification コンペのリポジトリ
 
 
-# Info
+## Info
 - google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
 
 ## Features
@@ -16,6 +16,9 @@ Cornell Birdcall Identification コンペのリポジトリ
 |nb010_librosa_rms.csv|(4779859, 3)|144|event部分だけ抽出する際のthresholdとして使う。|
 
 ## Memo
+- term
+  - nb: ノートブック
+  - kagglenb: kaggleのサイトで見れる/作れるノートブック
 - public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
 - 
 
@@ -310,5 +313,9 @@ example: https://www.xeno-canto.org/134874
     - version5のミスを修正した
     - スコアは0.490
 
+### 20200813
 - nb011
   - bawwar/XC472332.mp3 でエンジン音？のようなものが聞こえた。bawwarのデータが大体そうなのかを確認してみる。
+  - 1.3 \* med(librosa_rms) を閾値として、event部分を取り出してみた。結構いい感じ。
+      ![event detection](./data/info/images/readme/013_event_rms.png)
+
