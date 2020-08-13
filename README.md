@@ -6,6 +6,8 @@ Cornell Birdcall Identification コンペのリポジトリ
 
 ## Info
 - google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
+- ref:
+  - metricについて: https://www.kaggle.com/shonenkov/competition-metrics
 
 ## Features
 |Name|shape (feat only)|size(MB)|Detail|
@@ -41,6 +43,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 隠されたtest_audioディレクトリには、MP3形式の約150の録音が含まれています。これらの録音はノートパソコンのメモリには同時に収まりません。録音は北米の3つの離れた場所で行われました。サイト1と2は5秒単位でラベル付けされており、予測値と一致する必要がありますが、ラベル付けプロセスに時間がかかるため、サイト3のファイルはファイルレベルでのみラベル付けされています。そのため、サイト3はテストセットの行数が比較的少なく、より低い時間分解能の予測が必要です。 別のデータソースからの2つのサウンドスケープの例も、サウンドスケープがどのようにラベル付けされているかと、隠しデータセットのフォルダ構造を説明するために提供されています。2つの例の音声ファイルはBLKFR-10-CPL_20190611_093000.pt540.mp3とORANGE-7-CAP_20190606_093000.pt623.mp3です。これらのサウンドスケープは、カリフォルニア科学アカデミー鳥類哺乳類学科のJack Dumbacher氏のご厚意により提供されました。
 
 ### train.csv colomn infomaiton
+notebook: nb001
 example: https://www.xeno-canto.org/134874
 
 |name|Explanation|
@@ -70,16 +73,16 @@ example: https://www.xeno-canto.org/134874
 |file_type|4種類。それぞれの個数はmp3=21367, wav=6, mp2=1, aac=1となっている。|
 |volume|'Not specified', 'both', 'increasing', 'level', 'decreasing'の5種類。またこの指標出た。意味がわからん。|
 |background|背景音。xeno-cantにも記述されている。secondaly_labelsとどう違うのだろうか。|
-|xc_id||
-|url    ||
-|country||
-|author||
-|primary_lbel||
+|xc_id|filenameにある、XCと拡張子を除いた部分。例(XC134874.mp3 の134874がそれに当たる。重複なく各要素はユニーク。)|
+|url    |xeno-cant へのリンクURL|
+|country|集音した国|
+|author|集音者|
+|primary_label|ebird_code は primary_labelの略っぽい。例: Empidonax alnorum_Alder Flycatcher	--> aldfly|
 |longitude|経度|
-|length||
-|time   ||
-|recordist||
-|license||
+|length|'Not specified', '0-3(s)', '6-10(s)', '>10(s)', '3-6(s)' が要素にある。'Not specified' がダントツで多い。|
+|time|集音開始時刻。朝が多め。|
+|recordist|調べてみたら(nb001)、authorとrecordistは完全に一致してた。|
+|license|4種類あった。あまり有用な情報ではないだろう。|
 
 
 ## Log
@@ -319,3 +322,13 @@ example: https://www.xeno-canto.org/134874
   - 1.3 \* med(librosa_rms) を閾値として、event部分を取り出してみた。結構いい感じ。
       ![event detection](./data/info/images/readme/013_event_rms.png)
 
+- nb012
+  - SpectrogramEventRmsDataset の作成
+  - nb011でのevent検出を活かしたデータセット。
+  - フロー図
+      ![flow chart](./data/info/images/readme/014.png)
+  - 実行時間
+    - dataset のイテレータ全て実行した場合
+      - SpectrogramEventRmsDataset: 14min 28s
+      - SpectrogramDataset: 49min 50s
+    
