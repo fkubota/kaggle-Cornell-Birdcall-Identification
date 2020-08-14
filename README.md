@@ -321,7 +321,7 @@ example: https://www.xeno-canto.org/134874
 - nb011
   - bawwar/XC472332.mp3 でエンジン音？のようなものが聞こえた。bawwarのデータが大体そうなのかを確認してみる。
   - 1.3 \* med(librosa_rms) を閾値として、event部分を取り出してみた。結構いい感じ。
-      ![event detection](./data/info/images/readme/013_event_rms.png)
+      <img src='./data/info/images/readme/013_event_rms.png' width='800'>
 
 - nb012
   - SpectrogramEventRmsDataset の作成
@@ -337,4 +337,4 @@ example: https://www.xeno-canto.org/134874
 - kagglenb06(https://www.kaggle.com/fkubota/kagglenb06-from-nb010-test-5times-predict?scriptVersionId=40707630)
   - 1秒predictを試してみたいと思っているが、心配なのは、predictの時間が増えること。
   - それを確かめるためにkagglenb05のpredictを5回やってみた。
-      <img src='./data/info/images/readme/015.png' width='600'>
+      <img src='./data/info/images/readme/015.png' width='500'>
