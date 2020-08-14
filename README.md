@@ -5,6 +5,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 
 
 ## Info
+- issue board: https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1
 - google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
 - ref:
   - metricについて: https://www.kaggle.com/shonenkov/competition-metrics
@@ -331,4 +332,9 @@ example: https://www.xeno-canto.org/134874
     - dataset のイテレータ全て実行した場合
       - SpectrogramEventRmsDataset: 14min 28s
       - SpectrogramDataset: 49min 50s
-    
+
+### 20200814
+- kagglenb06(https://www.kaggle.com/fkubota/kagglenb06-from-nb010-test-5times-predict?scriptVersionId=40707630)
+  - 1秒predictを試してみたいと思っているが、心配なのは、predictの時間が増えること。
+  - それを確かめるためにkagglenb05のpredictを5回やってみた。
+      <img src='./data/info/images/readme/015.png' width='600'>
