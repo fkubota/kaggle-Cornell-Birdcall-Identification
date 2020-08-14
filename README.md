@@ -338,3 +338,29 @@ example: https://www.xeno-canto.org/134874
   - 1秒predictを試してみたいと思っているが、心配なのは、predictの時間が増えること。
   - それを確かめるためにkagglenb05のpredictを5回やってみた。
       <img src='./data/info/images/readme/015.png' width='500'>
+  - result
+    - submission通ってた！！
+    - これでやってみるか。 
+
+- nb013
+  - nb012で作ったデータセット(SpectrogramEventRmsDataset)をつかってresnet18を学習させてみる
+  - <font color='red'>悲報</font> : 間違ってブラウザ切ってしまって、ノートブックの更新が止まってしまった。
+    - モデルは作成されている。:)
+  - result
+    - 学習時間 21h 程度
+
+- kagglenb07(nb)
+  - nb013で作ったモデルをサブ
+  - result
+    - ...
+    - ...
+
+- nb014
+  - nb010 でresnet18(time 10h) を作った。
+  - resnet34での学習時間が知りたいので同じ条件で学習させてみる。(resnet50はメモリに乗りませんでした。)
+  - あと、bach_sizeも50--> 40にした。メモリの問題です。
+
+
+### 20200815(Sat)
+- event rms は事前にデータを持っていたほうが学習早くなると思うので、SpectrogramEventRmsFasterDatasetを作る
+- 1秒モデルの作成する
