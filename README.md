@@ -11,6 +11,15 @@ Cornell Birdcall Identification コンペのリポジトリ
 - ref:
   - metricについて: https://www.kaggle.com/shonenkov/competition-metrics
 
+## Dataset
+|Name|Detail|ref|
+|---|---|---|
+|SpectrogramDataset|5秒のSpectrogramを取得する。audiofileが5秒より短い場合、足りない部分に0 paddingする。5秒より長いものはランダムに5秒の部分を抽出する。|[公開ノートブック(tawaraさん)](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)|
+|SpectrogramEventRmsDataset|(バグ有り)SpectrogramDataset(SD)を改良。SDでは、鳥の鳴き声が入っていない部分を抽出する可能性があったのでそれを回避するために作った。librosa_rmsを使用し、バックグラウンドに比べてrmsが大きい値を取る時evet(birdcall)とした。|nb012|
+|SpectrogramEventRmsDatasetV2|SpectrogramEventRmsDatasetにバグがあった(nb015)のでfix。|nb015|
+|SpectrogramEventRmsDatasetV3|SpectorgramEventRmsDatasetV2を高速化。|nb018|
+
+
 ## Features
 |Name|shape (feat only)|size(MB)|Detail|
 |---|---|---|---|
@@ -363,10 +372,6 @@ example: https://www.xeno-canto.org/134874
 
 
 ### 20200815(Sat)
-- event rms の音聞いてみる。なにかおかしいかも(kagglenb07のスコアが悪い)
-- event rms は事前にデータを持っていたほうが学習早くなると思うので、SpectrogramEventRmsFasterDatasetを作る
-- 1秒モデルの作成する
-
 - nb015
   - nb012で作ったSpectrogramEventRmsDataSet の挙動がおかしかったので、デバッグしてみた。
   - 原因は、 `silent = ~any(event_mask)` が意図しない動作だったことが原因のようだ。
@@ -396,6 +401,7 @@ example: https://www.xeno-canto.org/134874
 - nb016
   - project01で見つけたバグを修正し、もう一度実行
   - これで動いたら、nb013の異常動作が解決されたことになる。
+  - 正常動作になった！
 
 - nb017
   - nb015のSpectrogramEventRmsDatasetV2を高速化するための準備。
@@ -413,4 +419,21 @@ example: https://www.xeno-canto.org/134874
 - nb018
   - SpectrogramEventRmsDatasetV3
   - nb015で作ったデータセット(SpectrogramEventRmsDatasetV2) を高速に改良する
+  - V2より4倍強早くなった！！
+
+- nb019
+  - nb018で作成したSpectrogramEventRmsDatasetV3 を使用して resnet18モデルを作成する。
+  - 
+
+- memo
+  - [ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/158908): 音データのdata augmentationについて書かれている。
+  - [アライさん](https://www.kaggle.com/c/birdsong-recognition/discussion/170821#951101)はSpecAugmentとmixup効かなかったんだって。
+  - ↑のディスカッションで[SpecMix](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)は聞くという話もあった。
+
+  - [birdnet](https://www.kaggle.com/c/birdsong-recognition/discussion/169538#960900)使えばラベル付できるの？
+
+### 20200815(Sun)
+1secモデルを作成する
+kernelで動作確認する
+nocall データセット作成する
 
