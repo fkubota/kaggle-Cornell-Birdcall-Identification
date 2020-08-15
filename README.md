@@ -7,6 +7,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 ## Info
 - issue board: https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1
 - google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
+- flow chart: https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck
 - ref:
   - metricについて: https://www.kaggle.com/shonenkov/competition-metrics
 
@@ -282,11 +283,6 @@ example: https://www.xeno-canto.org/134874
 - pytorch でCNNつくってるノートブック(https://www.kaggle.com/radek1/esp-starter-pack-from-training-to-submission)
   - これも参考になる。
 
-- nb010
-  - nb009を参考にresnetでモデルを学習してみる
-  - めっちゃ遅い。1epoch 12minぐらいかかる。
-  - tawaraさんのやつは1minぐらいっぽいけどほんとか？
-
 
 ### 20200811
 - nb010
@@ -298,8 +294,9 @@ example: https://www.xeno-canto.org/134874
     - こんなもんか。
     - result
       - n_epoch: 50
-      - time: 10 h
+      - time: 10h 30m
       ![loss](./data/info/images/readme/012_resnet18_loss.png)
+
 
 
 ### 20200812
@@ -352,15 +349,68 @@ example: https://www.xeno-canto.org/134874
 - kagglenb07(nb)
   - nb013で作ったモデルをサブ
   - result
-    - ...
-    - ...
+    - score: 0.340   <--- は？なにこのクソスコア。
+    - データセットミスったっぽい？
 
 - nb014
-  - nb010 でresnet18(time 10h) を作った。
+  - nb010 でresnet18(time 10h 30m) を作った。
   - resnet34での学習時間が知りたいので同じ条件で学習させてみる。(resnet50はメモリに乗りませんでした。)
   - あと、bach_sizeも50--> 40にした。メモリの問題です。
+  - result
+    - time: 10h 30m
+      <img src='./data/info/images/readme/016.png' width='300'>
+    - resnet18と34でほとんど実行時間に差がなかった。
 
 
 ### 20200815(Sat)
+- event rms の音聞いてみる。なにかおかしいかも(kagglenb07のスコアが悪い)
 - event rms は事前にデータを持っていたほうが学習早くなると思うので、SpectrogramEventRmsFasterDatasetを作る
 - 1秒モデルの作成する
+
+- nb015
+  - nb012で作ったSpectrogramEventRmsDataSet の挙動がおかしかったので、デバッグしてみた。
+  - 原因は、 `silent = ~any(event_mask)` が意図しない動作だったことが原因のようだ。
+  - SpectrogramEventRmsDatasetV2を作った。(if文の構造に手を加えた)
+  - とはいえ、nb013の学習結果がものすごく悪くなる理由にはならないきがする...
+
+- nb016
+  - nb013がおかしい原因を探る。
+  - Datasetに問題があることを確かめるために、nb013のSpectrogramEventRmsDataset を SpectrogramDataset に差し替えてみる
+  - これで、lossがしっかりおちていれば、SpectrogramEventRmsDatasetに原因があることになる。
+  - めっちゃlossが悪かった。てことは、データセットのせいじゃない！！
+
+- project01(nb013がおかしい理由を追求する。nb016は、nb013のコピーで検証用。)
+  - 手法
+    - nb010は正常動作、nb013は異常動作なので、双方を比べる
+  - log
+    - nb016
+      - get_loaders_for_trainer 内の data_class を SpectrogramDatasetでベタ書きしてみた。(nb010とそろえる)
+        - ---> 異常動作
+    - nb010
+      - 以前は正常動作だったが、何か環境の変化で異常動作を起こすかもしれないので、もう一度動かしてみる
+        - ---> 正常動作
+    - vimdiffを使って、nb016とnb010を比較してみる
+      - nb016で、モデルの定義が2回行なわれていた。学習に使われてる方が、異常動作を起こすバグになってた。
+      - ↑具体的には `model.fc = nn.Linear(in_features=513, out_features=len(BIRD_CODE))` が原因。`in_features=512`が正しい。
+
+- nb016
+  - project01で見つけたバグを修正し、もう一度実行
+  - これで動いたら、nb013の異常動作が解決されたことになる。
+
+- nb017
+  - nb015のSpectrogramEventRmsDatasetV2を高速化するための準備。
+  - 事前にEventの時間を取得しておく。
+  - 分解して計測した結果、SpectrograDasetとSpectrogramEventRmsDasetの速度差は以下の部分が原因のようだった。
+    ```python
+      rms = self.df_rms.query('filename == @basename').librosa_rms.values
+    ```
+  - 対策
+    - 以下のようなデータフレームを作成
+    - カラムは２つ、filenameとevent_sec_list
+    - filenameには重複がない。(df_rmsに比べて遥かに小さいデータフレームになる)
+    - event_sec_list には1行に [0.2, 1.2, 1.3...] のように複数のevent時間が入ったリストを用意する。
+
+- nb018
+  - SpectrogramEventRmsDatasetV3
+  - nb015で作ったデータセット(SpectrogramEventRmsDatasetV2) を高速に改良する
+
