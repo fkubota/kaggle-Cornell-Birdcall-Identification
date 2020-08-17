@@ -1,15 +1,14 @@
-<!-- ![comp](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/data/info/images/readme/001_comp.png) -->
 ![comp](./data/info/images/readme/001_comp.png)
 # kaggle-Cornell-Birdcall-Identification
 Cornell Birdcall Identification コンペのリポジトリ
 
 
 ## Info
-- issue board: https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1
-- google slide: https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p
-- flow chart: https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck
+- [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)
+- [google slide](https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p)
+- [flow chart](https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck)
 - ref:
-  - metricについて: https://www.kaggle.com/shonenkov/competition-metrics
+  - [metricについて](https://www.kaggle.com/shonenkov/competition-metrics)
 
 ## Dataset
 |Name|Detail|ref|
@@ -18,6 +17,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 |SpectrogramEventRmsDataset|(バグ有り)SpectrogramDataset(SD)を改良。SDでは、鳥の鳴き声が入っていない部分を抽出する可能性があったのでそれを回避するために作った。librosa_rmsを使用し、バックグラウンドに比べてrmsが大きい値を取る時evet(birdcall)とした。|nb012|
 |SpectrogramEventRmsDatasetV2|SpectrogramEventRmsDatasetにバグがあった(nb015)のでfix。|nb015|
 |SpectrogramEventRmsDatasetV3|SpectorgramEventRmsDatasetV2を高速化。|nb018|
+|SpectrogramEventRmsDatasetV4|1sec 専用Dataset。V3で煩わしかった境界問題に対処した。|nb021|
 
 
 ## Features
@@ -423,17 +423,128 @@ example: https://www.xeno-canto.org/134874
 
 - nb019
   - nb018で作成したSpectrogramEventRmsDatasetV3 を使用して resnet18モデルを作成する。
-  - 
+  - nb010と比較する。
+    - nb010の違いはデータセット
+    - SpectrogramDataset を SpectrogramEventRmsDatasetV3 に変更する。
+  - result
+    - time: 11h 10m
+    - nb010 より良くなってる!!
+      |nb019(SED)|nb010|
+      |---|---|
+      |<img src='./data/info/images/readme/017.png' width='300'>|<img src='./data/info/images/readme/012_resnet18_loss.png' width='300'>|
 
 - memo
   - [ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/158908): 音データのdata augmentationについて書かれている。
   - [アライさん](https://www.kaggle.com/c/birdsong-recognition/discussion/170821#951101)はSpecAugmentとmixup効かなかったんだって。
-  - ↑のディスカッションで[SpecMix](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)は聞くという話もあった。
+  - ↑のディスカッションで[SpecMix](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)は効くという話もあった。
 
   - [birdnet](https://www.kaggle.com/c/birdsong-recognition/discussion/169538#960900)使えばラベル付できるの？
 
 ### 20200815(Sun)
-1secモデルを作成する
+SpectrogramEventRmsDatasetV4 を作成。1sec で動かせるようにする。
+1secモデルを作成する(debugモードで、50epochすぐ回るようにする(train_pathを減らせばいい)。early stopping を実装。)
 kernelで動作確認する
 nocall データセット作成する
 
+- kagglenb08
+  - nb019で作ったモデルを提出(しなかった)
+  - どうせスコアよくないのわかってたからやめた。
+
+- nb020
+  - nb019を改良
+    - earlystoppingを実装
+    - best stateでモデルを保存
+    - resnet18 --> resnet50
+    - result:
+      <img src='./data/info/images/readme/018.png' width='300'>
+       
+
+- nb021
+  - SpectrogramEventRmsDatasetV4 を作成。1sec で動かせるようにする。
+  - まずはdf_event(nb012) が 1sec でもしっかり動作してるか確認する。
+  - 境界問題をスリムにした。
+  - 完成！ 音聞いたけど、いい感じだった！
+
+- nb022
+  - nb020の改良
+  - SpectrogramEventRmsDatasetV4(nb021)を使用する
+  - 1秒の推論を行なうモデル
+  - resnet50を使用
+  - result
+      <img src='./data/info/images/readme/019.png' width='300'>
+
+- memo
+  - やっぱ[カエル先生](https://www.kaggle.com/c/birdsong-recognition/discussion/171247#954409)はtrainデータに5secごとのラベルを振ったみたいだな。
+  - アライさんの[SEDノートブック](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection/data?scriptVersionId=40372870): ノイズは除いていない見たい。
+
+
+- kagglenb09
+  - nb020で作ったモデル(resnet50)を提出。
+  - threshold = 0.8
+  - result
+    - score: 0.560
+    - pubLB: 506/805    <----- クソみたいなスコアだけど、とりあえずベスト
+
+- kagglenb10
+  - アライさんの[SEDノートブック](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection/data?scriptVersionId=40372870)をフォーク。
+  - DatasetをPANNsDatasetMod に差し替えてみた。
+  - event_rms を使用している。
+  - result
+    - score: 0.544 (すべてnocallになってた)
+    - ディスカッションに[理由](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection/data#963392)あった。すべ
+    てnocallだったのは、モデルがない---> samplesubが提出される。ということが原因だったっぽい。
+    - 自分でモデルちゃんと作らないとね...反省。
+
+
+### 20200817(Mon)
+- kagglenb11
+  - kagglenb10のPANNsDatasetMod を PANNsDataset に差し替え。
+  - kagglenb10の学習がうまくいってなかったので、もとのままではどうなのか確認する目的。
+  - kagglenb10はうまくいってなかったわけじゃなかった(logのスコア比較)
+
+
+- kagglenb12
+  - kagglenb09(score: 0.56)のthresholdを0.8-->0.6にする。
+  - result
+    - score: 0.557  <---下がっとるやん
+
+- nb023
+  - hard label を作成する
+  - train wav それぞれに5secのラベルを付与する
+  - wavファイルの数(birdごと)
+    - 最大100(100が多い)
+    - 最小9
+
+### 20200818(Tue)
+gantchart書く
+
+
+
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+```
+
+```flow
+st=>start: 処理開始
+e=>end: 処理終了
+io1=>inputoutput: データ入力
+cond=>condition: 入力値が空
+でない？
+io2=>inputoutput: エラー出力
+（※1）:>#footnote
+sub1=>subroutine: 入力値の検証
+（※2）:>http://www.google.com[blank]
+op1=>operation: セッション開始
+
+st->io1->cond
+cond(yes)->sub1->op1->e
+cond(no)->io2(right)->io1
+​```
