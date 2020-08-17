@@ -10,6 +10,27 @@ Cornell Birdcall Identification コンペのリポジトリ
 - ref:
   - [metricについて](https://www.kaggle.com/shonenkov/competition-metrics)
 
+## Timeline
+
+<img src='./data/info/images/readme/gantt.png' width='800'>
+
+```mermaid
+gantt
+  title timeline
+  dateFormat YYYY-MM-DD
+  section Official
+  Competetion: a1, 2020-06-08, 2020-09-15
+  Entry deadline: a3, 2020-09-07, 2020-09-08
+  Team Merger deadline: a4, 2020-09-07, 2020-09-08
+  Final submission deadline: a2, 2020-09-14, 2020-09-15
+
+  section Score
+  Join!:2020-07-25, 2020-07-26
+  0.002(591/601): 2020-07-31, 2020-08-01
+  0.544(): 2020-08-02, 2020-08-03
+  0.560(506/805): 2020-08-14, 2020-08-15
+```
+
 ## Dataset
 |Name|Detail|ref|
 |---|---|---|
@@ -518,6 +539,15 @@ nocall データセット作成する
 ### 20200818(Tue)
 gantchart書く
 
+
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 
 ```mermaid
