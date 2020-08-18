@@ -529,52 +529,50 @@ nocall データセット作成する
   - result
     - score: 0.557  <---下がっとるやん
 
+
+### 20200818(Tue)
 - nb023
   - hard label を作成する
+  - nb017で作成したevnt_rms データフレームを使用する。
   - train wav それぞれに5secのラベルを付与する
   - wavファイルの数(birdごと)
     - 最大100(100が多い)
     - 最小9
+  - result
+    - 失敗に終わった
+    - 以下3つの例で説明する
+      <img src='./data/info/images/readme/20.png' width='1000'>  
 
-### 20200818(Tue)
-gantchart書く
+      --> 失敗例
+      --> 灰色の部分の音を聞くと鳴き声が含まれている
+      <br>
 
+      <img src='./data/info/images/readme/21.png' width='1000'>  
 
+      --> 成功例
+      --> これは、非常にうまく言っている例
+      <br>
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
+      <img src='./data/info/images/readme/22.png' width='1000'>
 
+      --> 失敗例
+      --> 1つ前の例と非常に類似していてうまくいっているようにも見える。  
+      --> しかし実際には灰色領域にも小さいが鳥の鳴き声が聞こえている。
 
-```mermaid
-gantt
-    title A Gantt Diagram
-    dateFormat  YYYY-MM-DD
-    section Section
-    A task           :a1, 2014-01-01, 30d
-    Another task     :after a1  , 20d
-    section Another
-    Task in sec      :2014-01-12  , 12d
-    another task      : 24d
-```
+    - event_rms データフレームのまとめ。
 
-```flow
-st=>start: 処理開始
-e=>end: 処理終了
-io1=>inputoutput: データ入力
-cond=>condition: 入力値が空
-でない？
-io2=>inputoutput: エラー出力
-（※1）:>#footnote
-sub1=>subroutine: 入力値の検証
-（※2）:>http://www.google.com[blank]
-op1=>operation: セッション開始
+      |actual \ predict|call|nocall|
+      |---|---|---|
+      |call|high|**<font color='red'>high</font>**|
+      |nocall|low|low|
 
-st->io1->cond
-cond(yes)->sub1->op1->e
-cond(no)->io2(right)->io1
-​```
+      表でまとめてみた。  
+      event_rmsデータフレームがcall(event)と判断したものが、実際にcallである場合は非常に多かった。(これまでの使い方に問題はなかった)  
+      今回の試みは、nocall部分を抽出することであったがこれに失敗した。  
+      event_rmsデータフレームが、nocallだと判断した部分には、多くのcallが含まれていた。
+      - event_rmsデータフレームは使えない？
+        - --> No！ 
+        - これまでと同じような使いかたなら問題ない。
+      - 簡単に言うと
+        - **call だと抽出された部分は信用してもいい(未検知はあるが、過検知は少ない。 high precision)**
+        - **nocall だと抽出された部分を信用してはいけない(過検知がひどい。 low recall)**
