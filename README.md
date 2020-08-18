@@ -32,13 +32,18 @@ gantt
 ```
 
 ## Dataset
-|Name|Detail|ref|
+|Name|Detail|Ref|
 |---|---|---|
 |SpectrogramDataset|5秒のSpectrogramを取得する。audiofileが5秒より短い場合、足りない部分に0 paddingする。5秒より長いものはランダムに5秒の部分を抽出する。|[公開ノートブック(tawaraさん)](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)|
 |SpectrogramEventRmsDataset|(バグ有り)SpectrogramDataset(SD)を改良。SDでは、鳥の鳴き声が入っていない部分を抽出する可能性があったのでそれを回避するために作った。librosa_rmsを使用し、バックグラウンドに比べてrmsが大きい値を取る時evet(birdcall)とした。|nb012|
 |SpectrogramEventRmsDatasetV2|SpectrogramEventRmsDatasetにバグがあった(nb015)のでfix。|nb015|
 |SpectrogramEventRmsDatasetV3|SpectorgramEventRmsDatasetV2を高速化。|nb018|
 |SpectrogramEventRmsDatasetV4|1sec 専用Dataset。V3で煩わしかった境界問題に対処した。|nb021|
+
+## Event
+|Name|Detail|Ref|
+|---|---|---|
+|hoge|hoge|hoge|
 
 
 ## Features
@@ -276,7 +281,7 @@ example: https://www.xeno-canto.org/134874
 
 - カエル先生のことほんとに見習わないといけない
   - https://www.kaggle.com/c/birdsong-recognition/discussion/169538
-  - 3/2にデータにはセカンダリラベルがないが、他の種類の鳥が鳴いていることがある。
+  - 2/3にデータにはセカンダリラベルがないが、他の種類の鳥が鳴いていることがある。
     - arai さんの対応方法
       > これまでのところ、私のモデルは潜在的な二次ラベルのためにすべての0を出力するようにしています。私は一次二次ラベルを明確に分離していないので、各サンプルに対して264次元の1ホットベクトルを提供し、一次二次ラベルに対応する位置に1を配置します。サンプルが二次ラベルを持たない場合は、一次ラベルに対応する位置を除いてすべての要素が0であるベクトルを作成します。
 
