@@ -581,3 +581,10 @@ nocall データセット作成する
       - 簡単に言うと
         - **call だと抽出された部分は信用してもいい(未検知はあるが、過検知は少ない。 high precision)**
         - **nocall だと抽出された部分を信用してはいけない(過検知がひどい。 low recall)**
+
+ ### 20200819
+- 音響イベントと音響シーンの違い曖昧だったから、この[PDF](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)読んでよかった。
+
+ - nb024
+  - [アライさんのSEDの入門ノートブック](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection)をローカルで動かしてみる。
+  - pretrained model は[こちら](https://zenodo.org/record/3987831#.Xzu9GXVfjS8)から
