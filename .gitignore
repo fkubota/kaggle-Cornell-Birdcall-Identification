@@ -2,5 +2,6 @@
 *checkpoint.ipynb
 .ipynb_checkpoints
 data_ignore/
+data_ignore
 __pycache__/
 *.py[cod]
