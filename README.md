@@ -2,6 +2,18 @@
 # kaggle-Cornell-Birdcall-Identification
 Cornell Birdcall Identification コンペのリポジトリ
 
+- directory tree
+```
+Kaggle-Cornell-Birdcall-Identification
+├── README.md
+├── data         <--- gitで管理するデータ
+├── data_ignore  <---- .gitignoreに記述されているディレクトリ(モデルとか、特徴量とか、データセットとか)
+├── nb           <---- jupyter lab で作業したノートブック
+├── nb_download  <---- ダウンロードした公開されているkagglenb
+└── src          <---- .ipynb 以外のコード
+
+```
+
 
 ## Info
 - [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)
@@ -9,6 +21,8 @@ Cornell Birdcall Identification コンペのリポジトリ
 - [flow chart](https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck)
 - ref:
   - [metricについて](https://www.kaggle.com/shonenkov/competition-metrics)
+- docker run 時にいれるオプション
+  - `--shm-size=5G`
 
 ## Timeline
 
@@ -37,8 +51,10 @@ gantt
 |SpectrogramDataset|5秒のSpectrogramを取得する。audiofileが5秒より短い場合、足りない部分に0 paddingする。5秒より長いものはランダムに5秒の部分を抽出する。|[公開ノートブック(tawaraさん)](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)|
 |SpectrogramEventRmsDataset|(バグ有り)SpectrogramDataset(SD)を改良。SDでは、鳥の鳴き声が入っていない部分を抽出する可能性があったのでそれを回避するために作った。librosa_rmsを使用し、バックグラウンドに比べてrmsが大きい値を取る時evet(birdcall)とした。|nb012|
 |SpectrogramEventRmsDatasetV2|SpectrogramEventRmsDatasetにバグがあった(nb015)のでfix。|nb015|
-|SpectrogramEventRmsDatasetV3|SpectorgramEventRmsDatasetV2を高速化。|nb018|
+|SpectrogramEventRmsDatasetV3|SpectorgramEventRmsDatasetV2を高速化。(nb017で作ったデータフレームを使用)|nb018|
 |SpectrogramEventRmsDatasetV4|1sec 専用Dataset。V3で煩わしかった境界問題に対処した。|nb021|
+|PANNsDatasetMod|PANNs用。とはいえSpectrogramDatasetとほとんど同じ。スペクトログラムは計算せずに、signalをPANNsに渡すようになってる。|nb024|
+|PANNsDatasetEventRmsDataset|PANNs用。nb017_event_rmsを使用してevent部分で学習している。|nb025|
 
 ## Event
 |Name|Detail|Ref|
@@ -585,6 +601,100 @@ nocall データセット作成する
  ### 20200819
 - 音響イベントと音響シーンの違い曖昧だったから、この[PDF](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)読んでよかった。
 
- - nb024
+- nb024
   - [アライさんのSEDの入門ノートブック](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection)をローカルで動かしてみる。
   - pretrained model は[こちら](https://zenodo.org/record/3987831#.Xzu9GXVfjS8)から
+  - BCELoss でnanが出る。エラーの原因が正直わからない。
+    - nanが出たら、early_stopping が走らないようにした
+
+- nb025
+  - nb024の改良
+  - PANNsDataset-->PANNsEventRmsDatasetにした。
+  - result
+    - 共通のF1スコア設けてないからいいのか悪いのかわからん！   <---- バカ！！！！！！
+      <img src='./data/info/images/readme/23.png' width='300'>
+    
+
+
+### 20200820
+- kagglenb13
+  - nb024 のやつ提出しようとしたけど、どうせスコア悪いからやめた。
+
+- kagglenb14
+  - nb025 のモデルデータで学習した
+  - score: 0.481  <---- スコアかなり悪いな... なにがよくなかったんだろう...
+
+- nb026
+  - resnestを実装
+  - [tawaraさんのノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)を真似してみただけ。
+      <img src='./data/info/images/readme/25.png' width='300'>
+
+- nb027
+  - nb026の改良
+  - resnest
+  - SpectralDataset を SpectrogramEventRmsDatasetV3に変更
+  - result
+      <img src='./data/info/images/readme/24.png' width='300'>
+
+    
+
+- memo
+  - SEDのSOTAな手法をまとめてくれてる[discussion](https://www.kaggle.com/c/birdsong-recognition/discussion/175027)
+  - DeepLearning & audio の[youtube解説](https://www.youtube.com/playlist?list=PLhA3b2k8R3t2Ng1WW_7MiXeh1pfQJQi_P)
+  - [カエル先生のディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/174187)。距離の影響について話ししている。
+  - アライさんのfeaturemap aggregationについての[ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/167611)
+Gjjjj
+
+  ### 20200821
+ - kagglenb14
+  - nb027のモデルを提出
+  - resnest
+  - SpectrogramEventRmsDatasetV3
+  - threshold = 0.8
+  - result
+    - score: 0.554
+
+- kagglenb15
+  - nb027のモデルを提出
+  - resnest
+  - SpectrogramDataset
+  - threshold = 0.6
+  - result
+    - score: 0.556
+    - おかしい。tawaraさんのノートブックを真似しただけのはずだが...
+      - 違いと言えば、batch sizeぐらいだと思う...
+
+### 20200822
+issue#93をやる
+
+- nb028
+  - nb026のbatch_size を変えて、tawaraさんと同じ状況にしてみるだけ。
+  - [tawaraさんのノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)を真似してみただけ。
+  - result
+      <img src='./data/info/images/readme/26.png' width='300'>
+    - 学習はうまくいっているように見える
+      
+    - birdcall-checkが結構違う...
+  - prediction のコードが間違っているのかを確認するために以下の手順を踏んだ
+    - tawara さんが学習したモデルをダウンロード
+    - nb028のprediction loop にダウンロードしたモデルを使ってみる
+    - result
+      ---> 　[tawaraさんの公開ノートブック](https://www.kaggle.com/ttahara/inference-birdsong-baseline-resnest50-fast/data?select=best_model.pth)の結果と同じものが出力された。  
+      --->  ということは、学習のコードに問題があることになる...
+  
+
+
+
+- memo
+  - test_sample から nocall のデータを抽出した[discussion](https://www.kaggle.com/c/birdsong-recognition/discussion/176368)を見つけた。あとで確認する。[issue](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1#card-44109140)化済み。
+
+  - nb029
+    - stratifiedKfoldのパラメータがまったく同じなのにも関わらず、出てくる値がまったく違うということが起こっていた。
+    - scikit-learnのバージョンの違いが原因のようだ....
+      - scikit-learn==0.23.1にすると、一致した...
+      - train と valid に使われるデータ数に差があったのが原因？
+
+- [issue#93](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/93)  
+  - 解決！！
+  - [mindmap](https://drive.mindmup.com/map/1DgCOa0mNgTx8Ji1EvrlWPD5mExDj4Upq)
+    <img src='./data/info/images/readme/27.png' width='2000'>
