@@ -1,0 +1,170 @@
+2020-08-22 10:12:01,876 - INFO - logger set up
+2020-08-22 10:12:04,494 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:12:34,650 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:13:11,353 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:13:20,709 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:19:25,004 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:24:33,059 - INFO - logger set up
+2020-08-22 10:24:34,194 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:24:35,457 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] done in 1.26 s
+2020-08-22 10:24:35,467 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:24:35,745 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] done in 0.28 s
+2020-08-22 10:24:35,746 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 10:24:37,197 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] done in 1.45 s
+2020-08-22 10:24:37,203 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 10:24:37,617 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] done in 0.41 s
+2020-08-22 10:24:37,618 - INFO - [Loading 99af324c881246949408c0b1ae54271f] start
+2020-08-22 10:24:39,077 - INFO - [Loading 99af324c881246949408c0b1ae54271f] done in 1.46 s
+2020-08-22 10:24:39,083 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] start
+2020-08-22 10:24:39,546 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] done in 0.46 s
+2020-08-22 10:24:39,548 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 10:24:40,914 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] done in 1.37 s
+2020-08-22 10:24:40,920 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 10:24:41,298 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] done in 0.38 s
+2020-08-22 10:24:41,302 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 10:24:42,721 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] done in 1.42 s
+2020-08-22 10:24:42,727 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 10:24:43,144 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] done in 0.42 s
+2020-08-22 10:24:43,146 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 10:24:44,151 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] done in 1.00 s
+2020-08-22 10:24:44,157 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 10:24:44,259 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] done in 0.10 s
+2020-08-22 10:24:44,262 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 10:24:45,825 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] done in 1.56 s
+2020-08-22 10:24:45,831 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 10:24:46,339 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] done in 0.51 s
+2020-08-22 10:24:46,342 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 10:24:48,224 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] done in 1.88 s
+2020-08-22 10:24:48,229 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 10:24:48,984 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] done in 0.75 s
+2020-08-22 10:24:48,985 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 10:24:50,156 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] done in 1.17 s
+2020-08-22 10:24:50,162 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 10:24:50,462 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] done in 0.30 s
+2020-08-22 10:24:50,464 - INFO - [Loading 899616723a32409c996f6f3441646c2a] start
+2020-08-22 10:24:52,076 - INFO - [Loading 899616723a32409c996f6f3441646c2a] done in 1.61 s
+2020-08-22 10:24:52,082 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] start
+2020-08-22 10:24:52,543 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] done in 0.46 s
+2020-08-22 10:24:52,545 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 10:24:55,759 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] done in 3.21 s
+2020-08-22 10:24:55,764 - INFO - [Prediction on 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 10:27:51,733 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:27:53,041 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] done in 1.31 s
+2020-08-22 10:27:53,048 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 10:27:53,380 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] done in 0.33 s
+2020-08-22 10:27:53,382 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 10:27:54,879 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] done in 1.50 s
+2020-08-22 10:27:54,885 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 10:27:55,300 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] done in 0.41 s
+2020-08-22 10:27:55,302 - INFO - [Loading 99af324c881246949408c0b1ae54271f] start
+2020-08-22 10:27:56,793 - INFO - [Loading 99af324c881246949408c0b1ae54271f] done in 1.49 s
+2020-08-22 10:27:56,800 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] start
+2020-08-22 10:27:57,229 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] done in 0.43 s
+2020-08-22 10:27:57,230 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 10:27:58,455 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] done in 1.22 s
+2020-08-22 10:27:58,459 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 10:27:58,818 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] done in 0.36 s
+2020-08-22 10:27:58,819 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 10:28:00,243 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] done in 1.42 s
+2020-08-22 10:28:00,250 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 10:28:00,715 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] done in 0.46 s
+2020-08-22 10:28:00,716 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 10:28:01,763 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] done in 1.05 s
+2020-08-22 10:28:01,769 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 10:28:01,859 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] done in 0.09 s
+2020-08-22 10:28:01,862 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 10:28:03,458 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] done in 1.60 s
+2020-08-22 10:28:03,464 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 10:28:03,996 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] done in 0.53 s
+2020-08-22 10:28:03,998 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 10:28:05,905 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] done in 1.91 s
+2020-08-22 10:28:05,910 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 10:28:06,700 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] done in 0.79 s
+2020-08-22 10:28:06,702 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 10:28:07,891 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] done in 1.19 s
+2020-08-22 10:28:07,897 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 10:28:08,236 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] done in 0.34 s
+2020-08-22 10:28:08,238 - INFO - [Loading 899616723a32409c996f6f3441646c2a] start
+2020-08-22 10:28:09,875 - INFO - [Loading 899616723a32409c996f6f3441646c2a] done in 1.64 s
+2020-08-22 10:28:09,882 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] start
+2020-08-22 10:28:10,494 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] done in 0.61 s
+2020-08-22 10:28:10,496 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 10:28:14,012 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] done in 3.52 s
+2020-08-22 10:28:14,017 - INFO - [Prediction on 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 10:28:15,361 - INFO - [Prediction on 9cc5d9646f344f1bbb52640a988fe902] done in 1.34 s
+2020-08-22 10:28:15,363 - INFO - [Loading a56e20a518684688a9952add8a9d5213] start
+2020-08-22 10:28:16,605 - INFO - [Loading a56e20a518684688a9952add8a9d5213] done in 1.24 s
+2020-08-22 10:28:16,612 - INFO - [Prediction on a56e20a518684688a9952add8a9d5213] start
+2020-08-22 10:28:16,827 - INFO - [Prediction on a56e20a518684688a9952add8a9d5213] done in 0.22 s
+2020-08-22 10:28:16,829 - INFO - [Loading 96779836288745728306903d54e264dd] start
+2020-08-22 10:28:18,019 - INFO - [Loading 96779836288745728306903d54e264dd] done in 1.19 s
+2020-08-22 10:28:18,025 - INFO - [Prediction on 96779836288745728306903d54e264dd] start
+2020-08-22 10:28:18,144 - INFO - [Prediction on 96779836288745728306903d54e264dd] done in 0.12 s
+2020-08-22 10:28:18,146 - INFO - [Loading f77783ba4c6641bc918b034a18c23e53] start
+2020-08-22 10:28:19,228 - INFO - [Loading f77783ba4c6641bc918b034a18c23e53] done in 1.08 s
+2020-08-22 10:28:19,234 - INFO - [Prediction on f77783ba4c6641bc918b034a18c23e53] start
+2020-08-22 10:28:19,292 - INFO - [Prediction on f77783ba4c6641bc918b034a18c23e53] done in 0.06 s
+2020-08-22 10:28:19,295 - INFO - [Loading 856b194b097441958697c2bcd1f63982] start
+2020-08-22 10:28:20,663 - INFO - [Loading 856b194b097441958697c2bcd1f63982] done in 1.37 s
+2020-08-22 10:28:20,670 - INFO - [Prediction on 856b194b097441958697c2bcd1f63982] start
+2020-08-22 10:28:20,821 - INFO - [Prediction on 856b194b097441958697c2bcd1f63982] done in 0.15 s
+2020-08-22 14:47:47,237 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 14:47:48,494 - INFO - [Loading 41e6fe6504a34bf6846938ba78d13df1] done in 1.26 s
+2020-08-22 14:47:48,500 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] start
+2020-08-22 14:47:48,793 - INFO - [Prediction on 41e6fe6504a34bf6846938ba78d13df1] done in 0.29 s
+2020-08-22 14:47:48,795 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 14:47:50,252 - INFO - [Loading cce64fffafed40f2b2f3d3413ec1c4c2] done in 1.46 s
+2020-08-22 14:47:50,258 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] start
+2020-08-22 14:47:50,622 - INFO - [Prediction on cce64fffafed40f2b2f3d3413ec1c4c2] done in 0.36 s
+2020-08-22 14:47:50,624 - INFO - [Loading 99af324c881246949408c0b1ae54271f] start
+2020-08-22 14:47:51,968 - INFO - [Loading 99af324c881246949408c0b1ae54271f] done in 1.34 s
+2020-08-22 14:47:51,974 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] start
+2020-08-22 14:47:52,382 - INFO - [Prediction on 99af324c881246949408c0b1ae54271f] done in 0.41 s
+2020-08-22 14:47:52,384 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 14:47:53,748 - INFO - [Loading 6ab74e177aa149468a39ca10beed6222] done in 1.36 s
+2020-08-22 14:47:53,754 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] start
+2020-08-22 14:47:54,142 - INFO - [Prediction on 6ab74e177aa149468a39ca10beed6222] done in 0.39 s
+2020-08-22 14:47:54,144 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 14:47:55,557 - INFO - [Loading b2fd3f01e9284293a1e33f9c811a2ed6] done in 1.41 s
+2020-08-22 14:47:55,563 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] start
+2020-08-22 14:47:55,922 - INFO - [Prediction on b2fd3f01e9284293a1e33f9c811a2ed6] done in 0.36 s
+2020-08-22 14:47:55,923 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 14:47:56,870 - INFO - [Loading de62b37ebba749d2abf29d4a493ea5d4] done in 0.95 s
+2020-08-22 14:47:56,877 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] start
+2020-08-22 14:47:56,956 - INFO - [Prediction on de62b37ebba749d2abf29d4a493ea5d4] done in 0.08 s
+2020-08-22 14:47:56,959 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 14:47:58,506 - INFO - [Loading 8680a8dd845d40f296246dbed0d37394] done in 1.55 s
+2020-08-22 14:47:58,513 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] start
+2020-08-22 14:47:59,076 - INFO - [Prediction on 8680a8dd845d40f296246dbed0d37394] done in 0.56 s
+2020-08-22 14:47:59,080 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 14:48:00,968 - INFO - [Loading 940d546e5eb745c9a74bce3f35efa1f9] done in 1.89 s
+2020-08-22 14:48:00,974 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] start
+2020-08-22 14:48:01,575 - INFO - [Prediction on 940d546e5eb745c9a74bce3f35efa1f9] done in 0.60 s
+2020-08-22 14:48:01,576 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 14:48:02,784 - INFO - [Loading 07ab324c602e4afab65ddbcc746c31b5] done in 1.21 s
+2020-08-22 14:48:02,790 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] start
+2020-08-22 14:48:03,074 - INFO - [Prediction on 07ab324c602e4afab65ddbcc746c31b5] done in 0.28 s
+2020-08-22 14:48:03,078 - INFO - [Loading 899616723a32409c996f6f3441646c2a] start
+2020-08-22 14:48:04,655 - INFO - [Loading 899616723a32409c996f6f3441646c2a] done in 1.58 s
+2020-08-22 14:48:04,661 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] start
+2020-08-22 14:48:05,248 - INFO - [Prediction on 899616723a32409c996f6f3441646c2a] done in 0.59 s
+2020-08-22 14:48:05,250 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 14:48:08,849 - INFO - [Loading 9cc5d9646f344f1bbb52640a988fe902] done in 3.60 s
+2020-08-22 14:48:08,854 - INFO - [Prediction on 9cc5d9646f344f1bbb52640a988fe902] start
+2020-08-22 14:48:10,018 - INFO - [Prediction on 9cc5d9646f344f1bbb52640a988fe902] done in 1.16 s
+2020-08-22 14:48:10,020 - INFO - [Loading a56e20a518684688a9952add8a9d5213] start
+2020-08-22 14:48:11,303 - INFO - [Loading a56e20a518684688a9952add8a9d5213] done in 1.28 s
+2020-08-22 14:48:11,309 - INFO - [Prediction on a56e20a518684688a9952add8a9d5213] start
+2020-08-22 14:48:11,549 - INFO - [Prediction on a56e20a518684688a9952add8a9d5213] done in 0.24 s
+2020-08-22 14:48:11,553 - INFO - [Loading 96779836288745728306903d54e264dd] start
+2020-08-22 14:48:12,715 - INFO - [Loading 96779836288745728306903d54e264dd] done in 1.16 s
+2020-08-22 14:48:12,722 - INFO - [Prediction on 96779836288745728306903d54e264dd] start
+2020-08-22 14:48:12,852 - INFO - [Prediction on 96779836288745728306903d54e264dd] done in 0.13 s
+2020-08-22 14:48:12,854 - INFO - [Loading f77783ba4c6641bc918b034a18c23e53] start
+2020-08-22 14:48:13,846 - INFO - [Loading f77783ba4c6641bc918b034a18c23e53] done in 0.99 s
+2020-08-22 14:48:13,852 - INFO - [Prediction on f77783ba4c6641bc918b034a18c23e53] start
+2020-08-22 14:48:13,933 - INFO - [Prediction on f77783ba4c6641bc918b034a18c23e53] done in 0.08 s
+2020-08-22 14:48:13,935 - INFO - [Loading 856b194b097441958697c2bcd1f63982] start
+2020-08-22 14:48:15,199 - INFO - [Loading 856b194b097441958697c2bcd1f63982] done in 1.26 s
+2020-08-22 14:48:15,206 - INFO - [Prediction on 856b194b097441958697c2bcd1f63982] start
+2020-08-22 14:48:15,406 - INFO - [Prediction on 856b194b097441958697c2bcd1f63982] done in 0.20 s
