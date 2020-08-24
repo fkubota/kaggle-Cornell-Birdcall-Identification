@@ -43,6 +43,7 @@ gantt
   0.002(591/601): 2020-07-31, 2020-08-01
   0.544(): 2020-08-02, 2020-08-03
   0.560(506/805): 2020-08-14, 2020-08-15
+  0.562(457/1022): 2020-08-22, 2020-08-23
 ```
 
 ## Dataset
@@ -69,6 +70,24 @@ gantt
 |nb007_librosa_mfcc02.csv|(4,779,859, 11)|436.1|nb004の特徴量の拡張。audiofile内のn_feat/m_audio/1_bird。nb004の特徴量よりかなりデータ数が多い。|
 |nb008_librosa_basic|(4,779,859, 12)|482.7|['rms', 'centroid', 'sc_1', 'sc_2', 'sc_3', 'sc_4', 'sc_5', 'sc_6', 'sb', 'sf', 'sr', 'zcr']。nb004と同じくsrを揃えていない問題がある。|
 |nb010_librosa_rms.csv|(4779859, 3)|144|event部分だけ抽出する際のthresholdとして使う。|
+
+## Paper
+|Status|Name|Detail|Date|Url|
+|---|---|---|---|---|
+|<font color='yellowgreen'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
+|<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
+|<font color='orange'>Todo</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。|201804|[url](https://arxiv.org/abs/1804.07177)|
+|<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
+|<font color='orange'>Todo</font>|Weakly Labelled AudioSet Tagging with Attention Neural Networks|DCASEについての論文。弱ラベルのタスクについて。|2019|[url](https://arxiv.org/abs/1903.00765)|
+|<font color='orange'>Todo</font>|Robust Audio Event Recognition with 1-Max Pooling Convolutional Neural Networks|音響イベント検知についての論文。1-Max Poolingについて。|201604|[url](https://arxiv.org/abs/1604.06338)|
+|<font color='orange'>Todo</font>|Adaptive pooling operators for weakly labeled sound event detection|弱ラベルの音響イベント検知についての論文。|201804|[url](https://arxiv.org/abs/1804.10070)|
+|<font color='orange'>Todo</font>|Guided Learning Convolution System for DCASE 2019 Task 4|DCASE TASK4(SED)の論文。CNNについて。|201909|[url](https://arxiv.org/abs/1909.06178)|
+|<font color='orange'>Todo</font>|Learning Sound Event Classifiers from Web Audio with Noisy Labels|ノイズが入ったラベルについて。|201901|[url](https://arxiv.org/abs/1901.01189)|
+|<font color='orange'>Todo</font>|7th Place Solution for Freesound Audio Tagging 2019|freesound audio tagging 2019 7th solution。日本語資料。|202002|[url](https://speakerdeck.com/uratatsu/7th-place-solution-for-freesound-audio-tagging-2019)|
+|<font color='orange'>Todo</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるからそれを意識してか良い資料になってる。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
+|<font color='orange'>Todo</font>|SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition|SpecAugmentの原論文。|201904|[url](https://arxiv.org/abs/1904.08779)|
+|<font color='orange'>Todo</font>|SPECMIX: A SIMPLE DATA AUGMENTATION AND WARM-UP PIPELINETO LEVERAGE CLEAN AND NOISY SET FOR EFFICIENT AUDIO TAGGING |SpecMixの原論文。SpecAugmentに影響を受けている。|2019|[url](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)|
+
 
 ## Memo
 - term
@@ -692,9 +711,67 @@ issue#93をやる
     - stratifiedKfoldのパラメータがまったく同じなのにも関わらず、出てくる値がまったく違うということが起こっていた。
     - scikit-learnのバージョンの違いが原因のようだ....
       - scikit-learn==0.23.1にすると、一致した...
-      - train と valid に使われるデータ数に差があったのが原因？
+      - train と valid に使われるデータ数に差があったのが原因だったの？
+    - result
+      - まだtawaraさんの結果とはちょっと違う
+      - でもこれたぶん、pytorchのバージョンとかのせいだと思うから、あまり気にしないでおこう。  
+    <img src='./data/info/images/readme/28.png' width='300'>
+
 
 - [issue#93](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/93)  
   - 解決！！
   - [mindmap](https://drive.mindmup.com/map/1DgCOa0mNgTx8Ji1EvrlWPD5mExDj4Upq)
     <img src='./data/info/images/readme/27.png' width='2000'>
+
+
+### 20200823
+- nb030
+  - nb029を改良
+  - SpectrogramDataset を SpectrogramEventRmsDatasetに変更した
+  - result   
+    <img src='./data/info/images/readme/29.png' width='300'>
+
+    - birdcall-checkのpredictはtawaraさんのpredictとやっぱちょっと違う。
+    - まだ何か違うのかな...
+
+
+- nb031
+  - nb030の結果が思ったのと違ったので、もう少し調査する。
+  - train_loader, valid_loaderの中身も見たけど一致している。
+  - SpectrogramDataset の np.random.choice の値も一致していた。
+
+- nb032
+  - tawaraさんのモデルと、nb029とnb030で作ったモデルのpredictを確認する。
+  - confusion matrix書いてみた。
+
+  |tawara|nb029|nb030|
+  |---|---|---|---|
+  |<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
+
+
+- kagglenb16
+  - nb030のモデルを提出
+  - thre = 0.6
+  - result
+    - score: 0.562   <---- best!!
+
+
+### 20200824
+- kagglenb17
+  - nb030のモデルを提出
+  - thre0.8
+  - result
+    - score: 0.560
+
+- [ヒントクダサーイって言ってるdiscussion](https://www.kaggle.com/c/birdsong-recognition/discussion/176959)。少しの工夫で、0.675出たよって人がいるな...
+  - アーキテクチャとか変更せずに、学習の方法と推論の方法を工夫すると、0.575いったってさ。([url](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#983419))
+- [SEDがなんでいいの？って質問してるdiscussion](https://www.kaggle.com/c/birdsong-recognition/discussion/176490)。アライさんが返信していて、なんか参考になりそうな予感。
+  - SEDで作ったモデルを使って、強いラベルを作ることができるけど、それをどう使うのだろうか。
+- [freesound コンペの7th solution](https://www.kaggle.com/c/freesound-audio-tagging-2019/discussion/97812)。アライさんたちのチームのソリューション。
+
+### 20200825
+
+# single CNNで絶対いいスコアとる！！！！！
+## アーキテクチャとか変更せずに、学習の方法と推論の方法を工夫すると、0.575いったってさ。([url](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#983419))
+
+- もう一度、[tarawaさんの、training notebook](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)を見てみた。コメントとかを重点的に。
