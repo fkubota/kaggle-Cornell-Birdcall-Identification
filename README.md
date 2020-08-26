@@ -76,17 +76,25 @@ gantt
 |---|---|---|---|---|
 |<font color='yellowgreen'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
 |<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
-|<font color='orange'>Todo</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。|201804|[url](https://arxiv.org/abs/1804.07177)|
+|<font color='yellowgreen'>Done</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。nocall除去についての方法が書かれていた。さらに、nocall部分をノイズとして加えたaugmentationがかなり効いたみたい。鳴き声は0.5~12kHzに集中するらしい。|201804|[url](https://arxiv.org/abs/1804.07177)|
 |<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
 |<font color='orange'>Todo</font>|Weakly Labelled AudioSet Tagging with Attention Neural Networks|DCASEについての論文。弱ラベルのタスクについて。|2019|[url](https://arxiv.org/abs/1903.00765)|
-|<font color='orange'>Todo</font>|Robust Audio Event Recognition with 1-Max Pooling Convolutional Neural Networks|音響イベント検知についての論文。1-Max Poolingについて。|201604|[url](https://arxiv.org/abs/1604.06338)|
+|<font color='green'>Doing</font>|Robust Audio Event Recognition with 1-Max Pooling Convolutional Neural Networks|音響イベント検知についての論文。1-Max Poolingについて。|201604|[url](https://arxiv.org/abs/1604.06338)|
 |<font color='orange'>Todo</font>|Adaptive pooling operators for weakly labeled sound event detection|弱ラベルの音響イベント検知についての論文。|201804|[url](https://arxiv.org/abs/1804.10070)|
 |<font color='orange'>Todo</font>|Guided Learning Convolution System for DCASE 2019 Task 4|DCASE TASK4(SED)の論文。CNNについて。|201909|[url](https://arxiv.org/abs/1909.06178)|
 |<font color='orange'>Todo</font>|Learning Sound Event Classifiers from Web Audio with Noisy Labels|ノイズが入ったラベルについて。|201901|[url](https://arxiv.org/abs/1901.01189)|
-|<font color='orange'>Todo</font>|7th Place Solution for Freesound Audio Tagging 2019|freesound audio tagging 2019 7th solution。日本語資料。|202002|[url](https://speakerdeck.com/uratatsu/7th-place-solution-for-freesound-audio-tagging-2019)|
-|<font color='orange'>Todo</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるからそれを意識してか良い資料になってる。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 |<font color='orange'>Todo</font>|SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition|SpecAugmentの原論文。|201904|[url](https://arxiv.org/abs/1904.08779)|
-|<font color='orange'>Todo</font>|SPECMIX: A SIMPLE DATA AUGMENTATION AND WARM-UP PIPELINETO LEVERAGE CLEAN AND NOISY SET FOR EFFICIENT AUDIO TAGGING |SpecMixの原論文。SpecAugmentに影響を受けている。|2019|[url](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)|
+|<font color='orange'>Todo</font>|SPECMIX: A SIMPLE DATA AUGMENTATION AND WARM-UP PIPELINETO LEVERAGE CLEAN AND NOISY SET FOR EFFICIENT AUDIO TAGGING |SpecMixのk原論文。SpecAugmentに影響を受けている。|2019|[url](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)|
+|<font color='orange'>Todo</font>|Large-ScaleBird SoundClassificationusing Convolutional Neural Networks|鳥の鳴き声をDLで検知する論文。nocall部分を除去する方法が知りたくて読む。|2017|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
+|<font color='orange'>Todo</font>|Audio Based Bird Species Identification usingDeep Learning Techniques|鳥の鳴き声をDLで検知する論文。テクニックがいろいろ載ってるっぽい。nocall部分を除去する方法が知りたくて読む。|2016|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
+|<font color='orange'>Todo</font>|GENERAL-PURPOSE TAGGING OF FREESOUND AUDIO WITH AUDIOSET LABELS:TASK DESCRIPTION, DATASET, AND BASELINE|freesound audio tagging compのベースライン論文|2018|[url](https://arxiv.org/abs/1807.09902)|
+
+
+## Freesound Audio Tagging 2019
+|Status|Name|Detail|Date|Url|
+|---|---|---|---|---|
+|<font color='orange'>Todo</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
+|<font color='orange'>Todo</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるからそれを意識してか良い資料になってる。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 
 
 ## Memo
@@ -707,15 +715,15 @@ issue#93をやる
 - memo
   - test_sample から nocall のデータを抽出した[discussion](https://www.kaggle.com/c/birdsong-recognition/discussion/176368)を見つけた。あとで確認する。[issue](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1#card-44109140)化済み。
 
-  - nb029
-    - stratifiedKfoldのパラメータがまったく同じなのにも関わらず、出てくる値がまったく違うということが起こっていた。
-    - scikit-learnのバージョンの違いが原因のようだ....
-      - scikit-learn==0.23.1にすると、一致した...
-      - train と valid に使われるデータ数に差があったのが原因だったの？
-    - result
-      - まだtawaraさんの結果とはちょっと違う
-      - でもこれたぶん、pytorchのバージョンとかのせいだと思うから、あまり気にしないでおこう。  
-    <img src='./data/info/images/readme/28.png' width='300'>
+- nb029
+  - stratifiedKfoldのパラメータがまったく同じなのにも関わらず、出てくる値がまったく違うということが起こっていた。
+  - scikit-learnのバージョンの違いが原因のようだ....
+    - scikit-learn==0.23.1にすると、一致した...
+    - train と valid に使われるデータ数に差があったのが原因だったの？
+  - result
+    - まだtawaraさんの結果とはちょっと違う
+    - でもこれたぶん、pytorchのバージョンとかのせいだと思うから、あまり気にしないでおこう。  
+  <img src='./data/info/images/readme/28.png' width='300'>
 
 
 - [issue#93](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/93)  
@@ -775,3 +783,20 @@ issue#93をやる
 ## アーキテクチャとか変更せずに、学習の方法と推論の方法を工夫すると、0.575いったってさ。([url](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#983419))
 
 - もう一度、[tarawaさんの、training notebook](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)を見てみた。コメントとかを重点的に。
+
+- **<font color='red'>重要</font>** [url](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast#940009): tawaraさんのノートブックでのschedulerの更新位置がおかしかったことが報告されている。
+
+- [nocall モデルを作成したノートブック](https://www.kaggle.com/takamichitoda/birdcall-nocall-prediction-by-panns-inference)
+
+- nb033
+  - nb029の改良
+  - schedulerの更新箇所がおかしかったので修正した。
+  - result
+
+### 20200826
+# freesound compのソリューション見る！
+- freesound 7th solution(アライさんチーム)を読んだ。
+  - めっちゃ参考になる情報がたくさんあった。
+  - augmentation
+  - Strength Adaptive Crop
+  - Custom CNN
