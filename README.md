@@ -6,7 +6,7 @@ Cornell Birdcall Identification コンペのリポジトリ
 ```
 Kaggle-Cornell-Birdcall-Identification
 ├── README.md
-├── data         <--- gitで管理するデータ
+├── data         <---- gitで管理するデータ
 ├── data_ignore  <---- .gitignoreに記述されているディレクトリ(モデルとか、特徴量とか、データセットとか)
 ├── nb           <---- jupyter lab で作業したノートブック
 ├── nb_download  <---- ダウンロードした公開されているkagglenb
@@ -72,29 +72,30 @@ gantt
 |nb010_librosa_rms.csv|(4779859, 3)|144|event部分だけ抽出する際のthresholdとして使う。|
 
 ## Paper
-|Status|Name|Detail|Date|Url|
-|---|---|---|---|---|
-|<font color='yellowgreen'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
-|<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
-|<font color='yellowgreen'>Done</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。nocall除去についての方法が書かれていた。さらに、nocall部分をノイズとして加えたaugmentationがかなり効いたみたい。鳴き声は0.5~12kHzに集中するらしい。|201804|[url](https://arxiv.org/abs/1804.07177)|
-|<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
-|<font color='orange'>Todo</font>|Weakly Labelled AudioSet Tagging with Attention Neural Networks|DCASEについての論文。弱ラベルのタスクについて。|2019|[url](https://arxiv.org/abs/1903.00765)|
-|<font color='green'>Doing</font>|Robust Audio Event Recognition with 1-Max Pooling Convolutional Neural Networks|音響イベント検知についての論文。1-Max Poolingについて。|201604|[url](https://arxiv.org/abs/1604.06338)|
-|<font color='orange'>Todo</font>|Adaptive pooling operators for weakly labeled sound event detection|弱ラベルの音響イベント検知についての論文。|201804|[url](https://arxiv.org/abs/1804.10070)|
-|<font color='orange'>Todo</font>|Guided Learning Convolution System for DCASE 2019 Task 4|DCASE TASK4(SED)の論文。CNNについて。|201909|[url](https://arxiv.org/abs/1909.06178)|
-|<font color='orange'>Todo</font>|Learning Sound Event Classifiers from Web Audio with Noisy Labels|ノイズが入ったラベルについて。|201901|[url](https://arxiv.org/abs/1901.01189)|
-|<font color='orange'>Todo</font>|SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition|SpecAugmentの原論文。|201904|[url](https://arxiv.org/abs/1904.08779)|
-|<font color='orange'>Todo</font>|SPECMIX: A SIMPLE DATA AUGMENTATION AND WARM-UP PIPELINETO LEVERAGE CLEAN AND NOISY SET FOR EFFICIENT AUDIO TAGGING |SpecMixのk原論文。SpecAugmentに影響を受けている。|2019|[url](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)|
-|<font color='orange'>Todo</font>|Large-ScaleBird SoundClassificationusing Convolutional Neural Networks|鳥の鳴き声をDLで検知する論文。nocall部分を除去する方法が知りたくて読む。|2017|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
-|<font color='orange'>Todo</font>|Audio Based Bird Species Identification usingDeep Learning Techniques|鳥の鳴き声をDLで検知する論文。テクニックがいろいろ載ってるっぽい。nocall部分を除去する方法が知りたくて読む。|2016|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
-|<font color='orange'>Todo</font>|GENERAL-PURPOSE TAGGING OF FREESOUND AUDIO WITH AUDIOSET LABELS:TASK DESCRIPTION, DATASET, AND BASELINE|freesound audio tagging compのベースライン論文|2018|[url](https://arxiv.org/abs/1807.09902)|
+|No.|Status|Name|Detail|Date|Url|
+|---|---|---|---|---|---|
+|01|<font color='gray'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
+|02|<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
+|03|<font color='gray'>Done</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。nocall除去についての方法が書かれていた。さらに、nocall部分をノイズとして加えたaugmentationがかなり効いたみたい。鳴き声は0.5~12kHzに集中するらしい。|201804|[url](https://arxiv.org/abs/1804.07177)|
+|04|<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
+|05|<font color='orange'>Todo</font>|Weakly Labelled AudioSet Tagging with Attention Neural Networks|DCASEについての論文。弱ラベルのタスクについて。|2019|[url](https://arxiv.org/abs/1903.00765)|
+|06|<font color='gray'>Done</font>|Robust Audio Event Recognition with 1-Max Pooling Convolutional Neural Networks|音響イベント検知についての論文。1-Max Poolingについて。|201604|[url](https://arxiv.org/abs/1604.06338)|
+|07|<font color='orange'>Todo</font>|Adaptive pooling operators for weakly labeled sound event detection|弱ラベルの音響イベント検知についての論文。|201804|[url](https://arxiv.org/abs/1804.10070)|
+|08|<font color='orange'>Todo</font>|Guided Learning Convolution System for DCASE 2019 Task 4|DCASE TASK4(SED)の論文。CNNについて。|201909|[url](https://arxiv.org/abs/1909.06178)|
+|09|<font color='orange'>Todo</font>|Learning Sound Event Classifiers from Web Audio with Noisy Labels|ノイズが入ったラベルについて。|201901|[url](https://arxiv.org/abs/1901.01189)|
+|10|<font color='orange'>Todo</font>|SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition|SpecAugmentの原論文。|201904|[url](https://arxiv.org/abs/1904.08779)|
+|11|<font color='orange'>Todo</font>|SPECMIX: A SIMPLE DATA AUGMENTATION AND WARM-UP PIPELINETO LEVERAGE CLEAN AND NOISY SET FOR EFFICIENT AUDIO TAGGING |SpecMixの原論文。SpecAugmentに影響を受けている。|2019|[url](http://dcase.community/documents/challenge2019/technical_reports/DCASE2019_Bouteillon_27_t2.pdf)|
+|12|<font color='orange'>Todo</font>|Large-ScaleBird SoundClassificationusing Convolutional Neural Networks|鳥の鳴き声をDLで検知する論文。nocall部分を除去する方法が知りたくて読む。|2017|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
+|13|<font color='orange'>Todo</font>|Audio Based Bird Species Identification usingDeep Learning Techniques|鳥の鳴き声をDLで検知する論文。テクニックがいろいろ載ってるっぽい。nocall部分を除去する方法が知りたくて読む。|2016|[url](http://ceur-ws.org/Vol-1866/paper_143.pdf)|
+|14|<font color='gray'>Done</font>|GENERAL-PURPOSE TAGGING OF FREESOUND AUDIO WITH AUDIOSET LABELS:TASK DESCRIPTION, DATASET, AND BASELINE|freesound audio tagging compのベースライン論文。とくに有用な情報はなかった。|2018|[url](https://arxiv.org/abs/1807.09902)|
+|15|<font color='orange'>Toeo</font>|[DL輪読会] Residual Attention Network for Image Classification|日本語のスライド。Resnet+Attensionについて|201709|[url](https://www.slideshare.net/DeepLearningJP2016/dl-residual-attention-network-for-image-classification)|
 
 
 ## Freesound Audio Tagging 2019
 |Status|Name|Detail|Date|Url|
 |---|---|---|---|---|
-|<font color='orange'>Todo</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
-|<font color='orange'>Todo</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるからそれを意識してか良い資料になってる。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
+|<font color='green'>Doing</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
+|<font color='orange'>Done</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるから良い資料のはず。signal base, image base 両方取り入れている。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 
 
 ## Memo
@@ -670,7 +671,6 @@ nocall データセット作成する
   - DeepLearning & audio の[youtube解説](https://www.youtube.com/playlist?list=PLhA3b2k8R3t2Ng1WW_7MiXeh1pfQJQi_P)
   - [カエル先生のディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/174187)。距離の影響について話ししている。
   - アライさんのfeaturemap aggregationについての[ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/167611)
-Gjjjj
 
   ### 20200821
  - kagglenb14
@@ -792,11 +792,73 @@ issue#93をやる
   - nb029の改良
   - schedulerの更新箇所がおかしかったので修正した。
   - result
+    <img src='./data/info/images/readme/33.png' width='300'>
 
 ### 20200826
-# freesound compのソリューション見る！
 - freesound 7th solution(アライさんチーム)を読んだ。
   - めっちゃ参考になる情報がたくさんあった。
   - augmentation
   - Strength Adaptive Crop
   - Custom CNN
+
+### 20200827
+- nb034
+  - freesound 7th solutionにあったStrength Adaptive Crop を試してみた。
+  - 思ったような操作をしてくれなかった。背景ノイズに大きな影響を受ける...
+  - 代わりに、500~16000HzのIntensityをつかってみる。
+  - 手法
+    - spectrogramを計算
+    - 時刻tにおけるスペクトルを500~16000hzの範囲で積算しこれをintensityとする。
+    - noise = med(intensity)を計算することにより、ノイズの大きさを見積もる。
+    - signal(t)/noise > 2 の部分をevent部分とする
+
+    |example1|example2|
+    |---|---|
+    |<img src='./data/info/images/readme/34.png' width='600'>|<img src='./data/info/images/readme/35.png' width='600'>|
+
+- nb035
+  - nb033の改良
+  - paper03に記載されていた鳥の鳴き声の周波数帯域(0.5~1.2kHz)の情報を取り入れた。
+  - result
+    <img src='./data/info/images/readme/36.png' width='300'>
+- kagglenb18
+  - nb033を提出
+  - result
+    - score: 0.557
+    - びみょーーーー
+
+- kagglenb19
+  - nb035を提出
+  - resnest
+  - 500~12000Hzのみ使用した
+  - result
+    - score: 0.505  <--- は？？？？むっちゃ低いやん。絶対おかしいって。
+
+- nb036
+ - nb034で作ったeventを使ってDatasetを作成する
+
+### 20200827
+- nb037
+  - nb035の改良
+  - 0.5~1.2kHz ---> 0.5~1.6kHzを使う
+    <img src='./data/info/images/readme/37.png' width='300'>
+
+- nb038
+  - nb033の改良
+  - nb036で作成したSpectrogramEventIntensity500to16000hzを使用する
+    <img src='./data/info/images/readme/38.png' width='300'>
+
+
+### 20200828
+- kagglenb20
+  - nb037を提出
+  - resnest
+  - 500~16000Hzのみを使用した
+  - result
+    - score: 0.548  <--- 絶対おかしいし
+  
+
+- kagglenb21
+  - nb038を提出
+  - resnest
+  - SpectrogramEventIntensity500to16000hz
