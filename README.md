@@ -820,7 +820,7 @@ issue#93をやる
   - nb033の改良
   - paper03に記載されていた鳥の鳴き声の周波数帯域(0.5~1.2kHz)の情報を取り入れた。
   - result
-
+    <img src='./data/info/images/readme/36.png' width='300'>
 - kagglenb18
   - nb033を提出
   - result
@@ -835,10 +835,30 @@ issue#93をやる
     - score: 0.505  <--- は？？？？むっちゃ低いやん。絶対おかしいって。
 
 - nb036
- - hogehogehoge
+ - nb034で作ったeventを使ってDatasetを作成する
+
+### 20200827
+- nb037
+  - nb035の改良
+  - 0.5~1.2kHz ---> 0.5~1.6kHzを使う
+    <img src='./data/info/images/readme/37.png' width='300'>
+
+- nb038
+  - nb033の改良
+  - nb036で作成したSpectrogramEventIntensity500to16000hzを使用する
+    <img src='./data/info/images/readme/38.png' width='300'>
 
 
- ### 20200827
- - nb037
+### 20200828
+- kagglenb20
+  - nb037を提出
+  - resnest
+  - 500~16000Hzのみを使用した
+  - result
+    - score: 0.548  <--- 絶対おかしいし
+  
 
- - nb038
+- kagglenb21
+  - nb038を提出
+  - resnest
+  - SpectrogramEventIntensity500to16000hz
