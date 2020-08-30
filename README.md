@@ -862,3 +862,34 @@ issue#93をやる
   - nb038を提出
   - resnest
   - SpectrogramEventIntensity500to16000hz
+  - result
+    - score: 0.523
+
+
+- nb039
+  - nb025にfscore入れて計算
+
+
+### 20200829
+kaggglenb21の結果が悪いことの考察
+
+- [tawaraさんのノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)で使われていた `mono_to_color` の正規化に問題があると指摘している[ディスカッション](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)。
+  - そこまでクリティカルに効いてくる問題ではないだろうから、今はあと回し。
+
+
+### 20200830
+- iroiro
+
+- kagglenb22
+  - kagglenb16(score: 0.562)を改良
+  - site3のperdictがうまく言ってるか確認する
+  - site3を適当なクラス('foxspa': 100)にしてみる
+  - result
+    - score: 0.561  <--- 全然スコア下がってない...てことは、site3は全く機能していないの？
+
+- kagglenb23
+  - kagglenb16(score: 0.562)を改良
+  - site3のperdictがうまく言ってるか確認する
+  - site3を全て `nocall` にしてみる
+  - result
+    - score: 
