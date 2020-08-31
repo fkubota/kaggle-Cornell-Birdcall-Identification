@@ -752,6 +752,8 @@ issue#93をやる
   - tawaraさんのモデルと、nb029とnb030で作ったモデルのpredictを確認する。
   - confusion matrix書いてみた。
 
+
+
   |tawara|nb029|nb030|
   |---|---|---|---|
   |<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
@@ -934,3 +936,6 @@ kaggglenb21の結果が悪いことの考察
 
 - kagglenb25_fork_tawara_nocall
   - tawaraさんの推論ノートブックを編集。site3をすべてnocallにしてみる。
+  - result
+    - score: 0.567
+    - LB
