@@ -45,6 +45,7 @@ gantt
   0.544(): 2020-08-02, 2020-08-03
   0.560(506/805): 2020-08-14, 2020-08-15
   0.562(457/1022): 2020-08-22, 2020-08-23
+  0.567(419/1150): 2020-08-30, 2020-08-31
 ```
 
 ## Dataset
@@ -75,7 +76,7 @@ gantt
 ## Paper
 |No.|Status|Name|Detail|Date|Url|
 |---|---|---|---|---|---|
-|01|<font color='gray'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
+|01|<font color='gray'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
 |02|<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
 |03|<font color='gray'>Done</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。nocall除去についての方法が書かれていた。さらに、nocall部分をノイズとして加えたaugmentationがかなり効いたみたい。鳴き声は0.5~12kHzに集中するらしい。|201804|[url](https://arxiv.org/abs/1804.07177)|
 |04|<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
@@ -95,7 +96,7 @@ gantt
 ## Freesound Audio Tagging 2019
 |Status|Name|Detail|Date|Url|
 |---|---|---|---|---|
-|<font color='green'>Doing</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
+|<font color='Orange'>Done</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
 |<font color='orange'>Done</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるから良い資料のはず。signal base, image base 両方取り入れている。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 
 
@@ -104,10 +105,9 @@ gantt
   - nb: ノートブック
   - kagglenb: kaggleのサイトで見れる/作れるノートブック
 - public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
-- 
 
 ## Basics
-**overview(DeepL)**
+**Overview(DeepL)**
 
 窓の外で鳥のさえずりが聞こえてきませんか？世界には1万種以上の鳥が生息しており、手つかずの熱帯雨林から郊外、さらには都市部まで、ほぼすべての環境に生息しています。鳥は自然の中で重要な役割を果たしています。鳥は食物連鎖の上位に位置し、下層で発生している変化を統合します。そのため、鳥は生息地の質の低下や環境汚染の指標として優れています。しかし、鳥は目で見るよりも耳で聞く方が簡単なことが多い。適切な音の検出と分類があれば、研究者は鳥の個体数の変化に基づいて、その地域の生活の質に関する要因を自動的に直感的に把握することができます。
 
@@ -928,6 +928,10 @@ kaggglenb21の結果が悪いことの考察
 
 ### 20200831
 #### **<font color='red'>root4kaidoさんとチームマージ</font>** した日
+
+- [site3の後処理を工夫しているディスカッション](https://www.kaggle.com/kneroma/resnest50-fast-too-much-birds-could-hurt/comments?select=submission.csv)
+  - ランキングを使用している。
+
 - kaggnenb24
   - kaggnenb16(0.562)の改良
   - site3の出力をすべてnocallにしてみた。
