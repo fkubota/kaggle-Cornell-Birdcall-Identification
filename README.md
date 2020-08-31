@@ -788,7 +788,7 @@ issue#93をやる
 
 - [nocall モデルを作成したノートブック](https://www.kaggle.com/takamichitoda/birdcall-nocall-prediction-by-panns-inference)
 
-- nb033
+- nb033  <---- :::::::::::::::::::: 転回点 :::::::::::::::::::::::::
   - nb029の改良
   - schedulerの更新箇所がおかしかったので修正した。
   - result
@@ -867,7 +867,7 @@ issue#93をやる
 
 
 - nb039
-  - nb025にfscore入れて計算
+  - nb025にfscore入れて計算   <---------------------- ::::::::::::::::: これやらな
 
 
 ### 20200829
@@ -878,7 +878,15 @@ kaggglenb21の結果が悪いことの考察
 
 
 ### 20200830
-- iroiro
+- 午前中はdiscussionを死ぬほど眺めていた。
+  - [このディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/176959)が今の自分には勉強になった
+    - テーマは、0.568を超えるにはどうしたらいいですか？というもの。
+    - この[コメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#983419)が大変印象的で、tawaraさんのノートブックの学習と推論部分を少し変更するだけで、0.575いったみたい(tawara notebook score: 0.568)。
+    - tawaraさんのコードに疑いを持たずに、それに足し算をするようなことやっていたけど、もう少し吟味しよう。
+    - [disukelabさんのコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#984246): site3の部分を工夫するといいよとのこと。確かに、ここ改良の余地あるな。
+    - [このコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#985150)では、snrが効かなかったと言ってる。効いた例も見たとは言ってるので必須ではなさそうだ。
+
+
 
 - kagglenb22
   - kagglenb16(score: 0.562)を改良
@@ -887,9 +895,42 @@ kaggglenb21の結果が悪いことの考察
   - result
     - score: 0.561  <--- 全然スコア下がってない...てことは、site3は全く機能していないの？
 
-- kagglenb23
-  - kagglenb16(score: 0.562)を改良
-  - site3のperdictがうまく言ってるか確認する
-  - site3を全て `nocall` にしてみる
+
+- nb040
+  - site3のinference部分を解析してみる。
+  - たしかめたいこと
+    - 1clipに対して多くのbirdsが割り当てられてないか？
+    - nocallになっているものが多くないか？
+  - 考えていること
+    - 1clipにあまりに多くのbirdsは含まれないはず(5個以上はないだろう)
+    - site3にそもそもnocallがあっていいのだろうか？
   - result
-    - score: 
+    - いつも使ってる提出用の推論用コード使ったら、10%ぐらいnocallだった。
+    - 以下のような提出用推論用コード(predicttion_site3_mod)作った。(site3を書き換えた。)
+      - 1file(1clip) 全体でargmaxを計算して、top1の1classを提出する。
+      - これには、pros, consが存在する。
+        - pros: nocall がなくなる
+        - cons: 多数のクラス出力ができない
+
+
+- kagglenb23
+  - nb030で作ったモデルを使う
+  - kagglenb16の改良
+  - nb040で作った、prediction_site3_modを使用してみる。
+  - site3でnocallを出さない&clip(5secより大きい範囲で)全体でargmaxをとる工夫を入れた。
+  - site3の複数クラス出力が不可能となるデメリットがある。
+  - result
+    - score: 0.562
+
+
+### 20200831
+
+- kaggnenb24
+  - kaggnenb16(0.562)の改良
+  - site3の出力をすべてnocallにしてみた。
+  - result
+    - score: 0.561
+
+
+- kagglenb25_fork_tawara_nocall
+  - tawaraさんの推論ノートブックを編集。site3をすべてnocallにしてみる。
