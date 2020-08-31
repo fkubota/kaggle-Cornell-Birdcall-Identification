@@ -19,6 +19,7 @@ Kaggle-Cornell-Birdcall-Identification
 - [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)
 - [google slide](https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p)
 - [flow chart](https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck)
+- [google drive](https://drive.google.com/drive/u/1/folders/1UDVIKTN1O7hTL9JYzt7ui3mNy_b6RHCV)
 - ref:
   - [metricについて](https://www.kaggle.com/shonenkov/competition-metrics)
 - docker run 時にいれるオプション
@@ -939,3 +940,9 @@ kaggglenb21の結果が悪いことの考察
   - result
     - score: 0.567
     - LB
+
+
+- **<font color='blue'> ここまでのsite3 predictionについてmindmapでまとめた。</font>**
+  - [mindmap](https://drive.mindmup.com/map/1T96se7COR-xxFEpT1SCUus_pxI4Xc9P2)
+  
+  <img src='./data/info/images/readme/39.png' width='1500'>
