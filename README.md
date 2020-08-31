@@ -755,9 +755,9 @@ issue#93をやる
 
 
 
-  |tawara|nb029|nb030|
-  |---|---|---|---|
-  |<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
+|tawara|nb029|nb030|
+|---|---|---|
+|<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
 
 
 - kagglenb16
@@ -927,7 +927,7 @@ kaggglenb21の結果が悪いことの考察
 
 
 ### 20200831
-
+#### **<font color='red'>root4kaidoさんとチームマージ</font>** した日
 - kaggnenb24
   - kaggnenb16(0.562)の改良
   - site3の出力をすべてnocallにしてみた。
@@ -946,3 +946,6 @@ kaggglenb21の結果が悪いことの考察
   - [mindmap](https://drive.mindmup.com/map/1T96se7COR-xxFEpT1SCUus_pxI4Xc9P2)
   
   <img src='./data/info/images/readme/39.png' width='1500'>
+
+    - ---> comment: あーこれ、あれだ。site3のデータが少ないんだ。それだけか。descriptionのdata にも書いてある。
+    - ---> site3(recording time) > site1+site2(recording time) だとしても5secで分割するので、site1+site2(file数) > site3(ファイル数) になるのか。
