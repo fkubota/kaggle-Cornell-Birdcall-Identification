@@ -953,3 +953,13 @@ kaggglenb21の結果が悪いことの考察
 
     - ---> comment: あーこれ、あれだ。site3のデータが少ないんだ。それだけか。descriptionのdata にも書いてある。
     - ---> site3(recording time) > site1+site2(recording time) だとしても5secで分割するので、site1+site2(file数) > site3(ファイル数) になるのか。
+
+
+### 20200901
+これ読んだほうがよさそう: https://www.kaggle.com/c/birdsong-recognition/discussion/160222#895234
+
+
+- hydraのカスタムディレクトリを使ってみた。(https://github.com/fkubota/playground_hydra_custom_dir)
+- pipeline作成に参考にするリポジトリ
+  - [araiさん、birdcall](https://github.com/koukyo1994/kaggle-birdcall-resnet-baseline-training)
+  - [araiさん、tabuler pipeline](https://github.com/koukyo1994/tabular-data-analysis-pipeline)
