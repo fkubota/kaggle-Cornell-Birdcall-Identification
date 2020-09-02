@@ -5,3 +5,4 @@ data_ignore/
 data_ignore
 __pycache__/
 *.py[cod]
+*.swp
