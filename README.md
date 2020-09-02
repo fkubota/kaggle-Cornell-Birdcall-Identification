@@ -963,3 +963,10 @@ kaggglenb21の結果が悪いことの考察
 - pipeline作成に参考にするリポジトリ
   - [araiさん、birdcall](https://github.com/koukyo1994/kaggle-birdcall-resnet-baseline-training)
   - [araiさん、tabuler pipeline](https://github.com/koukyo1994/tabular-data-analysis-pipeline)
+
+
+### 20200902
+- 今日もパイプライン作っていく
+  - ほとんどアライさんの真似
+
+- hydraが解決している問題を紹介した[記事](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710)を見つけた。すごくいい。
