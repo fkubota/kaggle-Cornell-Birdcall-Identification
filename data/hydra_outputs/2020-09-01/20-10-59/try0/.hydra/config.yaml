@@ -1,0 +1,12 @@
+globals:
+  seed: 1213
+  device: cuda
+  num_epochs: 100
+  folds:
+  - 0, 2
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true

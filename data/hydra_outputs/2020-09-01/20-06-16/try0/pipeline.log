@@ -1,0 +1,18 @@
+[2020-09-01 20:06:16,889][__main__] line13 [INFO] logger start
+[2020-09-01 20:06:16,890][__main__] line14 [INFO] all params
+======================================================================
+globals:
+  seed: 1213
+  device: cuda
+  num_epochs: 100
+  use_fold:
+  - 0
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+
+======================================================================
+[2020-09-01 20:06:16,891][src.util.utils] line17 [INFO] seed: 50
