@@ -1,3 +1,5 @@
+from fastprogress import progress_bar
+
 def train(model, device, train_loader, optimizer, scheduler, loss_func):
     model.train()
     epoch_train_loss = 0

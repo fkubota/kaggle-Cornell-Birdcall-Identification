@@ -1,14 +1,15 @@
 import warnings
 warnings.filterwarnings('ignore')
 import hydra
-from omegaconf import DictConfig
 import logging
+from fastprogress import progress_bar
+from omegaconf import DictConfig
 from src import utils
 from src import configuration as C
 from src import models
 from src.early_stopping import EarlyStopping
 from src.train import train
-# import src.early_stopping as es
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -35,10 +36,9 @@ def run(cfg: DictConfig) -> None:
         trn_df = df.loc[trn_idx, :].reset_index(drop=True)
         val_df = df.loc[val_idx, :].reset_index(drop=True)
 
-        loaders = {
-            phase: C.get_loader(df_, datadir, cfg, phase)
-            for df_, phase in zip([trn_df, val_df], ["train", "valid"])
-        }
+        train_loader = C.get_loader(trn_df, datadir, cfg, 'train')
+        valid_loader = C.get_loader(val_df, datadir, cfg, 'valid')
+
         model = models.get_model(cfg).to(device)
         criterion = C.get_criterion(cfg).to(device)
         optimizer = C.get_optimizer(model, cfg)
@@ -47,17 +47,17 @@ def run(cfg: DictConfig) -> None:
         losses_train = []
         losses_valid = []
         epochs = []
+        save_path = './hoge'
         early_stopping = EarlyStopping(patience=12, verbose=True, path=save_path)
         n_epoch = cfg['globals']['num_epochs']
-
         for epoch in progress_bar(range(1, n_epoch+1)):
-            print(f'\n epoch: {epoch} {time.ctime()}')
+            logger.info(f'\n epoch: {epoch} {time.ctime()}')
             loss_train = train(
                     model, device, train_loader, 
-                    optimizer, scheduler, loss_func)
+                    optimizer, scheduler, criterion)
             loss_valid, f_score_valid = get_epoch_loss_score(
-                    model, device, valid_loader, loss_func)
-            print(f'loss_train: {loss_train:.6f}, loss_valid: {loss_valid:.6f}, f1(macro): {f_score_valid:.6f}')
+                    model, device, valid_loader, criterion)
+            logger.info(f'loss_train: {loss_train:.6f}, loss_valid: {loss_valid:.6f}, f1(macro): {f_score_valid:.6f}')
 
             epochs.append(epoch)
             losses_train.append(loss_train)

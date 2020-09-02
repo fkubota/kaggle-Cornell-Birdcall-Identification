@@ -8,6 +8,17 @@ from const import BIRD_CODE, INV_BIRD_CODE
 
 PERIOD = 5
 
+
+def get_loaders_for_training(dataset_class, args_dataset, args_loader, train_file_list, valid_file_list):
+    # # make dataset
+    train_dataset = dataset_class(train_file_list, **args_dataset)
+    val_dataset = dataset_class(valid_file_list, **args_dataset)
+    # # make dataloader
+    train_loader = data.DataLoader(train_dataset, **args_loader["train"])
+    valid_loader = data.DataLoader(val_dataset, **args_loader["val"])
+    
+    return train_loader, valid_loader
+
 class SpectrogramDataset(data.Dataset):
     def __init__(self,
                  df: pd.DataFrame,
