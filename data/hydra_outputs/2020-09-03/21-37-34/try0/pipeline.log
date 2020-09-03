@@ -1,0 +1,68 @@
+[2020-09-03 21:37:34,943][__main__] line25 [INFO] logger start
+[2020-09-03 21:37:34,943][__main__] line26 [INFO] git hash is: {hash_}
+[2020-09-03 21:37:34,948][__main__] line27 [INFO] all params
+======================================================================
+globals:
+  debug: 1
+  seed: 1213
+  device: cuda
+  num_epochs: 45
+  folds:
+  - 0
+data:
+  train_df_path: data_ignore/external_dataset/32khz/birdsong-resampled-train-audio-01/train_mod.csv
+  train_audio_path: data_ignore/external_dataset/32khz
+  test_df_path: ./data/external_dataset/birdcall-check/test_audio
+  test_audio_path: ./data/external_dataset/birdcall-check/test.csv
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+dataset:
+  name: SpectrogramDataset
+  img_size: 224
+  params:
+    n_mels: 128
+    fmin: 20
+    fmax: 16000
+loader:
+  train:
+    batch_size: 20
+    shuffle: true
+    num_workers: 2
+  valid:
+    batch_size: 10
+    shuffle: false
+    num_workers: 2
+model:
+  name: ResNet50
+  params:
+    base_model: resnet50
+    pretrained: true
+    n_classes: 264
+loss:
+  name: ResNetLoss
+  params:
+    loss_type: bce
+optimizer:
+  name: Adam
+  params:
+    lr: 0.001
+scheduler:
+  name: CosineAnnealingLR
+  params:
+    T_max: 10
+
+======================================================================
+[2020-09-03 21:37:34,948][__main__] line30 [INFO] ::: set debug mode :::
+[2020-09-03 21:37:35,158][__main__] line47 [INFO] ====================
+[2020-09-03 21:37:35,158][__main__] line48 [INFO] Fold 0
+[2020-09-03 21:37:35,158][__main__] line49 [INFO] ====================
+[2020-09-03 21:37:39,114][__main__] line73 [INFO] ::: epoch: 1/3 Thu Sep  3 21:37:39 2020 :::
+[2020-09-03 21:37:59,455][__main__] line79 [INFO] loss_train: 0.128573, loss_valid: 0.378788, f1(macro): 0.000029
+[2020-09-03 21:37:59,455][__main__] line73 [INFO] ::: epoch: 2/3 Thu Sep  3 21:37:59 2020 :::
+[2020-09-03 21:38:18,963][__main__] line79 [INFO] loss_train: 0.056515, loss_valid: 0.160580, f1(macro): 0.000114
+[2020-09-03 21:38:18,963][__main__] line73 [INFO] ::: epoch: 3/3 Thu Sep  3 21:38:18 2020 :::
+[2020-09-03 21:38:39,881][__main__] line79 [INFO] loss_train: 0.050060, loss_valid: 0.120994, f1(macro): 0.000029

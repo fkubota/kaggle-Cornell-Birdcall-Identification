@@ -8,6 +8,7 @@ from torchvision import models
 class ResNet50(nn.Module):
     def __init__(self, params):
         super().__init__()
+        self.__class__.__name__ = 'ResNet50'
         base_model_name = params['base_model']
         pretrained = params['pretrained']
         num_classes = params['n_classes']

@@ -1,8 +1,9 @@
 import warnings
 warnings.filterwarnings('ignore')
-import subprocess
+import os
 import hydra
 import logging
+import subprocess
 from fastprogress import progress_bar
 from omegaconf import DictConfig
 from src import utils
@@ -11,6 +12,7 @@ from src import models
 from src.early_stopping import EarlyStopping
 from src.train import train
 from src.eval import get_epoch_loss_score
+import src.result_handler as rh
 import time
 
 cmd = "git rev-parse --short HEAD"
@@ -33,6 +35,10 @@ def run(cfg: DictConfig) -> None:
     device = C.get_device(global_params["device"])
     splitter = C.get_split(cfg)
     df, datadir = C.get_metadata(cfg)
+    output_dir = os.getcwd()
+    output_dir_ignore = output_dir.replace('/data/', '/data_ignore/')
+    if not os.path.exists(output_dir_ignore):
+            os.makedirs(output_dir_ignore)
 
     for fold_i, (trn_idx, val_idx) in enumerate(
             splitter.split(df, y=df["ebird_code"])):
@@ -59,27 +65,43 @@ def run(cfg: DictConfig) -> None:
         losses_train = []
         losses_valid = []
         epochs = []
-        save_path = './hoge'
+        best_f1 = 0
+        best_loss = 0
+        save_path = f'{output_dir_ignore}/{model.__class__.__name__}.pth'
         early_stopping = EarlyStopping(patience=12, verbose=True, path=save_path)
         n_epoch = cfg['globals']['num_epochs']
         for epoch in progress_bar(range(1, n_epoch+1)):
-            logger.info(f'::: epoch: {epoch} {time.ctime()} :::')
+            logger.info(f'::: epoch: {epoch}/{n_epoch} {time.ctime()} :::')
             loss_train = train(
                     model, device, train_loader, 
                     optimizer, scheduler, criterion)
-            loss_valid, f_score_valid = get_epoch_loss_score(
+            loss_valid, fscore_valid = get_epoch_loss_score(
                     model, device, valid_loader, criterion)
-            logger.info(f'loss_train: {loss_train:.6f}, loss_valid: {loss_valid:.6f}, f1(macro): {f_score_valid:.6f}')
+            logger.info(f'loss_train: {loss_train:.6f}, loss_valid: {loss_valid:.6f}, f1(macro): {fscore_valid:.6f}')
 
             epochs.append(epoch)
             losses_train.append(loss_train)
             losses_valid.append(loss_valid)
 
-            early_stopping(loss_valid, model)
+            is_update = early_stopping(loss_valid, model, global_params['debug'])
+            if is_update:
+                best_loss = loss_valid
+                best_f1 = fscore_valid 
 
             if early_stopping.early_stop:
                 logger.info("Early stopping")
                 break
+
+        # result handling
+        rh.save_loss_figure(
+                epochs, losses_train,
+                losses_valid, output_dir)
+        rh.save_result_csv(
+                global_params['debug'],
+                model.__class__.__name__,
+                cfg['loss']['name'],
+                best_loss, best_f1, output_dir)
+
 
 if __name__ == "__main__":
     run()
