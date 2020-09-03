@@ -1,0 +1,2 @@
+run_name,debug,model_name,loss_name,best_loss,best_f1(macro)
+2020-09-03/23-55-46/try0,1,ResNet50,ResNetLoss,0.027239,2.9e-05

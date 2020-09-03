@@ -6,3 +6,4 @@ data_ignore
 __pycache__/
 *.py[cod]
 *.swp
+run_config.yaml

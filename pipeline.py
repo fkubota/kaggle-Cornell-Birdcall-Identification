@@ -20,7 +20,7 @@ hash_ = subprocess.check_output(cmd.split()).strip().decode('utf-8')
 logger = logging.getLogger(__name__)
 
 
-@hydra.main(config_path="./config/base_config.yaml")
+@hydra.main(config_path="./run_config.yaml")
 def run(cfg: DictConfig) -> None:
     logger.info('logger start')
     logger.info('git hash is: {hash_}')
@@ -67,7 +67,7 @@ def run(cfg: DictConfig) -> None:
         epochs = []
         best_f1 = 0
         best_loss = 0
-        save_path = f'{output_dir_ignore}/{model.__class__.__name__}.pth'
+        save_path = f'{output_dir_ignore}/{model.__class__.__name__}_fold{fold_i}.pth'
         early_stopping = EarlyStopping(patience=12, verbose=True, path=save_path)
         n_epoch = cfg['globals']['num_epochs']
         for epoch in progress_bar(range(1, n_epoch+1)):
@@ -94,13 +94,16 @@ def run(cfg: DictConfig) -> None:
 
         # result handling
         rh.save_loss_figure(
+                fold_i,
                 epochs, losses_train,
                 losses_valid, output_dir)
         rh.save_result_csv(
+                fold_i,
                 global_params['debug'],
-                model.__class__.__name__,
+                f'{model.__class__.__name__}',
                 cfg['loss']['name'],
                 best_loss, best_f1, output_dir)
+    logger.info('::: success :::')
 
 
 if __name__ == "__main__":

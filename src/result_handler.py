@@ -3,23 +3,26 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def save_loss_figure(epochs, losses_train, losses_valid, save_dir):
+def save_loss_figure(
+        fold_i, epochs, losses_train, 
+        losses_valid, save_dir):
     fig = plt.figure()
     plt.plot(epochs, losses_train, '-x', label='train')
     plt.plot(epochs, losses_valid, '-x', label='valid')
     plt.xlabel('epoch')
     plt.grid()
     plt.legend()
-    fig.savefig(f'{save_dir}/loss.png')
+    fig.savefig(f'{save_dir}/loss_fold{fold_i}.png')
 
 def save_result_csv(
-        debug, model_name, loss_name, 
+        fold_i, debug, model_name, loss_name, 
         best_loss, best_f1, save_dir):
     df = pd.DataFrame({
-        'debug': debug,
-        'model_name': model_name,
-        'loss_name': loss_name,
-        'best_loss': best_loss,
-        'best_f1(macro)': best_f1,
+        'run_name': [save_dir.split('hydra_outputs/')[1]],
+        'debug': [debug],
+        'model_name': [model_name],
+        'loss_name': [loss_name],
+        'best_loss': [round(best_loss, 6)],
+        'best_f1(macro)': [round(best_f1, 6)],
         })
-    df.to_csv(f'{save_dir}/result.csv')
+    df.to_csv(f'{save_dir}/result_fold{fold_i}.csv', index=False)
