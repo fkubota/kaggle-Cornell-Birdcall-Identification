@@ -970,3 +970,9 @@ kaggglenb21の結果が悪いことの考察
   - ほとんどアライさんの真似
 
 - hydraが解決している問題を紹介した[記事](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710)を見つけた。すごくいい。
+
+
+### 20200903
+- 今日でパイプライン完成させる！！
+- [1chについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/179547)
+- [augmentationについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/178917): どれが効いたのかを議論している
