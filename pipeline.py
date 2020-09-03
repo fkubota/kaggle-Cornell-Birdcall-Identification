@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 @hydra.main(config_path="./run_config.yaml")
 def run(cfg: DictConfig) -> None:
     logger.info('logger start')
-    logger.info('git hash is: {hash_}')
+    logger.info(f'git hash is: {hash_}')
     logger.info(f'all params\n{"="*70}\n{cfg.pretty()}\n{"="*70}')
 
     if cfg['globals']['debug']:
@@ -103,6 +103,7 @@ def run(cfg: DictConfig) -> None:
                 f'{model.__class__.__name__}',
                 cfg['loss']['name'],
                 best_loss, best_f1, output_dir)
+        logger.info(f'best_loss: {best_loss:.6f}, best_fscore(macro): {best_f1:.6f}')
     logger.info('::: success :::')
 
 
