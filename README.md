@@ -19,6 +19,7 @@ Kaggle-Cornell-Birdcall-Identification
 - [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)
 - [google slide](https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p)
 - [flow chart](https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck)
+- [google drive](https://drive.google.com/drive/u/1/folders/1UDVIKTN1O7hTL9JYzt7ui3mNy_b6RHCV)
 - ref:
   - [metricについて](https://www.kaggle.com/shonenkov/competition-metrics)
 - docker run 時にいれるオプション
@@ -44,6 +45,7 @@ gantt
   0.544(): 2020-08-02, 2020-08-03
   0.560(506/805): 2020-08-14, 2020-08-15
   0.562(457/1022): 2020-08-22, 2020-08-23
+  0.567(419/1150): 2020-08-30, 2020-08-31
 ```
 
 ## Dataset
@@ -74,7 +76,7 @@ gantt
 ## Paper
 |No.|Status|Name|Detail|Date|Url|
 |---|---|---|---|---|---|
-|01|<font color='gray'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](chrome-extension://nacjakoppgmdcpemlfnfegmlhipddanj/https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
+|01|<font color='gray'>Done</font>|音響イベントと音響シーンの分析|日本語記事。まず最初に読むとよい。|2018|[url](https://www.jstage.jst.go.jp/article/jasj/74/4/74_198/_pdf)|
 |02|<font color='green'>Doing</font>|PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition|アライさんがSEDの説明ノートブックで参照していた論文|201912|[url](https://arxiv.org/abs/1912.10211)|
 |03|<font color='gray'>Done</font>|Recognizing Birds from Sound - The 2018 BirdCLEF Baseline System|鳥の鳴き声を検出するコンペ？のベースライン。nocall除去についての方法が書かれていた。さらに、nocall部分をノイズとして加えたaugmentationがかなり効いたみたい。鳴き声は0.5~12kHzに集中するらしい。|201804|[url](https://arxiv.org/abs/1804.07177)|
 |04|<font color='orange'>Todo</font>|ResNeSt: Split-Attention Networks|ResNeSTの原論文|202004|[url](https://arxiv.org/abs/2004.08955#:~:text=Our%20network%20preserves%20the%20overall,networks%20with%20similar%20model%20complexities.)|
@@ -94,7 +96,7 @@ gantt
 ## Freesound Audio Tagging 2019
 |Status|Name|Detail|Date|Url|
 |---|---|---|---|---|
-|<font color='green'>Doing</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
+|<font color='Orange'>Done</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
 |<font color='orange'>Done</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるから良い資料のはず。signal base, image base 両方取り入れている。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 
 
@@ -103,10 +105,9 @@ gantt
   - nb: ノートブック
   - kagglenb: kaggleのサイトで見れる/作れるノートブック
 - public LBの54%がnocallらしい。(https://www.kaggle.com/c/birdsong-recognition/discussion/159492)
-- 
 
 ## Basics
-**overview(DeepL)**
+**Overview(DeepL)**
 
 窓の外で鳥のさえずりが聞こえてきませんか？世界には1万種以上の鳥が生息しており、手つかずの熱帯雨林から郊外、さらには都市部まで、ほぼすべての環境に生息しています。鳥は自然の中で重要な役割を果たしています。鳥は食物連鎖の上位に位置し、下層で発生している変化を統合します。そのため、鳥は生息地の質の低下や環境汚染の指標として優れています。しかし、鳥は目で見るよりも耳で聞く方が簡単なことが多い。適切な音の検出と分類があれば、研究者は鳥の個体数の変化に基づいて、その地域の生活の質に関する要因を自動的に直感的に把握することができます。
 
@@ -752,9 +753,11 @@ issue#93をやる
   - tawaraさんのモデルと、nb029とnb030で作ったモデルのpredictを確認する。
   - confusion matrix書いてみた。
 
-  |tawara|nb029|nb030|
-  |---|---|---|---|
-  |<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
+
+
+|tawara|nb029|nb030|
+|---|---|---|
+|<img src='./data/info/images/readme/30.png' width='500'>|<img src='./data/info/images/readme/31.png' width='500'>|<img src='./data/info/images/readme/32.png' width='500'>|
 
 
 - kagglenb16
@@ -788,7 +791,7 @@ issue#93をやる
 
 - [nocall モデルを作成したノートブック](https://www.kaggle.com/takamichitoda/birdcall-nocall-prediction-by-panns-inference)
 
-- nb033
+- nb033  <---- :::::::::::::::::::: 転回点 :::::::::::::::::::::::::
   - nb029の改良
   - schedulerの更新箇所がおかしかったので修正した。
   - result
@@ -862,3 +865,114 @@ issue#93をやる
   - nb038を提出
   - resnest
   - SpectrogramEventIntensity500to16000hz
+  - result
+    - score: 0.523
+
+
+- nb039
+  - nb025にfscore入れて計算   <---------------------- ::::::::::::::::: これやらな
+
+
+### 20200829
+kaggglenb21の結果が悪いことの考察
+
+- [tawaraさんのノートブック](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)で使われていた `mono_to_color` の正規化に問題があると指摘している[ディスカッション](https://www.kaggle.com/ttahara/training-birdsong-baseline-resnest50-fast)。
+  - そこまでクリティカルに効いてくる問題ではないだろうから、今はあと回し。
+
+
+### 20200830
+- 午前中はdiscussionを死ぬほど眺めていた。
+  - [このディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/176959)が今の自分には勉強になった
+    - テーマは、0.568を超えるにはどうしたらいいですか？というもの。
+    - この[コメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#983419)が大変印象的で、tawaraさんのノートブックの学習と推論部分を少し変更するだけで、0.575いったみたい(tawara notebook score: 0.568)。
+    - tawaraさんのコードに疑いを持たずに、それに足し算をするようなことやっていたけど、もう少し吟味しよう。
+    - [disukelabさんのコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#984246): site3の部分を工夫するといいよとのこと。確かに、ここ改良の余地あるな。
+    - [このコメント](https://www.kaggle.com/c/birdsong-recognition/discussion/176959#985150)では、snrが効かなかったと言ってる。効いた例も見たとは言ってるので必須ではなさそうだ。
+
+
+
+- kagglenb22
+  - kagglenb16(score: 0.562)を改良
+  - site3のperdictがうまく言ってるか確認する
+  - site3を適当なクラス('foxspa': 100)にしてみる
+  - result
+    - score: 0.561  <--- 全然スコア下がってない...てことは、site3は全く機能していないの？
+
+
+- nb040
+  - site3のinference部分を解析してみる。
+  - たしかめたいこと
+    - 1clipに対して多くのbirdsが割り当てられてないか？
+    - nocallになっているものが多くないか？
+  - 考えていること
+    - 1clipにあまりに多くのbirdsは含まれないはず(5個以上はないだろう)
+    - site3にそもそもnocallがあっていいのだろうか？
+  - result
+    - いつも使ってる提出用の推論用コード使ったら、10%ぐらいnocallだった。
+    - 以下のような提出用推論用コード(predicttion_site3_mod)作った。(site3を書き換えた。)
+      - 1file(1clip) 全体でargmaxを計算して、top1の1classを提出する。
+      - これには、pros, consが存在する。
+        - pros: nocall がなくなる
+        - cons: 多数のクラス出力ができない
+
+
+- kagglenb23
+  - nb030で作ったモデルを使う
+  - kagglenb16の改良
+  - nb040で作った、prediction_site3_modを使用してみる。
+  - site3でnocallを出さない&clip(5secより大きい範囲で)全体でargmaxをとる工夫を入れた。
+  - site3の複数クラス出力が不可能となるデメリットがある。
+  - result
+    - score: 0.562
+
+
+### 20200831
+#### **<font color='red'>root4kaidoさんとチームマージ</font>** した日
+
+- [site3の後処理を工夫しているディスカッション](https://www.kaggle.com/kneroma/resnest50-fast-too-much-birds-could-hurt/comments?select=submission.csv)
+  - ランキングを使用している。
+
+- kaggnenb24
+  - kaggnenb16(0.562)の改良
+  - site3の出力をすべてnocallにしてみた。
+  - result
+    - score: 0.561
+
+
+- kagglenb25_fork_tawara_nocall
+  - tawaraさんの推論ノートブックを編集。site3をすべてnocallにしてみる。
+  - result
+    - score: 0.567
+    - LB
+
+
+- **<font color='blue'> ここまでのsite3 predictionについてmindmapでまとめた。</font>**
+  - [mindmap](https://drive.mindmup.com/map/1T96se7COR-xxFEpT1SCUus_pxI4Xc9P2)
+  
+  <img src='./data/info/images/readme/39.png' width='1500'>
+
+    - ---> comment: あーこれ、あれだ。site3のデータが少ないんだ。それだけか。descriptionのdata にも書いてある。
+    - ---> site3(recording time) > site1+site2(recording time) だとしても5secで分割するので、site1+site2(file数) > site3(ファイル数) になるのか。
+
+
+### 20200901
+これ読んだほうがよさそう: https://www.kaggle.com/c/birdsong-recognition/discussion/160222#895234
+
+
+- hydraのカスタムディレクトリを使ってみた。(https://github.com/fkubota/playground_hydra_custom_dir)
+- pipeline作成に参考にするリポジトリ
+  - [araiさん、birdcall](https://github.com/koukyo1994/kaggle-birdcall-resnet-baseline-training)
+  - [araiさん、tabuler pipeline](https://github.com/koukyo1994/tabular-data-analysis-pipeline)
+
+
+### 20200902
+- 今日もパイプライン作っていく
+  - ほとんどアライさんの真似
+
+- hydraが解決している問題を紹介した[記事](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710)を見つけた。すごくいい。
+
+
+### 20200903
+- 今日でパイプライン完成させる！！
+- [1chについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/179547)
+- [augmentationについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/178917): どれが効いたのかを議論している

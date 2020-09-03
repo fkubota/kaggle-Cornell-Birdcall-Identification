@@ -1,0 +1,6 @@
+globals:
+  seed: 1213
+  device: cuda
+  num_epochs: 100
+  use_fold:
+  - 0

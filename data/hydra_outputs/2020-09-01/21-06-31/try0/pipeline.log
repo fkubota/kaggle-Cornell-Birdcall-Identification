@@ -1,0 +1,33 @@
+[2020-09-01 21:06:31,477][__main__] line14 [INFO] logger start
+[2020-09-01 21:06:31,479][__main__] line15 [INFO] all params
+======================================================================
+globals:
+  seed: 1213
+  device: cuda
+  num_epochs: 100
+  folds:
+  - 0
+data:
+  train_df_path: ./data_ignore/official/train.csv
+  train_audio_path: ./data_ignore/external_dataset/32khz
+  test_df_path: ./data/external_dataset/birdcall-check/test_audio
+  test_audio_path: ./data/external_dataset/birdcall-check/tst.csv
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+dataset:
+  name: SpectrogramDataset
+  img_size: 224
+  params:
+    n_mels: 128
+    fmin: 20
+    fmax: 16000
+
+======================================================================
+[2020-09-01 21:06:31,480][src.utils] line17 [INFO] seed: 50
+[2020-09-01 21:06:31,671][__main__] line26 [INFO] ====================
+[2020-09-01 21:06:31,671][__main__] line27 [INFO] Fold 0
+[2020-09-01 21:06:31,671][__main__] line28 [INFO] ====================
