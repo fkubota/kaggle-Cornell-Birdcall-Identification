@@ -1,8 +1,8 @@
 hydra:
   run:
-    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: ./data/hydra_outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}/try0
   sweep:
-    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: ./data/hydra_outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
     subdir: ${hydra.job.num}
   hydra_logging:
     version: 1
@@ -26,7 +26,7 @@ hydra:
     version: 1
     formatters:
       simple:
-        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+        format: '[%(asctime)s][%(name)s] line%(lineno)d [%(levelname)s] %(message)s'
     handlers:
       console:
         class: logging.StreamHandler
@@ -105,10 +105,11 @@ hydra:
   output_subdir: .hydra
   overrides:
     hydra: []
-    task: []
+    task:
+    - globals.debug=1
   job:
     name: pipeline
-    override_dirname: ''
+    override_dirname: globals.debug=1
     id: ???
     num: ???
     config_name: base_config.yaml

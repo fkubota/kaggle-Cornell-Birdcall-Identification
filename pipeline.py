@@ -1,5 +1,6 @@
 import warnings
 warnings.filterwarnings('ignore')
+import subprocess
 import hydra
 import logging
 from fastprogress import progress_bar
@@ -12,12 +13,15 @@ from src.train import train
 from src.eval import get_epoch_loss_score
 import time
 
+cmd = "git rev-parse --short HEAD"
+hash_ = subprocess.check_output(cmd.split()).strip().decode('utf-8')
 logger = logging.getLogger(__name__)
 
 
 @hydra.main(config_path="./config/base_config.yaml")
 def run(cfg: DictConfig) -> None:
     logger.info('logger start')
+    logger.info('git hash is: {hash_}')
     logger.info(f'all params\n{"="*70}\n{cfg.pretty()}\n{"="*70}')
 
     if cfg['globals']['debug']:

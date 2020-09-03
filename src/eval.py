@@ -13,6 +13,7 @@ def get_epoch_loss_score(model, device, valid_loader, loss_func):
         epoch_valid_loss += loss.item()*data.size(0)
         
 #         out_numpy = output.detach().cpu().numpy()
+        output = output['logits']
         _y_pred = output.detach().cpu().numpy().argmax(axis=1)
         y_pred_list.append(_y_pred)
         _y_true = target.detach().cpu().numpy().argmax(axis=1)
