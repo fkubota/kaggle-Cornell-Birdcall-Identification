@@ -1,12 +1,12 @@
 import numpy as np
-from sklearn.metric import f1_score
+from sklearn.metrics import f1_score
 
-def get_epoch_loss_score(model, device, valid_loder, loss_func):
+def get_epoch_loss_score(model, device, valid_loader, loss_func):
     model.eval()
     epoch_valid_loss = 0
     y_pred_list = []
     y_true_list = []
-    for batch_idx, (data, target) in enumerate(progress_bar(valid_loader)):
+    for batch_idx, (data, target) in enumerate(valid_loader):
         data, target = data.to(device), target.to(device)
         output = model(data)
         loss = loss_func(output, target)

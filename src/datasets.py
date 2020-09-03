@@ -1,3 +1,4 @@
+import os
 import cv2
 import librosa
 import numpy as np
@@ -8,16 +9,6 @@ from const import BIRD_CODE, INV_BIRD_CODE
 
 PERIOD = 5
 
-
-def get_loaders_for_training(dataset_class, args_dataset, args_loader, train_file_list, valid_file_list):
-    # # make dataset
-    train_dataset = dataset_class(train_file_list, **args_dataset)
-    val_dataset = dataset_class(valid_file_list, **args_dataset)
-    # # make dataloader
-    train_loader = data.DataLoader(train_dataset, **args_loader["train"])
-    valid_loader = data.DataLoader(val_dataset, **args_loader["val"])
-    
-    return train_loader, valid_loader
 
 class SpectrogramDataset(data.Dataset):
     def __init__(self,
@@ -37,8 +28,12 @@ class SpectrogramDataset(data.Dataset):
         sample = self.df.loc[idx, :]
         wav_name = sample["resampled_filename"]
         ebird_code = sample["ebird_code"]
+        train_resampled_audio_dirs = [self.datadir + "/birdsong-resampled-train-audio-{:0>2}".format(i)  for i in range(5)]
+        for dir_ in train_resampled_audio_dirs:
+            path = f'{dir_}/{ebird_code}/{wav_name}'
+            if os.path.exists(path):
+                path_wav = path
 
-        path_wav = f'{self.datadir}/{ebird_code}/{wav_name}'
         y, sr = sf.read(path_wav)
 
         len_y = len(y)
@@ -64,12 +59,7 @@ class SpectrogramDataset(data.Dataset):
 
         labels = np.zeros(len(BIRD_CODE), dtype=int)
         labels[BIRD_CODE[ebird_code]] = 1
-
-        return {
-            "image": image,
-            "targets": labels
-        }
-
+        return image, labels
 
 def mono_to_color(X: np.ndarray,
                   mean=None,

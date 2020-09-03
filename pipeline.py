@@ -9,6 +9,7 @@ from src import configuration as C
 from src import models
 from src.early_stopping import EarlyStopping
 from src.train import train
+from src.eval import get_epoch_loss_score
 import time
 
 logger = logging.getLogger(__name__)
@@ -19,22 +20,29 @@ def run(cfg: DictConfig) -> None:
     logger.info('logger start')
     logger.info(f'all params\n{"="*70}\n{cfg.pretty()}\n{"="*70}')
 
+    if cfg['globals']['debug']:
+        logger.info('::: set debug mode :::')
+        cfg = utils.get_debug_config(cfg)
+
     global_params = cfg["globals"]
     utils.set_seed(50)
     device = C.get_device(global_params["device"])
     splitter = C.get_split(cfg)
     df, datadir = C.get_metadata(cfg)
 
-    for i, (trn_idx, val_idx) in enumerate(
+    for fold_i, (trn_idx, val_idx) in enumerate(
             splitter.split(df, y=df["ebird_code"])):
-        if i not in global_params["folds"]:
+        if fold_i not in global_params["folds"]:
             continue
         logger.info("=" * 20)
-        logger.info(f"Fold {i}")
+        logger.info(f"Fold {fold_i}")
         logger.info("=" * 20)
 
         trn_df = df.loc[trn_idx, :].reset_index(drop=True)
         val_df = df.loc[val_idx, :].reset_index(drop=True)
+        if global_params['debug']:
+            trn_df = utils.get_debug_df(trn_df)
+            val_df = utils.get_debug_df(val_df)
 
         train_loader = C.get_loader(trn_df, datadir, cfg, 'train')
         valid_loader = C.get_loader(val_df, datadir, cfg, 'valid')
@@ -51,7 +59,7 @@ def run(cfg: DictConfig) -> None:
         early_stopping = EarlyStopping(patience=12, verbose=True, path=save_path)
         n_epoch = cfg['globals']['num_epochs']
         for epoch in progress_bar(range(1, n_epoch+1)):
-            logger.info(f'\n epoch: {epoch} {time.ctime()}')
+            logger.info(f'::: epoch: {epoch} {time.ctime()} :::')
             loss_train = train(
                     model, device, train_loader, 
                     optimizer, scheduler, criterion)
@@ -66,7 +74,7 @@ def run(cfg: DictConfig) -> None:
             early_stopping(loss_valid, model)
 
             if early_stopping.early_stop:
-                print("Early stopping")
+                logger.info("Early stopping")
                 break
 
 if __name__ == "__main__":

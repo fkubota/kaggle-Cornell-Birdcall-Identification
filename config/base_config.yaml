@@ -1,15 +1,16 @@
 globals:
+  debug: False
   seed: 1213
   device: cuda
-  num_epochs: 100
+  num_epochs: 45
   folds:
     - 0
 
 data:
-  train_df_path: ./data_ignore/official/train.csv
-  train_audio_path: ./data_ignore/external_dataset/32khz
+  train_df_path: data_ignore/external_dataset/32khz/birdsong-resampled-train-audio-01/train_mod.csv
+  train_audio_path: data_ignore/external_dataset/32khz
   test_df_path: ./data/external_dataset/birdcall-check/test_audio
-  test_audio_path: ./data/external_dataset/birdcall-check/tst.csv
+  test_audio_path: ./data/external_dataset/birdcall-check/test.csv
 
 split:
   name: StratifiedKFold
@@ -28,7 +29,7 @@ dataset:
 
 loader:
   train:
-    batch_size: 30
+    batch_size: 20
     shuffle: True
     num_workers: 2
   valid:

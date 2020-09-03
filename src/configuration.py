@@ -14,6 +14,7 @@ import const
 import datasets
 import criterion
 
+
 def get_device(device: str):
     return torch.device(device)
 

@@ -1,9 +1,9 @@
-from fastprogress import progress_bar
+import logging
 
 def train(model, device, train_loader, optimizer, scheduler, loss_func):
     model.train()
     epoch_train_loss = 0
-    for batch_idx, (data, target) in enumerate(progress_bar(train_loader)):
+    for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
         output = model(data)
