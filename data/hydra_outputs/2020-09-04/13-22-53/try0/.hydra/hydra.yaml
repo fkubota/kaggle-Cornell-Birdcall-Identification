@@ -107,11 +107,11 @@ hydra:
     hydra: []
     task:
     - globals.debug=0
-    - globals.folds=[0]
-    - dataset.img_size=112
+    - globals.num_epochs=35
+    - dataset.img_size=224
   job:
     name: pipeline
-    override_dirname: dataset.img_size=112,globals.debug=0,globals.folds=[0]
+    override_dirname: dataset.img_size=224,globals.debug=0,globals.num_epochs=35
     id: '0'
     num: 0
     config_name: run_config.yaml

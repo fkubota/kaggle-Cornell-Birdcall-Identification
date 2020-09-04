@@ -1,4 +1,3 @@
 - globals.debug=0
 - globals.num_epochs=35
-- globals.folds=[0]
 - dataset.img_size=224

@@ -1,7 +1,9 @@
 import warnings
 warnings.filterwarnings('ignore')
 import os
+import gc
 import hydra
+import torch
 import logging
 import subprocess
 from fastprogress import progress_bar
@@ -13,7 +15,6 @@ from src.early_stopping import EarlyStopping
 from src.train import train
 from src.eval import get_epoch_loss_score
 import src.result_handler as rh
-import time
 
 cmd = "git rev-parse --short HEAD"
 hash_ = subprocess.check_output(cmd.split()).strip().decode('utf-8')
@@ -22,9 +23,11 @@ logger = logging.getLogger(__name__)
 
 @hydra.main(config_path="./run_config.yaml")
 def run(cfg: DictConfig) -> None:
-    logger.info('logger start')
+    logger.info('='*30)
+    logger.info('::: pipeline start :::')
+    logger.info('='*30)
     logger.info(f'git hash is: {hash_}')
-    logger.info(f'all params\n{"="*70}\n{cfg.pretty()}\n{"="*70}')
+    logger.info(f'all params\n{"="*80}\n{cfg.pretty()}\n{"="*80}')
 
     if cfg['globals']['debug']:
         logger.info('::: set debug mode :::')
@@ -44,9 +47,9 @@ def run(cfg: DictConfig) -> None:
             splitter.split(df, y=df["ebird_code"])):
         if fold_i not in global_params["folds"]:
             continue
-        logger.info("=" * 20)
+        logger.info("=" *30)
         logger.info(f"Fold {fold_i}")
-        logger.info("=" * 20)
+        logger.info("=" *30)
 
         trn_df = df.loc[trn_idx, :].reset_index(drop=True)
         val_df = df.loc[val_idx, :].reset_index(drop=True)
@@ -71,7 +74,7 @@ def run(cfg: DictConfig) -> None:
         early_stopping = EarlyStopping(patience=12, verbose=True, path=save_path)
         n_epoch = cfg['globals']['num_epochs']
         for epoch in progress_bar(range(1, n_epoch+1)):
-            logger.info(f'::: epoch: {epoch}/{n_epoch} {time.ctime()} :::')
+            logger.info(f'::: epoch: {epoch}/{n_epoch} :::')
             loss_train = train(
                     model, device, train_loader, 
                     optimizer, scheduler, criterion)
@@ -105,6 +108,16 @@ def run(cfg: DictConfig) -> None:
                 best_loss, best_f1, output_dir)
         logger.info(f'best_loss: {best_loss:.6f}, best_fscore(macro): {best_f1:.6f}')
     logger.info('::: success :::')
+
+    # 開放
+    del train_loader
+    del valid_loader
+    del model
+    del optimizer
+    del scheduler
+    gc.collect()
+    torch.cuda.empty_cache()
+    logger.info('\n\n\n')
 
 
 if __name__ == "__main__":
