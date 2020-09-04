@@ -20,7 +20,7 @@ def save_result_csv(
     df = pd.DataFrame({
         'run_name': [save_dir.split('hydra_outputs/')[1]],
         'debug': [debug],
-        'fold': [fold-i],
+        'fold': [fold_i],
         'model_name': [model_name],
         'loss_name': [loss_name],
         'best_loss': [round(best_loss, 6)],
