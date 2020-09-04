@@ -64,3 +64,45 @@ scheduler:
 [2020-09-04 13:22:56,958][__main__] line77 [INFO] ::: epoch: 1/35 :::
 [2020-09-04 13:36:40,148][__main__] line83 [INFO] loss_train: 0.029719, loss_valid: 0.025627, f1(macro): 0.000052
 [2020-09-04 13:36:40,230][__main__] line77 [INFO] ::: epoch: 2/35 :::
+[2020-09-04 13:50:31,954][__main__] line83 [INFO] loss_train: 0.025531, loss_valid: 0.025123, f1(macro): 0.000094
+[2020-09-04 13:50:32,208][__main__] line77 [INFO] ::: epoch: 3/35 :::
+[2020-09-04 14:04:17,616][__main__] line83 [INFO] loss_train: 0.025186, loss_valid: 0.027534, f1(macro): 0.000511
+[2020-09-04 14:04:17,617][__main__] line77 [INFO] ::: epoch: 4/35 :::
+[2020-09-04 14:17:59,476][__main__] line83 [INFO] loss_train: 0.024816, loss_valid: 0.057737, f1(macro): 0.000475
+[2020-09-04 14:17:59,477][__main__] line77 [INFO] ::: epoch: 5/35 :::
+[2020-09-04 14:31:50,525][__main__] line83 [INFO] loss_train: 0.024434, loss_valid: 0.024888, f1(macro): 0.000803
+[2020-09-04 14:31:50,754][__main__] line77 [INFO] ::: epoch: 6/35 :::
+[2020-09-04 14:45:36,911][__main__] line83 [INFO] loss_train: 0.023742, loss_valid: 0.023337, f1(macro): 0.005394
+[2020-09-04 14:45:37,131][__main__] line77 [INFO] ::: epoch: 7/35 :::
+[2020-09-04 14:59:22,294][__main__] line83 [INFO] loss_train: 0.022701, loss_valid: 0.035831, f1(macro): 0.008287
+[2020-09-04 14:59:22,295][__main__] line77 [INFO] ::: epoch: 8/35 :::
+[2020-09-04 15:13:06,800][__main__] line83 [INFO] loss_train: 0.021532, loss_valid: 0.021653, f1(macro): 0.029304
+[2020-09-04 15:13:07,031][__main__] line77 [INFO] ::: epoch: 9/35 :::
+[2020-09-04 15:26:55,126][__main__] line83 [INFO] loss_train: 0.020608, loss_valid: 0.020529, f1(macro): 0.048642
+[2020-09-04 15:26:55,345][__main__] line77 [INFO] ::: epoch: 10/35 :::
+[2020-09-04 15:40:36,504][__main__] line83 [INFO] loss_train: 0.020098, loss_valid: 0.019952, f1(macro): 0.064672
+[2020-09-04 15:40:36,742][__main__] line77 [INFO] ::: epoch: 11/35 :::
+[2020-09-04 15:54:24,227][__main__] line83 [INFO] loss_train: 0.019921, loss_valid: 0.019902, f1(macro): 0.063746
+[2020-09-04 15:54:24,454][__main__] line77 [INFO] ::: epoch: 12/35 :::
+[2020-09-04 16:08:17,043][__main__] line83 [INFO] loss_train: 0.019829, loss_valid: 0.019694, f1(macro): 0.070218
+[2020-09-04 16:08:17,262][__main__] line77 [INFO] ::: epoch: 13/35 :::
+[2020-09-04 16:22:01,492][__main__] line83 [INFO] loss_train: 0.019855, loss_valid: 0.020043, f1(macro): 0.073047
+[2020-09-04 16:22:01,493][__main__] line77 [INFO] ::: epoch: 14/35 :::
+[2020-09-04 16:35:51,272][__main__] line83 [INFO] loss_train: 0.019719, loss_valid: 0.019188, f1(macro): 0.092036
+[2020-09-04 16:35:51,489][__main__] line77 [INFO] ::: epoch: 15/35 :::
+[2020-09-04 16:49:36,444][__main__] line83 [INFO] loss_train: 0.019406, loss_valid: 0.027728, f1(macro): 0.088191
+[2020-09-04 16:49:36,445][__main__] line77 [INFO] ::: epoch: 16/35 :::
+[2020-09-04 17:03:21,021][__main__] line83 [INFO] loss_train: 0.018864, loss_valid: 0.018648, f1(macro): 0.137828
+[2020-09-04 17:03:21,264][__main__] line77 [INFO] ::: epoch: 17/35 :::
+[2020-09-04 17:17:06,595][__main__] line83 [INFO] loss_train: 0.018250, loss_valid: 0.018615, f1(macro): 0.145967
+[2020-09-04 17:17:06,845][__main__] line77 [INFO] ::: epoch: 18/35 :::
+[2020-09-04 17:30:51,627][__main__] line83 [INFO] loss_train: 0.017752, loss_valid: 0.017039, f1(macro): 0.196727
+[2020-09-04 17:30:51,845][__main__] line77 [INFO] ::: epoch: 19/35 :::
+[2020-09-04 17:44:35,757][__main__] line83 [INFO] loss_train: 0.017141, loss_valid: 0.016558, f1(macro): 0.216242
+[2020-09-04 17:44:35,981][__main__] line77 [INFO] ::: epoch: 20/35 :::
+[2020-09-04 17:58:23,400][__main__] line83 [INFO] loss_train: 0.016455, loss_valid: 0.020359, f1(macro): 0.128270
+[2020-09-04 17:58:23,401][__main__] line77 [INFO] ::: epoch: 21/35 :::
+[2020-09-04 18:12:07,705][__main__] line83 [INFO] loss_train: 0.015812, loss_valid: 0.017590, f1(macro): 0.215826
+[2020-09-04 18:12:07,706][__main__] line77 [INFO] ::: epoch: 22/35 :::
+[2020-09-04 18:25:53,152][__main__] line83 [INFO] loss_train: 0.015233, loss_valid: 0.015316, f1(macro): 0.292044
+[2020-09-04 18:25:53,374][__main__] line77 [INFO] ::: epoch: 23/35 :::
