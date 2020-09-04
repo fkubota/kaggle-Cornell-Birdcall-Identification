@@ -106,3 +106,5 @@ scheduler:
 [2020-09-04 18:12:07,706][__main__] line77 [INFO] ::: epoch: 22/35 :::
 [2020-09-04 18:25:53,152][__main__] line83 [INFO] loss_train: 0.015233, loss_valid: 0.015316, f1(macro): 0.292044
 [2020-09-04 18:25:53,374][__main__] line77 [INFO] ::: epoch: 23/35 :::
+[2020-09-04 18:39:35,012][__main__] line83 [INFO] loss_train: 0.014443, loss_valid: 0.018597, f1(macro): 0.177366
+[2020-09-04 18:39:35,013][__main__] line77 [INFO] ::: epoch: 24/35 :::
