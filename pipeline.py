@@ -107,7 +107,7 @@ def run(cfg: DictConfig) -> None:
                 cfg['loss']['name'],
                 best_loss, best_f1, output_dir)
         logger.info(f'best_loss: {best_loss:.6f}, best_fscore(macro): {best_f1:.6f}')
-    logger.info('::: success :::')
+    logger.info('::: success :::\n\n\n')
 
     # 開放
     del train_loader
@@ -117,7 +117,6 @@ def run(cfg: DictConfig) -> None:
     del scheduler
     gc.collect()
     torch.cuda.empty_cache()
-    logger.info('\n\n\n')
 
 
 if __name__ == "__main__":
