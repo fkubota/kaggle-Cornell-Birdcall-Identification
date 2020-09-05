@@ -975,4 +975,38 @@ kaggglenb21の結果が悪いことの考察
 ### 20200903
 - 今日でパイプライン完成させる！！
 - [1chについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/179547)
-- [augmentationについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/178917): どれが効いたのかを議論している
+- [augmentationについてのディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/178917): どれが効いたのかを議論している。
+- 度々出てくるpytorchのエラーは、[このissue](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/issues/54)で対応している。
+
+- pipelineのベータ版完成
+  - hydraを使用
+  - 結果をcsvをで吐く機能を実装
+  - ログを吐く機能を実装
+  - すべての結果を集約する機能を実装
+
+### 20200904
+- pipelineにResNeStを追加
+
+- hydra 18-50-44
+  - 画像サイズを変更してみる
+  - base: resnet50_v1
+  - try0
+    - img_size=224
+  - try1
+    - img_size=112
+  - result(f1_macro)
+    - img_size=224: 0.476575
+    - img_size=112: 0.280828
+    - img_size=224 の方がよさそう
+
+- hydra 21-47-32
+  - fold依存を確認
+  - base: resnest_v1
+  - try0
+    - fold=0
+  - try1
+    - fold=1
+
+### 20200905
+- hydra 12-52-34
+  - lr を 0.001-->0.01にした
