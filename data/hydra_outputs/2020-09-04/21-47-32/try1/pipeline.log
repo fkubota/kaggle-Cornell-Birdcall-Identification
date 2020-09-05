@@ -72,3 +72,19 @@ scheduler:
 [2020-09-05 09:40:31,634][__main__] line77 [INFO] ::: epoch: 5/45 :::
 [2020-09-05 09:55:04,542][__main__] line83 [INFO] loss_train: 0.025061, loss_valid: 0.025942, f1(macro): 0.000371
 [2020-09-05 09:55:04,795][__main__] line77 [INFO] ::: epoch: 6/45 :::
+[2020-09-05 10:09:43,058][__main__] line83 [INFO] loss_train: 0.024854, loss_valid: 0.024606, f1(macro): 0.000363
+[2020-09-05 10:09:43,362][__main__] line77 [INFO] ::: epoch: 7/45 :::
+[2020-09-05 10:24:09,264][__main__] line83 [INFO] loss_train: 0.024607, loss_valid: 0.024331, f1(macro): 0.001043
+[2020-09-05 10:24:09,632][__main__] line77 [INFO] ::: epoch: 8/45 :::
+[2020-09-05 10:38:34,585][__main__] line83 [INFO] loss_train: 0.024135, loss_valid: 0.024950, f1(macro): 0.002365
+[2020-09-05 10:38:34,586][__main__] line77 [INFO] ::: epoch: 9/45 :::
+[2020-09-05 10:53:20,763][__main__] line83 [INFO] loss_train: 0.023539, loss_valid: 0.023113, f1(macro): 0.004147
+[2020-09-05 10:53:21,121][__main__] line77 [INFO] ::: epoch: 10/45 :::
+[2020-09-05 11:07:57,625][__main__] line83 [INFO] loss_train: 0.023128, loss_valid: 0.022974, f1(macro): 0.007091
+[2020-09-05 11:07:57,930][__main__] line77 [INFO] ::: epoch: 11/45 :::
+[2020-09-05 11:22:26,710][__main__] line83 [INFO] loss_train: 0.023004, loss_valid: 0.022938, f1(macro): 0.007439
+[2020-09-05 11:22:27,016][__main__] line77 [INFO] ::: epoch: 12/45 :::
+[2020-09-05 11:36:55,269][__main__] line83 [INFO] loss_train: 0.022957, loss_valid: 0.022726, f1(macro): 0.006947
+[2020-09-05 11:36:55,541][__main__] line77 [INFO] ::: epoch: 13/45 :::
+[2020-09-05 11:51:25,294][__main__] line83 [INFO] loss_train: 0.022877, loss_valid: 0.022470, f1(macro): 0.009025
+[2020-09-05 11:51:25,573][__main__] line77 [INFO] ::: epoch: 14/45 :::
