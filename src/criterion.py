@@ -21,3 +21,14 @@ class ResNetLoss(nn.Module):
 
         return self.loss(input_, target)
 
+class BCEWithLogitsLossMod(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.loss = nn.BCEWithLogitsLoss()
+
+    def forward(self, input, target):
+        input_ = input["multilabel_proba"]
+        target = target.float()
+
+        return self.loss(input_, target)
+
