@@ -1,3 +1,5 @@
+import os
+import hydra
 import numpy as np
 import torch
 import torch.nn as nn
@@ -65,6 +67,11 @@ class ResNeSt(nn.Module):
             radix=1, groups=1, bottleneck_width=64,
             deep_stem=True, stem_width=32, avg_down=True,
             avd=True, avd_first=True)
+
+        this_file_dir = os.path.dirname(__file__)
+        state_dict = torch.load(f'{this_file_dir}/../data_ignore/model/resnest50/'\
+                'resnest50_fast_1s1x64d-d8fbf808.pth')
+        self.classifier.load_state_dict(state_dict)
         
         del self.classifier.fc
         # # use the same head as the baseline notebook.
@@ -72,9 +79,6 @@ class ResNeSt(nn.Module):
             nn.Linear(2048, 1024), nn.ReLU(), nn.Dropout(p=0.2),
             nn.Linear(1024, 1024), nn.ReLU(), nn.Dropout(p=0.2),
             nn.Linear(1024, num_classes))
-        
-        # state_dict = torch.load(args["trained_weights"])
-        # self.classifier.load_state_dict(state_dict)
         device = torch.device("cuda")
         self.classifier.to(device)
         self.classifier.eval()
