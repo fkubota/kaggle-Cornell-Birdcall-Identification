@@ -69,7 +69,8 @@ class ResNeSt(nn.Module):
             avd=True, avd_first=True)
 
         this_file_dir = os.path.dirname(__file__)
-        state_dict = torch.load(f'{this_file_dir}/../data_ignore/model/resnest50/'\
+        state_dict = torch.load(
+                f'{this_file_dir}/../data_ignore/model/resnest50/'\
                 'resnest50_fast_1s1x64d-d8fbf808.pth')
         self.classifier.load_state_dict(state_dict)
         

@@ -20,3 +20,4 @@ class ResNetLoss(nn.Module):
             target = target.float()
 
         return self.loss(input_, target)
+
