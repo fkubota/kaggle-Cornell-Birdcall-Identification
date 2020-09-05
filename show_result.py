@@ -12,7 +12,7 @@ list_df = [pd.DataFrame()]
 for path in sorted(glob(f'{DIR_HYDRA}/*/*/*/*')):
     if 'result_fold' in path:
         df = pd.read_csv(path)
-        if df['debug'][0]==1 and args.d==0:
+        if df['debug'][0]==1 and int(args.d)==0:
             pass
         else:
             list_df.append(df) 
