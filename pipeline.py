@@ -28,6 +28,8 @@ def run(cfg: DictConfig) -> None:
     logger.info('='*30)
     logger.info(f'git hash is: {hash_}')
     logger.info(f'all params\n{"="*80}\n{cfg.pretty()}\n{"="*80}')
+    comment = cfg['globals']['comment']
+    assert comment!=None, 'commentを入力してください。(globals.commet=hogehoge)'
 
     if cfg['globals']['debug']:
         logger.info('::: set debug mode :::')
@@ -38,6 +40,7 @@ def run(cfg: DictConfig) -> None:
     device = C.get_device(global_params["device"])
     splitter = C.get_split(cfg)
     df, datadir = C.get_metadata(cfg)
+    logger.info(f'meta_df: {df.shape}')
     output_dir = os.getcwd()
     output_dir_ignore = output_dir.replace('/data/', '/data_ignore/')
     if not os.path.exists(output_dir_ignore):
@@ -57,6 +60,8 @@ def run(cfg: DictConfig) -> None:
             trn_df = utils.get_debug_df(trn_df)
             val_df = utils.get_debug_df(val_df)
 
+        logger.info(f'trn_df: {trn_df.shape}')
+        logger.info(f'val_df: {val_df.shape}')
         train_loader = C.get_loader(trn_df, datadir, cfg, 'train')
         valid_loader = C.get_loader(val_df, datadir, cfg, 'valid')
 
@@ -105,7 +110,9 @@ def run(cfg: DictConfig) -> None:
                 global_params['debug'],
                 f'{model.__class__.__name__}',
                 cfg['loss']['name'],
-                best_loss, best_f1, output_dir)
+                best_loss, best_f1, 
+                comment,
+                output_dir)
         logger.info(f'best_loss: {best_loss:.6f}, best_fscore(macro): {best_f1:.6f}')
     logger.info('::: success :::\n\n\n')
 

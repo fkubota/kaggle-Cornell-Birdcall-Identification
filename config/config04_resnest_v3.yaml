@@ -1,5 +1,6 @@
 #######################################################
-#  resnest_v2
+#  resnest_v3
+#  balancedに対応
 #######################################################
 globals:
   debug: False
@@ -7,6 +8,7 @@ globals:
   seed: 1213
   device: cuda
   num_epochs: 45
+  balanced: False
   folds:
     - 0
 

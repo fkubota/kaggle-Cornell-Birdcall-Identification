@@ -27,7 +27,8 @@ class BCEWithLogitsLossMod(nn.Module):
         self.loss = nn.BCEWithLogitsLoss()
 
     def forward(self, input, target):
-        input_ = input["multilabel_proba"]
+        # input_ = input["multilabel_proba"]
+        input_ = input["logits"]
         target = target.float()
 
         return self.loss(input_, target)
