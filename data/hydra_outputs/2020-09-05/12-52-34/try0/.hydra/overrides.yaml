@@ -1,0 +1,3 @@
+- globals.debug=0
+- globals.num_epochs=35
+- optimizer.params.lr=0.01
