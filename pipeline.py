@@ -28,6 +28,8 @@ def run(cfg: DictConfig) -> None:
     logger.info('='*30)
     logger.info(f'git hash is: {hash_}')
     logger.info(f'all params\n{"="*80}\n{cfg.pretty()}\n{"="*80}')
+    comment = cfg['globals']['comment']
+    assert comment!=None, 'commentを入力してください。(globals.commet=hogehoge)'
 
     if cfg['globals']['debug']:
         logger.info('::: set debug mode :::')
@@ -105,7 +107,9 @@ def run(cfg: DictConfig) -> None:
                 global_params['debug'],
                 f'{model.__class__.__name__}',
                 cfg['loss']['name'],
-                best_loss, best_f1, output_dir)
+                best_loss, best_f1, 
+                comment,
+                output_dir)
         logger.info(f'best_loss: {best_loss:.6f}, best_fscore(macro): {best_f1:.6f}')
     logger.info('::: success :::\n\n\n')
 

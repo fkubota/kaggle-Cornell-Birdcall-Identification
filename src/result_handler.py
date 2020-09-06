@@ -16,7 +16,7 @@ def save_loss_figure(
 
 def save_result_csv(
         fold_i, debug, model_name, loss_name, 
-        best_loss, best_f1, save_dir):
+        best_loss, best_f1, comment, save_dir):
     df = pd.DataFrame({
         'run_name': [save_dir.split('hydra_outputs/')[1]],
         'debug': [debug],
@@ -25,5 +25,6 @@ def save_result_csv(
         'loss_name': [loss_name],
         'best_loss': [round(best_loss, 6)],
         'best_f1(macro)': [round(best_f1, 6)],
+        'comment': [comment]
         })
     df.to_csv(f'{save_dir}/result_fold{fold_i}.csv', index=False)
