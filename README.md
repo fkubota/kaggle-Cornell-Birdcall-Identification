@@ -943,7 +943,7 @@ kaggglenb21の結果が悪いことの考察
   - tawaraさんの推論ノートブックを編集。site3をすべてnocallにしてみる。
   - result
     - score: 0.567
-    - LB
+    - LB: 419/1150
 
 
 - **<font color='blue'> ここまでのsite3 predictionについてmindmapでまとめた。</font>**
@@ -1006,12 +1006,49 @@ kaggglenb21の結果が悪いことの考察
     - fold=0
   - try1
     - fold=1
+  - result(f1_macro)
+    - try0: 0.351661
+    - try1: 0.238392
+    - 結構依存してるな...
 
 ### 20200905
 - hydra 12-52-34
   - lr を 0.001-->0.01にした
-
-- hydra 15-xx-xx(dgx-1)
-  - fold依存を確認
+  - result(f1_macro)
+    - try0: 0.000035
+    - くっそ低いな...
 
 ### 20200906
+- hydra 19-56-52  <---------------------------------------------
+  - resnest
+  - hold依存を確認する
+
+- root4kaidoさんのトライ
+  - original
+    - 2secでモデルを作成
+    - 精度は悪かった
+    - 2secの範囲に、鳥の鳴き声が入っていない可能性がある
+  - try1
+    - event part
+    - 改善されず
+  - try2
+    - event part + random crop でやってみた 
+
+
+- nb042
+  - class imbalancedに対応する
+  - 1classあたりのファイル数。
+  - 最大は100, 最小は9
+  - 下のグラフはファイル数が少ないものを並べた
+      <img src='./data/info/images/readme/40.png' width='400'>
+  - ここに方法をまとめる!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
+### 20200907
+- 昨日回した、hydra 19-56-52だけど、foldsを0, 1にしたはずなのに、うまくhydraに反映されてなかった。
+  - 原因わかった。
+  - globals.comment=resnest,hogehoge みたいなオプション渡していたので、そのmalutirunが走っていたんだ...
+- hydra 00-38-xx
+
+- hydra 08-20-xx
+  - fold-1で走らせる
+  - 20200906_19-56-52のfold0と比較して、fold依存を確認する
