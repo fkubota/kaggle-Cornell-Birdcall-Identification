@@ -70,7 +70,6 @@ def get_loader(df: pd.DataFrame,
     dataset = datasets.__getattribute__(name)(
             df,
             datadir=datadir,
-            img_size=dataset_config['img_size'],
             config=dataset_config['params']
             )
     loader = data.DataLoader(dataset, **loader_config)
