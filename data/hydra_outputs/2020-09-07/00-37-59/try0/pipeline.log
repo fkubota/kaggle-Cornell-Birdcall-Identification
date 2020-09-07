@@ -1,0 +1,157 @@
+[2020-09-07 00:37:59,377][__main__] line26 [INFO] ==============================
+[2020-09-07 00:37:59,377][__main__] line27 [INFO] ::: pipeline start :::
+[2020-09-07 00:37:59,377][__main__] line28 [INFO] ==============================
+[2020-09-07 00:37:59,377][__main__] line29 [INFO] git hash is: 42f8c8e
+[2020-09-07 00:37:59,382][__main__] line30 [INFO] all params
+================================================================================
+globals:
+  debug: 0
+  comment: deal_with_class_imbalanced
+  seed: 1213
+  device: cuda
+  num_epochs: 45
+  balanced: 1
+  folds:
+  - 0
+data:
+  train_df_path: data_ignore/external_dataset/32khz/birdsong-resampled-train-audio-01/train_mod.csv
+  train_audio_path: data_ignore/external_dataset/32khz
+  test_df_path: ./data/external_dataset/birdcall-check/test_audio
+  test_audio_path: ./data/external_dataset/birdcall-check/test.csv
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+dataset:
+  name: SpectrogramDataset
+  img_size: 224
+  params:
+    n_mels: 128
+    fmin: 20
+    fmax: 16000
+loader:
+  train:
+    batch_size: 20
+    shuffle: true
+    num_workers: 2
+  valid:
+    batch_size: 10
+    shuffle: false
+    num_workers: 2
+model:
+  name: ResNeSt
+  params:
+    base_model: null
+    pretrained: true
+    n_classes: 264
+loss:
+  name: BCEWithLogitsLossMod
+  params: null
+optimizer:
+  name: Adam
+  params:
+    lr: 0.001
+scheduler:
+  name: CosineAnnealingLR
+  params:
+    T_max: 10
+
+================================================================================
+[2020-09-07 00:38:05,801][__main__] line43 [INFO] meta_df: (26400, 38)
+[2020-09-07 00:38:05,831][__main__] line53 [INFO] ==============================
+[2020-09-07 00:38:05,831][__main__] line54 [INFO] Fold 0
+[2020-09-07 00:38:05,831][__main__] line55 [INFO] ==============================
+[2020-09-07 00:38:05,864][__main__] line63 [INFO] trn_df: (21120, 38)
+[2020-09-07 00:38:05,864][__main__] line64 [INFO] val_df: (5280, 38)
+[2020-09-07 00:38:07,704][__main__] line82 [INFO] ::: epoch: 1/45 :::
+[2020-09-07 00:55:26,508][__main__] line88 [INFO] loss_train: 0.027286, loss_valid: 0.024906, f1(macro): 0.000609
+[2020-09-07 00:55:26,600][__main__] line82 [INFO] ::: epoch: 2/45 :::
+[2020-09-07 01:12:39,489][__main__] line88 [INFO] loss_train: 0.024263, loss_valid: 0.023403, f1(macro): 0.001142
+[2020-09-07 01:12:39,755][__main__] line82 [INFO] ::: epoch: 3/45 :::
+[2020-09-07 01:30:00,605][__main__] line88 [INFO] loss_train: 0.022787, loss_valid: 0.021733, f1(macro): 0.017875
+[2020-09-07 01:30:00,840][__main__] line82 [INFO] ::: epoch: 4/45 :::
+[2020-09-07 01:47:13,826][__main__] line88 [INFO] loss_train: 0.021139, loss_valid: 0.019967, f1(macro): 0.048902
+[2020-09-07 01:47:14,092][__main__] line82 [INFO] ::: epoch: 5/45 :::
+[2020-09-07 02:04:26,344][__main__] line88 [INFO] loss_train: 0.019554, loss_valid: 0.018506, f1(macro): 0.109823
+[2020-09-07 02:04:26,588][__main__] line82 [INFO] ::: epoch: 6/45 :::
+[2020-09-07 02:21:41,800][__main__] line88 [INFO] loss_train: 0.018213, loss_valid: 0.017887, f1(macro): 0.158447
+[2020-09-07 02:21:42,063][__main__] line82 [INFO] ::: epoch: 7/45 :::
+[2020-09-07 02:38:56,172][__main__] line88 [INFO] loss_train: 0.016981, loss_valid: 0.016194, f1(macro): 0.232720
+[2020-09-07 02:38:56,399][__main__] line82 [INFO] ::: epoch: 8/45 :::
+[2020-09-07 02:56:07,929][__main__] line88 [INFO] loss_train: 0.015724, loss_valid: 0.015266, f1(macro): 0.301211
+[2020-09-07 02:56:08,173][__main__] line82 [INFO] ::: epoch: 9/45 :::
+[2020-09-07 03:13:10,714][__main__] line88 [INFO] loss_train: 0.014761, loss_valid: 0.014386, f1(macro): 0.347152
+[2020-09-07 03:13:10,951][__main__] line82 [INFO] ::: epoch: 10/45 :::
+[2020-09-07 03:30:11,408][__main__] line88 [INFO] loss_train: 0.014073, loss_valid: 0.014054, f1(macro): 0.363104
+[2020-09-07 03:30:11,645][__main__] line82 [INFO] ::: epoch: 11/45 :::
+[2020-09-07 03:47:17,057][__main__] line88 [INFO] loss_train: 0.014005, loss_valid: 0.014076, f1(macro): 0.360483
+[2020-09-07 03:47:17,058][__main__] line82 [INFO] ::: epoch: 12/45 :::
+[2020-09-07 04:04:20,242][__main__] line88 [INFO] loss_train: 0.013957, loss_valid: 0.013928, f1(macro): 0.373467
+[2020-09-07 04:04:20,480][__main__] line82 [INFO] ::: epoch: 13/45 :::
+[2020-09-07 04:21:21,913][__main__] line88 [INFO] loss_train: 0.013952, loss_valid: 0.013850, f1(macro): 0.381889
+[2020-09-07 04:21:22,148][__main__] line82 [INFO] ::: epoch: 14/45 :::
+[2020-09-07 04:38:28,824][__main__] line88 [INFO] loss_train: 0.014046, loss_valid: 0.013811, f1(macro): 0.383078
+[2020-09-07 04:38:29,057][__main__] line82 [INFO] ::: epoch: 15/45 :::
+[2020-09-07 04:55:29,543][__main__] line88 [INFO] loss_train: 0.013982, loss_valid: 0.013774, f1(macro): 0.375967
+[2020-09-07 04:55:29,780][__main__] line82 [INFO] ::: epoch: 16/45 :::
+[2020-09-07 05:12:26,999][__main__] line88 [INFO] loss_train: 0.013861, loss_valid: 0.013307, f1(macro): 0.409237
+[2020-09-07 05:12:27,234][__main__] line82 [INFO] ::: epoch: 17/45 :::
+[2020-09-07 05:29:38,044][__main__] line88 [INFO] loss_train: 0.013464, loss_valid: 0.013416, f1(macro): 0.396327
+[2020-09-07 05:29:38,047][__main__] line82 [INFO] ::: epoch: 18/45 :::
+[2020-09-07 05:46:47,893][__main__] line88 [INFO] loss_train: 0.013020, loss_valid: 0.012735, f1(macro): 0.432808
+[2020-09-07 05:46:48,138][__main__] line82 [INFO] ::: epoch: 19/45 :::
+[2020-09-07 06:03:48,550][__main__] line88 [INFO] loss_train: 0.012630, loss_valid: 0.012812, f1(macro): 0.458659
+[2020-09-07 06:03:48,551][__main__] line82 [INFO] ::: epoch: 20/45 :::
+[2020-09-07 06:20:55,154][__main__] line88 [INFO] loss_train: 0.011939, loss_valid: 0.012309, f1(macro): 0.480531
+[2020-09-07 06:20:55,382][__main__] line82 [INFO] ::: epoch: 21/45 :::
+[2020-09-07 06:38:06,297][__main__] line88 [INFO] loss_train: 0.011329, loss_valid: 0.011595, f1(macro): 0.509113
+[2020-09-07 06:38:06,527][__main__] line82 [INFO] ::: epoch: 22/45 :::
+[2020-09-07 06:55:15,357][__main__] line88 [INFO] loss_train: 0.010516, loss_valid: 0.011146, f1(macro): 0.541947
+[2020-09-07 06:55:15,584][__main__] line82 [INFO] ::: epoch: 23/45 :::
+[2020-09-07 07:12:20,360][__main__] line88 [INFO] loss_train: 0.009815, loss_valid: 0.010315, f1(macro): 0.570372
+[2020-09-07 07:12:20,591][__main__] line82 [INFO] ::: epoch: 24/45 :::
+[2020-09-07 07:29:22,646][__main__] line88 [INFO] loss_train: 0.009002, loss_valid: 0.010598, f1(macro): 0.558922
+[2020-09-07 07:29:22,646][__main__] line82 [INFO] ::: epoch: 25/45 :::
+[2020-09-07 07:46:27,074][__main__] line88 [INFO] loss_train: 0.008293, loss_valid: 0.009563, f1(macro): 0.610253
+[2020-09-07 07:46:27,311][__main__] line82 [INFO] ::: epoch: 26/45 :::
+[2020-09-07 08:03:40,924][__main__] line88 [INFO] loss_train: 0.007525, loss_valid: 0.008893, f1(macro): 0.653794
+[2020-09-07 08:03:41,161][__main__] line82 [INFO] ::: epoch: 27/45 :::
+[2020-09-07 08:20:51,065][__main__] line88 [INFO] loss_train: 0.006781, loss_valid: 0.008798, f1(macro): 0.655078
+[2020-09-07 08:20:51,316][__main__] line82 [INFO] ::: epoch: 28/45 :::
+[2020-09-07 08:38:02,670][__main__] line88 [INFO] loss_train: 0.006128, loss_valid: 0.008162, f1(macro): 0.677248
+[2020-09-07 08:38:02,897][__main__] line82 [INFO] ::: epoch: 29/45 :::
+[2020-09-07 08:55:11,421][__main__] line88 [INFO] loss_train: 0.005716, loss_valid: 0.007949, f1(macro): 0.690264
+[2020-09-07 08:55:11,653][__main__] line82 [INFO] ::: epoch: 30/45 :::
+[2020-09-07 09:12:18,698][__main__] line88 [INFO] loss_train: 0.005436, loss_valid: 0.007867, f1(macro): 0.694686
+[2020-09-07 09:12:18,925][__main__] line82 [INFO] ::: epoch: 31/45 :::
+[2020-09-07 09:29:28,300][__main__] line88 [INFO] loss_train: 0.005424, loss_valid: 0.007876, f1(macro): 0.694127
+[2020-09-07 09:29:28,302][__main__] line82 [INFO] ::: epoch: 32/45 :::
+[2020-09-07 09:46:35,458][__main__] line88 [INFO] loss_train: 0.005384, loss_valid: 0.007889, f1(macro): 0.693640
+[2020-09-07 09:46:35,459][__main__] line82 [INFO] ::: epoch: 33/45 :::
+[2020-09-07 10:03:41,861][__main__] line88 [INFO] loss_train: 0.005419, loss_valid: 0.007874, f1(macro): 0.689190
+[2020-09-07 10:03:41,862][__main__] line82 [INFO] ::: epoch: 34/45 :::
+[2020-09-07 10:20:44,535][__main__] line88 [INFO] loss_train: 0.005513, loss_valid: 0.008022, f1(macro): 0.689123
+[2020-09-07 10:20:44,536][__main__] line82 [INFO] ::: epoch: 35/45 :::
+[2020-09-07 10:37:55,509][__main__] line88 [INFO] loss_train: 0.005693, loss_valid: 0.008531, f1(macro): 0.672400
+[2020-09-07 10:37:55,510][__main__] line82 [INFO] ::: epoch: 36/45 :::
+[2020-09-07 10:54:49,028][__main__] line88 [INFO] loss_train: 0.006138, loss_valid: 0.008711, f1(macro): 0.667970
+[2020-09-07 10:54:49,029][__main__] line82 [INFO] ::: epoch: 37/45 :::
+[2020-09-07 11:11:48,829][__main__] line88 [INFO] loss_train: 0.006414, loss_valid: 0.009535, f1(macro): 0.631160
+[2020-09-07 11:11:48,830][__main__] line82 [INFO] ::: epoch: 38/45 :::
+[2020-09-07 11:28:54,676][__main__] line88 [INFO] loss_train: 0.006732, loss_valid: 0.009342, f1(macro): 0.646679
+[2020-09-07 11:28:54,677][__main__] line82 [INFO] ::: epoch: 39/45 :::
+[2020-09-07 11:45:58,798][__main__] line88 [INFO] loss_train: 0.006854, loss_valid: 0.009251, f1(macro): 0.643698
+[2020-09-07 11:45:58,799][__main__] line82 [INFO] ::: epoch: 40/45 :::
+[2020-09-07 12:03:11,031][__main__] line88 [INFO] loss_train: 0.007033, loss_valid: 0.009566, f1(macro): 0.629650
+[2020-09-07 12:03:11,032][__main__] line82 [INFO] ::: epoch: 41/45 :::
+[2020-09-07 12:20:06,670][__main__] line88 [INFO] loss_train: 0.006891, loss_valid: 0.009082, f1(macro): 0.642500
+[2020-09-07 12:20:06,670][__main__] line82 [INFO] ::: epoch: 42/45 :::
+[2020-09-07 12:37:13,443][__main__] line88 [INFO] loss_train: 0.006546, loss_valid: 0.009455, f1(macro): 0.630859
+[2020-09-07 12:37:13,444][__main__] line100 [INFO] Early stopping
+[2020-09-07 12:37:13,696][__main__] line116 [INFO] best_loss: 0.007867, best_fscore(macro): 0.694686
+[2020-09-07 12:37:13,706][__main__] line117 [INFO] ::: success :::
+
+
+

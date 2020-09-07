@@ -7,3 +7,4 @@ __pycache__/
 *.py[cod]
 *.swp
 run_config.yaml
+!.gitkeep

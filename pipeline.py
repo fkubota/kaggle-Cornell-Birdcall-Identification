@@ -40,6 +40,7 @@ def run(cfg: DictConfig) -> None:
     device = C.get_device(global_params["device"])
     splitter = C.get_split(cfg)
     df, datadir = C.get_metadata(cfg)
+    logger.info(f'meta_df: {df.shape}')
     output_dir = os.getcwd()
     output_dir_ignore = output_dir.replace('/data/', '/data_ignore/')
     if not os.path.exists(output_dir_ignore):
@@ -59,6 +60,8 @@ def run(cfg: DictConfig) -> None:
             trn_df = utils.get_debug_df(trn_df)
             val_df = utils.get_debug_df(val_df)
 
+        logger.info(f'trn_df: {trn_df.shape}')
+        logger.info(f'val_df: {val_df.shape}')
         train_loader = C.get_loader(trn_df, datadir, cfg, 'train')
         valid_loader = C.get_loader(val_df, datadir, cfg, 'valid')
 
