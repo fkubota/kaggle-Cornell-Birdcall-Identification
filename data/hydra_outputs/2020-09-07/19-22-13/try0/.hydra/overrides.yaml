@@ -1,0 +1,3 @@
+- globals.debug=0
+- globals.balanced=0
+- globals.comment=deal_with_class_imbalanced
