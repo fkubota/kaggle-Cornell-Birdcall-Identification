@@ -5,6 +5,7 @@ import torch.nn.functional as F
 from torch.nn.modules.utils import _pair
 from torch.nn import Conv2d, Module, Linear, BatchNorm2d, ReLU
 
+
 class SplAtConv2d(Module):
     """Split-Attention Conv2d
     """
@@ -350,13 +351,13 @@ class ResNet(nn.Module):
         self.inplanes = planes * block.expansion
         for i in range(1, blocks):
             layers.append(block(self.inplanes, planes,
-                                radix=self.radix, cardinality=self.cardinality,
-                                bottleneck_width=self.bottleneck_width,
-                                avd=self.avd, avd_first=self.avd_first,
-                                dilation=dilation, rectified_conv=self.rectified_conv,
-                                rectify_avg=self.rectify_avg,
-                                norm_layer=norm_layer, dropblock_prob=dropblock_prob,
-                                last_gamma=self.last_gamma))
+                            radix=self.radix, cardinality=self.cardinality,
+                            bottleneck_width=self.bottleneck_width,
+                            avd=self.avd, avd_first=self.avd_first,
+                            dilation=dilation, rectified_conv=self.rectified_conv,
+                            rectify_avg=self.rectify_avg,
+                            norm_layer=norm_layer, dropblock_prob=dropblock_prob,
+                            last_gamma=self.last_gamma))
 
         return nn.Sequential(*layers)
 
@@ -372,7 +373,7 @@ class ResNet(nn.Module):
         x = self.layer4(x)
 
         x = self.avgpool(x)
-        #x = x.view(x.size(0), -1)
+        # x = x.view(x.size(0), -1)
         x = torch.flatten(x, 1)
         if self.drop:
             x = self.drop(x)
