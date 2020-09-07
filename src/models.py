@@ -1,6 +1,4 @@
 import os
-import hydra
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -9,7 +7,7 @@ from model_lib import lib_resnest
 from torchvision import models
 
 
-def get_model(config: dict):
+def get_model(config):
     model_config = config["model"]
     model_name = model_config["name"]
     model_params = model_config["params"]
@@ -17,9 +15,11 @@ def get_model(config: dict):
     model = eval(model_name)(model_params)
     return model
 
-####################################################################3
+####################################################################
 #     Resnet50
-####################################################################3
+####################################################################
+
+
 class ResNet50(nn.Module):
     def __init__(self, params):
         super().__init__()
@@ -53,11 +53,11 @@ class ResNet50(nn.Module):
         }
 
 
-####################################################################3
+####################################################################
 #     Resnest
-####################################################################3
 # ref: https://www.kaggle.com/ttahara/inference-birdsong-baseline-resnest50-fast
 # ref: https://www.kaggle.com/hidehisaarai1213/inference-pytorch-birdcall-resnet-baseline
+####################################################################
 class ResNeSt(nn.Module):
     def __init__(self, params):
         super().__init__()
@@ -70,10 +70,10 @@ class ResNeSt(nn.Module):
 
         this_file_dir = os.path.dirname(__file__)
         state_dict = torch.load(
-                f'{this_file_dir}/../data_ignore/model/resnest50/'\
-                'resnest50_fast_1s1x64d-d8fbf808.pth')
+            f'{this_file_dir}/../data_ignore/model/resnest50/'\
+            'resnest50_fast_1s1x64d-d8fbf808.pth')
         self.classifier.load_state_dict(state_dict)
-        
+
         del self.classifier.fc
         # # use the same head as the baseline notebook.
         self.classifier.fc = nn.Sequential(
@@ -96,7 +96,7 @@ class ResNeSt(nn.Module):
         x = self.classifier.layer4(x)
 
         x = self.classifier.avgpool(x)
-#x = x.view(x.size(0), -1)
+# x = x.view(x.size(0), -1)
         x = torch.flatten(x, 1)
         if self.classifier.drop:
             x = self.classifier.drop(x)

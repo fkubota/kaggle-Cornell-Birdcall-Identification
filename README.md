@@ -62,7 +62,8 @@ gantt
 ## Event
 |Name|Detail|Ref|
 |---|---|---|
-|hoge|hoge|hoge|
+|nb017_event_rms|liborsaのrmsを使用。ラウドネスを見ていると思えばいい。|nb017|
+|nb034_event_intensity_500to16000hz|500~16000HzのスペクトルのIntensityをが大きいところをevent部分としている。|nb034|
 
 
 ## Features
@@ -1019,9 +1020,14 @@ kaggglenb21の結果が悪いことの考察
     - くっそ低いな...
 
 ### 20200906
-- hydra 19-56-52  <---------------------------------------------
+- hydra 19-56-52 
   - resnest
   - hold依存を確認する
+  - result
+    - try0
+      - f1_macro: 0.634128
+    - try2
+      - missってやってない
 
 - root4kaidoさんのトライ
   - original
@@ -1047,8 +1053,51 @@ kaggglenb21の結果が悪いことの考察
 - 昨日回した、hydra 19-56-52だけど、foldsを0, 1にしたはずなのに、うまくhydraに反映されてなかった。
   - 原因わかった。
   - globals.comment=resnest,hogehoge みたいなオプション渡していたので、そのmalutirunが走っていたんだ...
-- hydra 00-38-xx
+- hydra 00-37-59
+  - class imbalanced に対処
+  - nb042の手法を使用
+  - result
+    - f1_macro: 0.694686  (いまのとこベスト)
+    - 注意: train と valid に分ける前にfileを重複有りで水増ししている。splitの仕方によっては、trainとvalidそれぞれに同じデータが入っている可能性がある。random crop でかぶる確率は低いだろうが。
+      <img src='./data/info/images/readme/41.png' width='300'>
 
-- hydra 08-20-xx
+- hydra 08-18-23
   - fold-1で走らせる
   - 20200906_19-56-52のfold0と比較して、fold依存を確認する
+  - result
+    - f1_macro: 0.609316
+  - 考察
+
+  |run|val_loss|f1_macro|fold|
+  |---|---|---|---|
+  |2020-09-06/19-56-52/try0|0.009203|0.634128|0|
+  |2020-09-07/08-18-23/try0|0.009492|0.609316|1|
+
+  ---> 結構fold依存ありますねー
+
+
+
+
+- kagglenb26
+  - hydra20200906-195652のモデル
+  - pipelineのベースライン
+  - result
+    - 他のやつを優先的に提出したかったのでまだ提出していない
+
+- kagglenb27
+  - hydra20200907-003759 を提出
+  - class imbalanced に対処
+  - result
+    - score: 0.566
+
+- nb043
+  - SpectrogramEventRandomDatasetを作成
+
+- hydra 19-34-xx
+  - imbaranced に対処
+  - EventRandomDataset (from nb042) を追加
+  - try0
+    - ratio = 0.5
+
+  - try1
+    - ratio = 0.1
