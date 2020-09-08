@@ -50,7 +50,7 @@ class SpectrogramDataset(data.Dataset):
         self.df = df
         self.datadir = datadir
         self.img_size = config['img_size']
-        self.melspectrogram_parameters = config['params']['melspectrogram_parameters']
+        self.melspectrogram_parameters = config['melspectrogram_parameters']
 
     def __len__(self):
         return len(self.df)
