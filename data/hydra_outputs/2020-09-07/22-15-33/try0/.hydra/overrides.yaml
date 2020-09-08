@@ -1,0 +1,2 @@
+- dataset.params.n_random=5
+- globals.comment=compare_multirandom_n_random_5_10
