@@ -58,6 +58,7 @@ gantt
 |SpectrogramEventRmsDatasetV4|1sec 専用Dataset。V3で煩わしかった境界問題に対処した。|nb021|
 |PANNsDatasetMod|PANNs用。とはいえSpectrogramDatasetとほとんど同じ。スペクトログラムは計算せずに、signalをPANNsに渡すようになってる。|nb024|
 |PANNsDatasetEventRmsDataset|PANNs用。nb017_event_rmsを使用してevent部分で学習している。|nb025|
+|SpectrogramEventRandomDataset|nb034のeventデータを使う。event部分だけだと、小さな鳥の鳴き声が学習に入らない可能性があるため、event+random_cropを行なう。ratioパラメータがあり、足すeventの大きさを変えられる。|nb043|
 
 ## Event
 |Name|Detail|Ref|
@@ -1101,3 +1102,38 @@ kaggglenb21の結果が悪いことの考察
 
   - try1
     - ratio = 0.1
+
+
+- nb044
+  - SpectrogramMultiRandomDatasetを作成
+  - random_cropをn_random 回実行して、足し算する
+
+- hydra 22-20-54
+  - nb044で作成した SpectogramMultiRandomDataset を使用する
+  - class balanced
+  - try0
+    - n_random=5
+  - try1
+    - n_random=10
+    - 途中で止めた
+
+
+### 20200907
+- nb044のeventをまとめる
+
+
+- kagglenb28
+  - hydra 19-34-07
+  - class blanced
+  - event + random_crop
+
+- kagglenb29
+  - hydra 22-20-47
+  - class balanced
+  - multi random
+
+- nb045
+  - validation dataset に対しても水増しを行ってしまっていたので、純粋なvalidationだけで評価してみる
+    - 対象のモデル
+      - hydra 20200907_19-34-07
+      - hydra 20200907_22-20-47
