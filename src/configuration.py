@@ -27,36 +27,10 @@ def get_split(config: dict):
 def get_metadata(config: dict):
     ori_path = hydra.utils.get_original_cwd()
     data_config = config["data"]
-    balanced = config['globals']['balanced']
-
     path_train_csv = f'{ori_path}/{data_config["train_df_path"]}'
     path_audio = f'{ori_path}/{data_config["train_audio_path"]}'
-    train = pd.read_csv(path_train_csv)
 
-    # class imbalanced に対処
-    if balanced:
-        add_dfs = []
-        for bird in train['ebird_code'].unique():
-            mask = train['ebird_code'] == bird
-            _df = train[mask].sort_values('duration')[::-1]
-            mask = _df['duration'] > 20
-            df = _df[mask]
-            
-            n_add_file = 100 - len(_df)
-            idx = 0
-            dfs = []
-            while len(dfs) < n_add_file:
-                dfs.append(df.iloc[[idx], :])
-                if len(df)-1 > idx:
-                    idx += 1
-                else:
-                    idx = 0
-            if len(dfs) == 0:
-                pass
-            else:
-                add_dfs.append(pd.concat(dfs))
-        df_concat = pd.concat(add_dfs)
-        train = pd.concat([train, df_concat]).reset_index(drop=True)
+    train = pd.read_csv(path_train_csv)
     return train, path_audio
 
 def get_loader(df: pd.DataFrame,
