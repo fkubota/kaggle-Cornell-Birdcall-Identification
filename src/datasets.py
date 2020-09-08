@@ -46,6 +46,7 @@ class SpectrogramDataset(data.Dataset):
     def __init__(self,
                  df: pd.DataFrame,
                  datadir,
+                 pahse,
                  config={}):
         self.df = df
         self.datadir = datadir
@@ -99,9 +100,11 @@ class SpectrogramEventRandomDataset(data.Dataset):
     def __init__(self,
                  df: pd.DataFrame,
                  datadir,
+                 phase,
                  config={}):
         self.df = df
         self.datadir = datadir
+        self.phase = phase
         self.ratio = config['ratio']
         self.img_size = config['img_size']
         self.melspectrogram_parameters = config['melspectrogram_parameters']
@@ -139,8 +142,8 @@ class SpectrogramEventRandomDataset(data.Dataset):
             event_sec_list = self.df_event.query('filename == @basename').event_sec_list.to_list()[0]
 #                 event_sec_list = self.string_to_list(event_sec_list)
             
-            # on event
-            if len(event_sec_list) != 0:
+            # on event (eventあり & train phase)
+            if (len(event_sec_list) != 0) & (self.phase == 'train'):
                 choice = random.choice(event_sec_list)
                 # 前から2.5秒、後ろから2.5秒の範囲におさまってるか(境界問題)
                 ed_sec = len_y / sr
@@ -189,9 +192,11 @@ class SpectrogramMultiRandomDataset(data.Dataset):
     def __init__(self,
                  df: pd.DataFrame,
                  datadir,
+                 phase,
                  config={}):
         self.df = df
         self.datadir = datadir
+        self.phase = phase
         self.img_size = config['img_size']
         self.melspectrogram_parameters = config['melspectrogram_parameters']
         self.n_random = config['n_random']
@@ -219,12 +224,16 @@ class SpectrogramMultiRandomDataset(data.Dataset):
             new_y[start:start + len_y] = y
             y = new_y.astype(np.float32)
         elif len_y > effective_length:
-            y_tmp = 0
-            for _ in range(self.n_random):
+            if self.phase == 'train':
+                y_tmp = 0
+                for _ in range(self.n_random):
+                    start = np.random.randint(len_y - effective_length)
+                    _y = y[start:start + effective_length].astype(np.float32)
+                    y_tmp = y_tmp + _y
+                y = y_tmp
+            elif self.phase == 'valid':
                 start = np.random.randint(len_y - effective_length)
-                _y = y[start:start + effective_length].astype(np.float32)
-                y_tmp = y_tmp + _y
-            y = y_tmp
+                y = y[start:start + effective_length].astype(np.float32)
         else:
             y = y.astype(np.float32)
 
