@@ -1,0 +1,4 @@
+- globals.debug=0
+- dataset.params.ratio=0.1
+- globals.balanced=1
+- globals.comment=compare_event_randomcrop_dataset_ratio
