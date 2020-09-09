@@ -1,0 +1,3 @@
+- globals.balanced=0
+- dataset.name=SpectrogramEventRandomDataset
+- globals.comment=event_random_crop_not_balanced
