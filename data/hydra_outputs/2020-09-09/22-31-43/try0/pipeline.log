@@ -71,3 +71,11 @@ scheduler:
 [2020-09-09 22:31:49,190][__main__] line69 [INFO] trn_df: (20249, 38)
 [2020-09-09 22:31:49,190][__main__] line70 [INFO] val_df: (4275, 38)
 [2020-09-09 22:31:51,037][__main__] line88 [INFO] ::: epoch: 1/45 :::
+[2020-09-09 22:47:36,033][__main__] line94 [INFO] loss_train: 0.027560, loss_valid: 0.025493, f1(macro): 0.000032
+[2020-09-09 22:47:36,125][__main__] line88 [INFO] ::: epoch: 2/45 :::
+[2020-09-09 23:03:26,281][__main__] line94 [INFO] loss_train: 0.025296, loss_valid: 0.024871, f1(macro): 0.000171
+[2020-09-09 23:03:26,570][__main__] line88 [INFO] ::: epoch: 3/45 :::
+[2020-09-09 23:19:13,433][__main__] line94 [INFO] loss_train: 0.024310, loss_valid: 0.023817, f1(macro): 0.000849
+[2020-09-09 23:19:13,666][__main__] line88 [INFO] ::: epoch: 4/45 :::
+[2020-09-09 23:34:55,314][__main__] line94 [INFO] loss_train: 0.023484, loss_valid: 0.024387, f1(macro): 0.004357
+[2020-09-09 23:34:55,315][__main__] line88 [INFO] ::: epoch: 5/45 :::
