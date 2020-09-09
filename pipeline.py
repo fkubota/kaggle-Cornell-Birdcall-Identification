@@ -59,6 +59,9 @@ def run(cfg: DictConfig) -> None:
         if global_params['balanced']:
             logger.info(f'::: train class balanced :::')
             trn_df = utils.transform_balanced_dataset(trn_df)
+        if global_params['remove_short']:
+            logger.info(f'::: remove short duration :::')
+            trn_df = utils.remove_short_duration(trn_df)
         if global_params['debug']:
             trn_df = utils.get_debug_df(trn_df)
             val_df = utils.get_debug_df(val_df)

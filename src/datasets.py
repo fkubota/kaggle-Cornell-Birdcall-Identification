@@ -46,7 +46,7 @@ class SpectrogramDataset(data.Dataset):
     def __init__(self,
                  df: pd.DataFrame,
                  datadir,
-                 pahse,
+                 phase,
                  config={}):
         self.df = df
         self.datadir = datadir

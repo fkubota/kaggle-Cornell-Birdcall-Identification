@@ -45,8 +45,7 @@ def get_loader(df: pd.DataFrame,
             df,
             datadir=datadir,
             phase=phase,
-            config=dataset_config['params'],
-            )
+            config=dataset_config['params'])
     loader = data.DataLoader(dataset, **loader_config)
     return loader
 

@@ -59,6 +59,14 @@ def transform_balanced_dataset(train):
     train = pd.concat([train, df_concat]).reset_index(drop=True)
     return train
 
+def remove_short_duration(train):
+    '''
+    5 sec 未満のデータは学習に使わない
+    '''
+    mask = train['duration'] >= 5
+    train = train[mask].reset_index(drop=True)
+    return train
+
 
 def main():
     logger = logging.getLogger(__name__)
