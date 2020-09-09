@@ -74,3 +74,9 @@ scheduler:
 [2020-09-09 05:21:15,058][__main__] line85 [INFO] ::: epoch: 2/3 :::
 [2020-09-09 05:21:31,538][__main__] line91 [INFO] loss_train: 0.029459, loss_valid: 0.028874, f1(macro): 0.000029
 [2020-09-09 05:21:31,539][__main__] line85 [INFO] ::: epoch: 3/3 :::
+[2020-09-09 05:21:49,721][__main__] line91 [INFO] loss_train: 0.027122, loss_valid: 0.025705, f1(macro): 0.000029
+[2020-09-09 05:21:49,854][__main__] line119 [INFO] best_loss: 0.025705, best_fscore(macro): 0.000029
+[2020-09-09 05:21:49,854][__main__] line120 [INFO] ::: success :::
+
+
+
