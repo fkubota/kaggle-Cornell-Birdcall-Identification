@@ -16,7 +16,7 @@ Kaggle-Cornell-Birdcall-Identification
 
 
 ## Info
-- [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)
+- [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)   <---- これ大事だよ
 - [google slide](https://docs.google.com/presentation/d/1ZcCSnXj2QoOmuIkcA-txJOuAlkLv4rSlS7_zDj90q6c/edit#slide=id.p)
 - [flow chart](https://app.diagrams.net/#G1699QH9hrlRznMikAEAE2-3WTjreYcWck)
 - [google drive](https://drive.google.com/drive/u/1/folders/1UDVIKTN1O7hTL9JYzt7ui3mNy_b6RHCV)
@@ -1022,11 +1022,13 @@ kaggglenb21の結果が悪いことの考察
 
 ### 20200906
 - hydra 19-56-52 
+  - baseline of pipeline
   - resnest
   - hold依存を確認する
   - result
     - try0
       - f1_macro: 0.634128
+    <img src='./data/hydra_outputs/2020-09-06/19-56-52/try0/loss_fold0.png' width='400'>
     - try2
       - missってやってない
 
@@ -1081,7 +1083,7 @@ kaggglenb21の結果が悪いことの考察
 
 - kagglenb26
   - hydra20200906-195652のモデル
-  - pipelineのベースライン
+  - pipelineのベースライン(baseline)
   - result
     - LB: 0.563
 
@@ -1119,18 +1121,23 @@ kaggglenb21の結果が悪いことの考察
 
 
 ### 20200907
-- nb044のeventをまとめる
 
-
-- kagglenb28
+- kagglenb28(baseline- LB: 0.563, f1_macro: 0.634)
   - hydra 19-34-07
   - class blanced
   - event + random_crop
+  - result
+    - LB_score: 0.553
+    - f1_macro: 0.636
 
-- kagglenb29
+- kagglenb29(baseline- LB: 0.563, f1_macro: 0.634)
   - hydra 22-20-47
   - class balanced
   - multi random
+  - result
+    - LB_score: 0.560
+    - f1_macro: 0.545
+
 
 - nb045
   - validation dataset に対しても水増しを行ってしまっていたので、純粋なvalidationだけで評価してみる
@@ -1140,23 +1147,53 @@ kaggglenb21の結果が悪いことの考察
 
 
 ### 20200908
-# この日のkaggle nb まとめないと！！！
-
-
-- hydra 23-17-xx
+- hydra 23-17-08
   - class balanced
   - balancedは、trainだけにやった。
+  - result
+    - f1_macro: 0.636227
+
+- root4kaido さんと現状をまとめた
+  - 2secモデルはあきらめる
+  - balanced はいける
+  - event + random_crop はだめ
+  - multi_random_crop もだめ
+
+    <img src='./data/info/images/readme/42.png' width='1500'>
+
 
 ### 20200909
-- hydra 05-22-xx (apollon)
+- 朝はアイデア出しした--> root4kaidoさんに提示して方向性の決定
+  - (後回し)(大)site3だけthresholdを下げる
+  - (僕)(中)5sec以下のデータを学習データから外す
+  - (2人)(小)cutmix, mixupのコードがシェアされていた(https://www.kaggle.com/c/birdsong-recognition/discussion/181162)
+  - (僕)(中)baseとbalancedのsigmoid 出力を比較してみる。thresholdの決め手になるかも？
+  - (root4kaido)(急)second labelがあるやつの出力をみてみる。
+  - (覚書) threshold devil discussion では、threshold=0.5がいいといっている。(freesoundとか？)(犬猫問題、PANNsのやつがつかえる？)
+  - (後回し)(小)model.fc を疑ってみる。
+  - (root4kaido)(中) ratingが低いものを抜く
+
+
+- hydra 05-22-33
   - event + random_crop (ratio of event=0.5)
   - class balanced
   - balanced はtrain だけにやった
+  - result
+    - f1_macro: 0.6306
 
-- hydra 24-xx-xx (dgx-1)
+- hydra 05-29-29
   - multi ramdom (n_random=5)
   - class balanced
   - valid balanced はtrain だけにやった
+  - result
+    - f1_macro: 0.54519
+
+- hydra 20-33-01
+  - multi random
+  - not class balanced
+  - result
+    - f1_macro: <#################################################################(orpheus)
 
 
 - 5sec未満のデータの割合: 5.249 %
+  - 結構あるので、対処してもいいかも
