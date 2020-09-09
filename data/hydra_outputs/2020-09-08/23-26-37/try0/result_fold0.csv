@@ -1,0 +1,2 @@
+run_name,debug,fold,model_name,loss_name,best_loss,best_f1(macro),comment
+2020-09-08/23-26-37/try0,1,0,ResNeSt,BCEWithLogitsLossMod,0.025937,2.9e-05,test
