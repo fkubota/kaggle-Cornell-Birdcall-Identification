@@ -675,8 +675,8 @@ nocall データセット作成する
   - [カエル先生のディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/174187)。距離の影響について話ししている。
   - アライさんのfeaturemap aggregationについての[ディスカッション](https://www.kaggle.com/c/birdsong-recognition/discussion/167611)
 
-  ### 20200821
- - kagglenb14
+### 20200821
+- kagglenb14
   - nb027のモデルを提出
   - resnest
   - SpectrogramEventRmsDatasetV3
@@ -685,7 +685,7 @@ nocall データセット作成する
     - score: 0.554
 
 - kagglenb15
-  - nb027のモデルを提出
+  - nb026のモデルを提出
   - resnest
   - SpectrogramDataset
   - threshold = 0.6
@@ -1083,7 +1083,7 @@ kaggglenb21の結果が悪いことの考察
   - hydra20200906-195652のモデル
   - pipelineのベースライン
   - result
-    - 他のやつを優先的に提出したかったのでまだ提出していない
+    - LB: 0.563
 
 - kagglenb27
   - hydra20200907-003759 を提出
@@ -1137,3 +1137,26 @@ kaggglenb21の結果が悪いことの考察
     - 対象のモデル
       - hydra 20200907_19-34-07
       - hydra 20200907_22-20-47
+
+
+### 20200908
+# この日のkaggle nb まとめないと！！！
+
+
+- hydra 23-17-xx
+  - class balanced
+  - balancedは、trainだけにやった。
+
+### 20200909
+- hydra 05-22-xx (apollon)
+  - event + random_crop (ratio of event=0.5)
+  - class balanced
+  - balanced はtrain だけにやった
+
+- hydra 24-xx-xx (dgx-1)
+  - multi ramdom (n_random=5)
+  - class balanced
+  - valid balanced はtrain だけにやった
+
+
+- 5sec未満のデータの割合: 5.249 %
