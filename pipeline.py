@@ -56,6 +56,9 @@ def run(cfg: DictConfig) -> None:
 
         trn_df = df.loc[trn_idx, :].reset_index(drop=True)
         val_df = df.loc[val_idx, :].reset_index(drop=True)
+        if global_params['balanced']:
+            logger.info(f'::: train class balanced :::')
+            trn_df = utils.transform_balanced_dataset(trn_df)
         if global_params['debug']:
             trn_df = utils.get_debug_df(trn_df)
             val_df = utils.get_debug_df(val_df)

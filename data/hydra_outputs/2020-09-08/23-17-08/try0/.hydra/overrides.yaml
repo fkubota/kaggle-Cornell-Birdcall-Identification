@@ -1,0 +1,3 @@
+- globals.balanced=1
+- dataset.name=SpectrogramDataset
+- globals.comment=balanced_valid_fix
