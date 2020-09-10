@@ -1152,6 +1152,7 @@ kaggglenb21の結果が悪いことの考察
   - balancedは、trainだけにやった。
   - result
     - f1_macro: 0.636227
+    <img src='./data/hydra_outputs/2020-09-08/23-17-08/try0/loss_fold0.png' width='400'>
 
 - root4kaido さんと現状をまとめた
   - 2secモデルはあきらめる
@@ -1180,6 +1181,7 @@ kaggglenb21の結果が悪いことの考察
   - balanced はtrain だけにやった
   - result
     - f1_macro: 0.6306
+    <img src='./data/hydra_outputs/2020-09-09/05-22-33/try0/loss_fold0.png' width='400'>
 
 - hydra 05-29-29
   - multi ramdom (n_random=5)
@@ -1187,13 +1189,32 @@ kaggglenb21の結果が悪いことの考察
   - valid balanced はtrain だけにやった
   - result
     - f1_macro: 0.54519
-
-- hydra 20-33-01
-  - multi random
-  - not class balanced
-  - result
-    - f1_macro: <#################################################################(orpheus)
+    <img src='./data/hydra_outputs/2020-09-09/05-29-29/try0/loss_fold0.png' width='400'>
 
 
 - 5sec未満のデータの割合: 5.249 %
   - 結構あるので、対処してもいいかも
+
+- hydra 22-57-25(baseline: 0.634128)
+  - multi random
+  - not class balanced
+  - n_random=2
+  - result
+    - f1_macro: 0.617374
+
+
+- hydra 23-39-25(baseline: 0.634128)
+  - balanced
+  - remove short duration
+  - result
+    - f1_macro: 0.648
+
+
+### 20200910
+- kagglenb30(baseline- LB: 0.563, f1_macro: 0.634)
+  - hydra 20200909-233925
+  - class balanced
+  - multi random
+  - result
+    - LB_score: 0.549
+    - f1_macro: 0.648
