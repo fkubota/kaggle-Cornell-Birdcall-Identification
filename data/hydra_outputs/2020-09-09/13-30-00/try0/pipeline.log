@@ -122,3 +122,5 @@ scheduler:
 [2020-09-09 19:54:48,066][__main__] line85 [INFO] ::: epoch: 27/45 :::
 [2020-09-09 20:09:31,704][__main__] line91 [INFO] loss_train: 0.003569, loss_valid: 0.007844, f1(macro): 0.680462
 [2020-09-09 20:09:31,704][__main__] line85 [INFO] ::: epoch: 28/45 :::
+[2020-09-09 20:24:24,180][__main__] line91 [INFO] loss_train: 0.002948, loss_valid: 0.007599, f1(macro): 0.698772
+[2020-09-09 20:24:24,435][__main__] line85 [INFO] ::: epoch: 29/45 :::
