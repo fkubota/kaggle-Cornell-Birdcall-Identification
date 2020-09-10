@@ -1,0 +1,2 @@
+run_name,debug,fold,model_name,loss_name,best_loss,best_f1(macro),comment
+2020-09-09/23-39-25/try0,False,0,ResNeSt,BCEWithLogitsLossMod,0.009448,0.648091,balanced_remove-short-duration__5sec__
