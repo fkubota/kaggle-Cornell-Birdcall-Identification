@@ -1,0 +1,3 @@
+- globals.balanced=1
+- dataset.params.n_random=2
+- globals.comment=multi_random_not_balanced

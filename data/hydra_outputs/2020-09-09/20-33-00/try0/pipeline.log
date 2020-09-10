@@ -1,0 +1,88 @@
+[2020-09-09 20:33:01,021][__main__] line26 [INFO] ==============================
+[2020-09-09 20:33:01,021][__main__] line27 [INFO] ::: pipeline start :::
+[2020-09-09 20:33:01,021][__main__] line28 [INFO] ==============================
+[2020-09-09 20:33:01,021][__main__] line29 [INFO] git hash is: 9ea61fd
+[2020-09-09 20:33:01,026][__main__] line30 [INFO] all params
+================================================================================
+globals:
+  debug: false
+  comment: multi_random_not_balanced
+  seed: 1213
+  device: cuda
+  num_epochs: 45
+  balanced: 0
+  folds:
+  - 0
+data:
+  train_df_path: data_ignore/external_dataset/32khz/birdsong-resampled-train-audio-01/train_mod.csv
+  train_audio_path: data_ignore/external_dataset/32khz
+  test_df_path: ./data/external_dataset/birdcall-check/test_audio
+  test_audio_path: ./data/external_dataset/birdcall-check/test.csv
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+dataset:
+  name: SpectrogramMultiRandomDataset
+  params:
+    img_size: 224
+    n_random: 2
+    melspectrogram_parameters:
+      n_mels: 128
+      fmin: 20
+      fmax: 16000
+loader:
+  train:
+    batch_size: 20
+    shuffle: true
+    num_workers: 2
+  valid:
+    batch_size: 10
+    shuffle: false
+    num_workers: 2
+model:
+  name: ResNeSt
+  params:
+    base_model: null
+    pretrained: true
+    n_classes: 264
+loss:
+  name: BCEWithLogitsLossMod
+  params: null
+optimizer:
+  name: Adam
+  params:
+    lr: 0.001
+scheduler:
+  name: CosineAnnealingLR
+  params:
+    T_max: 10
+
+================================================================================
+[2020-09-09 20:33:01,198][__main__] line43 [INFO] meta_df: (21375, 38)
+[2020-09-09 20:33:01,226][__main__] line53 [INFO] ==============================
+[2020-09-09 20:33:01,227][__main__] line54 [INFO] Fold 0
+[2020-09-09 20:33:01,227][__main__] line55 [INFO] ==============================
+[2020-09-09 20:33:01,243][__main__] line66 [INFO] trn_df: (17100, 38)
+[2020-09-09 20:33:01,243][__main__] line67 [INFO] val_df: (4275, 38)
+[2020-09-09 20:33:03,165][__main__] line85 [INFO] ::: epoch: 1/45 :::
+[2020-09-09 20:47:34,620][__main__] line91 [INFO] loss_train: 0.027475, loss_valid: 0.024975, f1(macro): 0.000127
+[2020-09-09 20:47:34,704][__main__] line85 [INFO] ::: epoch: 2/45 :::
+[2020-09-09 21:02:14,099][__main__] line91 [INFO] loss_train: 0.023745, loss_valid: 0.022866, f1(macro): 0.007750
+[2020-09-09 21:02:14,331][__main__] line85 [INFO] ::: epoch: 3/45 :::
+[2020-09-09 21:16:57,604][__main__] line91 [INFO] loss_train: 0.021329, loss_valid: 0.020975, f1(macro): 0.033552
+[2020-09-09 21:16:57,834][__main__] line85 [INFO] ::: epoch: 4/45 :::
+[2020-09-09 21:31:30,598][__main__] line91 [INFO] loss_train: 0.019425, loss_valid: 0.018877, f1(macro): 0.091417
+[2020-09-09 21:31:30,833][__main__] line85 [INFO] ::: epoch: 5/45 :::
+[2020-09-09 21:46:08,065][__main__] line91 [INFO] loss_train: 0.017830, loss_valid: 0.017992, f1(macro): 0.140374
+[2020-09-09 21:46:08,328][__main__] line85 [INFO] ::: epoch: 6/45 :::
+[2020-09-09 22:00:46,100][__main__] line91 [INFO] loss_train: 0.016192, loss_valid: 0.016403, f1(macro): 0.215985
+[2020-09-09 22:00:46,387][__main__] line85 [INFO] ::: epoch: 7/45 :::
+[2020-09-09 22:15:28,254][__main__] line91 [INFO] loss_train: 0.014709, loss_valid: 0.015363, f1(macro): 0.272999
+[2020-09-09 22:15:28,519][__main__] line85 [INFO] ::: epoch: 8/45 :::
+[2020-09-09 22:30:03,489][__main__] line91 [INFO] loss_train: 0.013330, loss_valid: 0.014420, f1(macro): 0.328918
+[2020-09-09 22:30:03,742][__main__] line85 [INFO] ::: epoch: 9/45 :::
+[2020-09-09 22:44:42,802][__main__] line91 [INFO] loss_train: 0.012226, loss_valid: 0.013858, f1(macro): 0.361978
+[2020-09-09 22:44:43,076][__main__] line85 [INFO] ::: epoch: 10/45 :::
