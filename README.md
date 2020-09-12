@@ -1279,3 +1279,8 @@ kaggglenb21の結果が悪いことの考察
 
 - nb047
   - nb046を改良。スッキリさせる。
+  - prediction_for_clip_stride_mask_modを作成
+    - tawara inference + stride_mask の組み合わせ
+    - tawara inferenceがnocallじゃないものを吐いた時だけ、stride_maskが動くようにした。
+    - stride_mask がnocallに弱い傾向があるための処置。
+    - tawara inference より、stride_mask が効いているのかのテストになる。
