@@ -1156,7 +1156,7 @@ kaggglenb21の結果が悪いことの考察
 
 - root4kaido さんと現状をまとめた
   - 2secモデルはあきらめる
-  - balanced はいける
+  - balanced はいける   <--- 後々の議論でだめだとわかった
   - event + random_crop はだめ
   - multi_random_crop もだめ
 
@@ -1218,3 +1218,64 @@ kaggglenb21の結果が悪いことの考察
   - result
     - LB_score: 0.549
     - f1_macro: 0.648
+
+- kagglenb31(baseline LB: 0.563, f1_macro: 0.634)
+  - hydra 20200908-231708
+  - class balanced
+  - result
+    - LB_score: 0.531
+    - f1_macro: 0.636
+
+- hydra 16-53-33(baseline f1_macro: 0.634128)
+  - not balanced
+  - remove short duration 5sec
+  - result
+    - f1_macro: 0.616719
+
+- **<font color='red'> 新しいアイデア</font>**: 5secのスペクトログラムにマスクをかける。
+  - 例) masksize = 2 sec, stride = 1 sec
+    1. maskされていない部分は 0~2sec でその他はmaskをかけて0とする。
+    2. maskされていない部分は 1~3sec でその他はmaskをかけて0とする。
+    3. 以下同様
+
+
+
+- kagglenb33
+  - hydra20200906_19565のモデルを使用
+  - stride mask inference の性能を確かめる試み
+  - nocall_check を使って、過剰に検出していないかを見る
+
+### 20200911
+- nb045
+  - stride mask inference の性能を確かめたい
+  - secondary label を使う
+
+
+- kagglenb32
+  - hydra20200906_195652(baseline)
+  - stride mask inference
+  - params
+    - thre = 0.8
+    - mask_num = 3
+  - result:
+    - score: 0.554
+
+- kagglenb34
+  - hydra20200906_19565
+  - params
+    - thre = 0.6
+    - mask_num = 2
+  - result
+    - score: 0.537
+
+### 20200912
+- kagglenb35
+  - hydra20200906_19565
+  - params
+    - thre = 0.9
+    - mask_num = 3
+  - result
+    - score: 0.560
+
+- nb047
+  - nb046を改良。スッキリさせる。
