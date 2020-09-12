@@ -9,6 +9,8 @@ import pandas as pd
 import soundfile as sf
 import torch.utils.data as data
 from const import BIRD_CODE, INV_BIRD_CODE
+from albumentations.core.transforms_interface import DualTransform, BasicTransform
+import albumentations as albu
 
 PERIOD = 5
 
@@ -41,6 +43,46 @@ def mono_to_color(X: np.ndarray,
         # Just zero
         V = np.zeros_like(Xstd, dtype=np.uint8)
     return V
+
+
+class AudioTransform(BasicTransform):
+    """ Transform for audio task. This is the main class where we override the targets and update params function for our need"""
+    @property
+    def targets(self):
+        return {"data": self.apply}
+    def update_params(self, params, **kwargs):
+        if hasattr(self, "interpolation"):
+            params["interpolation"] = self.interpolation
+        if hasattr(self, "fill_value"):
+            params["fill_value"] = self.fill_value
+        return params
+class AddGaussianNoise(AudioTransform):
+    """ Do time shifting of audio """
+    def __init__(self, always_apply=False, p=0.5):
+        super(AddGaussianNoise, self).__init__(always_apply, p)
+    def apply(self,data,**params):
+        '''
+        data : ndarray of audio timeseries
+        '''
+        noise = np.random.randn(len(data))
+        data_wn = data + 0.005*noise
+        return data_wn
+class NoAugment(AudioTransform):
+    """ Do time shifting of audio """
+    def __init__(self, always_apply=False):
+        super(NoAugment, self).__init__(always_apply)
+    def apply(self,data,**params):
+        '''
+        data : ndarray of audio timeseries
+        '''
+        return data
+def get_augmentation():
+    train_transform = [
+#         PitchShift(p=1.0,n_steps=4),
+        AddGaussianNoise(p=1.0),
+        NoAugment(),
+    ]
+    return albu.OneOf(train_transform)  # <- Compose
 
 class SpectrogramDataset(data.Dataset):
     def __init__(self,
@@ -234,6 +276,60 @@ class SpectrogramMultiRandomDataset(data.Dataset):
             elif self.phase == 'valid':
                 start = np.random.randint(len_y - effective_length)
                 y = y[start:start + effective_length].astype(np.float32)
+        else:
+            y = y.astype(np.float32)
+
+        melspec = librosa.feature.melspectrogram(y, sr=sr, **self.melspectrogram_parameters)
+        melspec = librosa.power_to_db(melspec).astype(np.float32)
+        image = mono_to_color(melspec)
+        height, width, _ = image.shape
+        image = cv2.resize(image, (int(width * self.img_size / height), self.img_size))
+        image = np.moveaxis(image, 2, 0)
+        image = (image / 255.0).astype(np.float32)
+
+        labels = np.zeros(len(BIRD_CODE), dtype=int)
+        labels[BIRD_CODE[ebird_code]] = 1
+        return image, labels
+
+class SpectrogramDatasetWithNoise(data.Dataset):
+    def __init__(self,
+                 df: pd.DataFrame,
+                 datadir,
+                 phase,
+                 config={}):
+        self.df = df
+        self.datadir = datadir
+        self.img_size = config['img_size']
+        self.melspectrogram_parameters = config['melspectrogram_parameters']
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx: int):
+        sample = self.df.loc[idx, :]
+        wav_name = sample["resampled_filename"]
+        ebird_code = sample["ebird_code"]
+        train_resampled_audio_dirs = [self.datadir + "/birdsong-resampled-train-audio-{:0>2}".format(i)  for i in range(5)]
+        for dir_ in train_resampled_audio_dirs:
+            path = f'{dir_}/{ebird_code}/{wav_name}'
+            if os.path.exists(path):
+                path_wav = path
+
+        y, sr = sf.read(path_wav)
+        # Noise
+        transforms = get_augmentation()
+        y = transforms(data=y)['data']
+
+        len_y = len(y)
+        effective_length = sr * PERIOD
+        if len_y < effective_length:
+            new_y = np.zeros(effective_length, dtype=y.dtype)
+            start = np.random.randint(effective_length - len_y)
+            new_y[start:start + len_y] = y
+            y = new_y.astype(np.float32)
+        elif len_y > effective_length:
+            start = np.random.randint(len_y - effective_length)
+            y = y[start:start + effective_length].astype(np.float32)
         else:
             y = y.astype(np.float32)
 
