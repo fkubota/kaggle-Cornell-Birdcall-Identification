@@ -1,0 +1,2 @@
+run_name,debug,fold,model_name,loss_name,best_loss,best_f1(macro),comment
+2020-09-12/23-56-47/try0,False,0,ResNeSt,BCEWithLogitsLossMod,0.009442,0.603393,add_gause_noise
