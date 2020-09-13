@@ -62,6 +62,9 @@ def run(cfg: DictConfig) -> None:
         if global_params['balanced']:
             logger.info(f'::: train class balanced :::')
             trn_df = utils.transform_balanced_dataset(trn_df)
+        if global_params['mixup']:
+            logger.info(f'::: perform mixup :::')
+
         if global_params['debug']:
             trn_df = utils.get_debug_df(trn_df)
             val_df = utils.get_debug_df(val_df)
@@ -87,8 +90,8 @@ def run(cfg: DictConfig) -> None:
         for epoch in progress_bar(range(1, n_epoch+1)):
             logger.info(f'::: epoch: {epoch}/{n_epoch} :::')
             loss_train = train(
-                    model, device, train_loader, 
-                    optimizer, scheduler, criterion)
+                    model, device, train_loader, optimizer,
+                    scheduler, criterion, global_params['mixup'])
             loss_valid, fscore_valid = get_epoch_loss_score(
                     model, device, valid_loader, criterion)
             logger.info(f'loss_train: {loss_train:.6f}, loss_valid: {loss_valid:.6f}, f1(macro): {fscore_valid:.6f}')

@@ -1,0 +1,74 @@
+[2020-09-13 14:59:10,212][__main__] line26 [INFO] ==============================
+[2020-09-13 14:59:10,212][__main__] line27 [INFO] ::: pipeline start :::
+[2020-09-13 14:59:10,213][__main__] line28 [INFO] ==============================
+[2020-09-13 14:59:10,213][__main__] line29 [INFO] git hash is: bc85608
+[2020-09-13 14:59:10,218][__main__] line30 [INFO] all params
+================================================================================
+globals:
+  debug: 1
+  comment: test
+  seed: 1213
+  device: cuda
+  num_epochs: 45
+  balanced: false
+  remove_short: false
+  mixup: 1
+  folds:
+  - 0
+data:
+  train_df_path: data_ignore/external_dataset/32khz/birdsong-resampled-train-audio-01/train_mod.csv
+  train_audio_path: data_ignore/external_dataset/32khz
+  test_df_path: ./data/external_dataset/birdcall-check/test_audio
+  test_audio_path: ./data/external_dataset/birdcall-check/test.csv
+split:
+  name: StratifiedKFold
+  params:
+    n_splits: 5
+    random_state: 42
+    shuffle: true
+dataset:
+  name: SpectrogramDatasetWithNoise
+  params:
+    img_size: 224
+    n_random: 5
+    melspectrogram_parameters:
+      n_mels: 128
+      fmin: 20
+      fmax: 16000
+loader:
+  train:
+    batch_size: 20
+    shuffle: true
+    num_workers: 2
+  valid:
+    batch_size: 10
+    shuffle: false
+    num_workers: 2
+model:
+  name: ResNeSt
+  params:
+    base_model: null
+    pretrained: true
+    n_classes: 264
+loss:
+  name: BCEWithLogitsLossMod
+  params: null
+optimizer:
+  name: Adam
+  params:
+    lr: 0.001
+scheduler:
+  name: CosineAnnealingLR
+  params:
+    T_max: 10
+
+================================================================================
+[2020-09-13 14:59:10,219][__main__] line35 [INFO] ::: set debug mode :::
+[2020-09-13 14:59:10,549][__main__] line43 [INFO] meta_df: (21375, 38)
+[2020-09-13 14:59:10,577][__main__] line53 [INFO] ==============================
+[2020-09-13 14:59:10,577][__main__] line54 [INFO] Fold 0
+[2020-09-13 14:59:10,577][__main__] line55 [INFO] ==============================
+[2020-09-13 14:59:10,598][__main__] line66 [INFO] ::: perform mixup :::
+[2020-09-13 14:59:12,647][__main__] line72 [INFO] trn_df: (264, 38)
+[2020-09-13 14:59:12,647][__main__] line73 [INFO] val_df: (264, 38)
+[2020-09-13 14:59:18,270][__main__] line91 [INFO] ::: epoch: 1/3 :::

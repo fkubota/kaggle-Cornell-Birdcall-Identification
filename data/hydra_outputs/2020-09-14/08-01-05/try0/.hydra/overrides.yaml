@@ -1,0 +1,3 @@
+- split.params=10
+- globals.comment=baseline_10fold
+- globals.mixup=0
