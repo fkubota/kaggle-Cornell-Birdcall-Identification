@@ -74,3 +74,27 @@ scheduler:
 [2020-09-14 08:20:04,409][__main__] line91 [INFO] ::: epoch: 2/45 :::
 [2020-09-14 08:38:29,530][__main__] line97 [INFO] loss_train: 0.024262, loss_valid: 0.023532, f1(macro): 0.004500
 [2020-09-14 08:38:29,773][__main__] line91 [INFO] ::: epoch: 3/45 :::
+[2020-09-14 08:56:51,458][__main__] line97 [INFO] loss_train: 0.022598, loss_valid: 0.021430, f1(macro): 0.018366
+[2020-09-14 08:56:51,698][__main__] line91 [INFO] ::: epoch: 4/45 :::
+[2020-09-14 09:15:14,811][__main__] line97 [INFO] loss_train: 0.021029, loss_valid: 0.019794, f1(macro): 0.049658
+[2020-09-14 09:15:15,043][__main__] line91 [INFO] ::: epoch: 5/45 :::
+[2020-09-14 09:33:49,691][__main__] line97 [INFO] loss_train: 0.019430, loss_valid: 0.018524, f1(macro): 0.115242
+[2020-09-14 09:33:49,926][__main__] line91 [INFO] ::: epoch: 6/45 :::
+[2020-09-14 09:52:12,844][__main__] line97 [INFO] loss_train: 0.018048, loss_valid: 0.017672, f1(macro): 0.133774
+[2020-09-14 09:52:13,078][__main__] line91 [INFO] ::: epoch: 7/45 :::
+[2020-09-14 10:10:35,606][__main__] line97 [INFO] loss_train: 0.016809, loss_valid: 0.016709, f1(macro): 0.197715
+[2020-09-14 10:10:35,839][__main__] line91 [INFO] ::: epoch: 8/45 :::
+[2020-09-14 10:28:58,597][__main__] line97 [INFO] loss_train: 0.015651, loss_valid: 0.015032, f1(macro): 0.281710
+[2020-09-14 10:28:58,831][__main__] line91 [INFO] ::: epoch: 9/45 :::
+[2020-09-14 10:47:28,045][__main__] line97 [INFO] loss_train: 0.014745, loss_valid: 0.014466, f1(macro): 0.310289
+[2020-09-14 10:47:28,275][__main__] line91 [INFO] ::: epoch: 10/45 :::
+[2020-09-14 11:05:47,876][__main__] line97 [INFO] loss_train: 0.014145, loss_valid: 0.014391, f1(macro): 0.326792
+[2020-09-14 11:05:48,112][__main__] line91 [INFO] ::: epoch: 11/45 :::
+[2020-09-14 11:24:05,606][__main__] line97 [INFO] loss_train: 0.013912, loss_valid: 0.013854, f1(macro): 0.339227
+[2020-09-14 11:24:05,839][__main__] line91 [INFO] ::: epoch: 12/45 :::
+[2020-09-14 11:42:31,743][__main__] line97 [INFO] loss_train: 0.013922, loss_valid: 0.013977, f1(macro): 0.331582
+[2020-09-14 11:42:31,744][__main__] line91 [INFO] ::: epoch: 13/45 :::
+[2020-09-14 12:00:54,639][__main__] line97 [INFO] loss_train: 0.013809, loss_valid: 0.013712, f1(macro): 0.345103
+[2020-09-14 12:00:54,869][__main__] line91 [INFO] ::: epoch: 14/45 :::
+[2020-09-14 12:19:18,224][__main__] line97 [INFO] loss_train: 0.014008, loss_valid: 0.014160, f1(macro): 0.336516
+[2020-09-14 12:19:18,226][__main__] line91 [INFO] ::: epoch: 15/45 :::
