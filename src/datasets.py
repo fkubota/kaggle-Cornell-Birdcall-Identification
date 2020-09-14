@@ -43,44 +43,44 @@ def mono_to_color(X: np.ndarray,
     return V
 
 
-class AudioTransform(BasicTransform):
-    """ Transform for audio task. This is the main class where we override the targets and update params function for our need"""
-    @property
-    def targets(self):
-        return {"data": self.apply}
-    def update_params(self, params, **kwargs):
-        if hasattr(self, "interpolation"):
-            params["interpolation"] = self.interpolation
-        if hasattr(self, "fill_value"):
-            params["fill_value"] = self.fill_value
-        return params
-class AddGaussianNoise(AudioTransform):
-    """ Do time shifting of audio """
-    def __init__(self, always_apply=False, p=0.5):
-        super(AddGaussianNoise, self).__init__(always_apply, p)
-    def apply(self,data,**params):
-        '''
-        data : ndarray of audio timeseries
-        '''
-        noise = np.random.randn(len(data))
-        data_wn = data + 0.005*noise
-        return data_wn
-class NoAugment(AudioTransform):
-    """ Do time shifting of audio """
-    def __init__(self, always_apply=False):
-        super(NoAugment, self).__init__(always_apply)
-    def apply(self,data,**params):
-        '''
-        data : ndarray of audio timeseries
-        '''
-        return data
-def get_augmentation():
-    train_transform = [
-#         PitchShift(p=1.0,n_steps=4),
-        AddGaussianNoise(p=1.0),
-        NoAugment(),
-    ]
-    return albu.OneOf(train_transform)  # <- Compose
+# class AudioTransform(BasicTransform):
+#     """ Transform for audio task. This is the main class where we override the targets and update params function for our need"""
+#     @property
+#     def targets(self):
+#         return {"data": self.apply}
+#     def update_params(self, params, **kwargs):
+#         if hasattr(self, "interpolation"):
+#             params["interpolation"] = self.interpolation
+#         if hasattr(self, "fill_value"):
+#             params["fill_value"] = self.fill_value
+#         return params
+# class AddGaussianNoise(AudioTransform):
+#     """ Do time shifting of audio """
+#     def __init__(self, always_apply=False, p=0.5):
+#         super(AddGaussianNoise, self).__init__(always_apply, p)
+#     def apply(self,data,**params):
+#         '''
+#         data : ndarray of audio timeseries
+#         '''
+#         noise = np.random.randn(len(data))
+#         data_wn = data + 0.005*noise
+#         return data_wn
+# class NoAugment(AudioTransform):
+#     """ Do time shifting of audio """
+#     def __init__(self, always_apply=False):
+#         super(NoAugment, self).__init__(always_apply)
+#     def apply(self,data,**params):
+#         '''
+#         data : ndarray of audio timeseries
+#         '''
+#         return data
+# def get_augmentation():
+#     train_transform = [
+# #         PitchShift(p=1.0,n_steps=4),
+#         AddGaussianNoise(p=1.0),
+#         NoAugment(),
+#     ]
+#     return albu.OneOf(train_transform)  # <- Compose
 
 class SpectrogramDataset(data.Dataset):
     def __init__(self,
