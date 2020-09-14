@@ -9,8 +9,6 @@ import pandas as pd
 import soundfile as sf
 import torch.utils.data as data
 from const import BIRD_CODE, INV_BIRD_CODE
-from albumentations.core.transforms_interface import DualTransform, BasicTransform
-import albumentations as albu
 
 PERIOD = 5
 
