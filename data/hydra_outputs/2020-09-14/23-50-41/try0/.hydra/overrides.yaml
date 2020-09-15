@@ -1,0 +1,4 @@
+- split.params.n_splits=10
+- dataset.name=SpectrogramDataset
+- globals.folds=[3]
+- globals.comment=10fold_usefolds0
