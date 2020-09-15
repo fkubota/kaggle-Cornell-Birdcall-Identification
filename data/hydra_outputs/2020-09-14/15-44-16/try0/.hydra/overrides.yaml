@@ -1,0 +1,4 @@
+- split.params.n_splits=10
+- globals.comment=baseline_10fold
+- dataset.name=SpectrogramDataset
+- globals.mixup=0

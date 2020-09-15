@@ -1246,9 +1246,12 @@ kaggglenb21の結果が悪いことの考察
   - nocall_check を使って、過剰に検出していないかを見る
 
 ### 20200911
-- nb045
+- nb046
   - stride mask inference の性能を確かめたい
   - secondary label を使う
+
+    <img src='./data/info/images/readme/42.png' width='1500'>
+
 
 
 - kagglenb32
@@ -1268,7 +1271,7 @@ kaggglenb21の結果が悪いことの考察
   - result
     - score: 0.537
 
-### 20200912
+### 20200912(Sat)
 - kagglenb35
   - hydra20200906_19565
   - params
@@ -1284,3 +1287,59 @@ kaggglenb21の結果が悪いことの考察
     - tawara inferenceがnocallじゃないものを吐いた時だけ、stride_maskが動くようにした。
     - stride_mask がnocallに弱い傾向があるための処置。
     - tawara inference より、stride_mask が効いているのかのテストになる。
+  - secondary label があるデータとebird_codeを合わせたラベルを作成し、sample_wiseで評価を行った。
+  - 例: threshold: 0.8)
+    - 下の画像の通り、stride_maskの方がスコアが高い場合が多い
+
+    <img src='./data/info/images/readme/43.png' width='1500'>
+
+### 20200913(Sun)
+- kagglenb36
+  - hydra20200906-195652(baseline)
+  - stride mask inference を使用する
+  - mask_num = 3
+  - threshold = 0.85
+  - result
+    - score: 0.557
+
+- nb048  
+  - stride mask inference を評価したい
+  - 評価するフレームワークの作成
+  - データを4種類に分けた
+    - nocall dataset
+    - site3
+    - 1bird
+    - some birds
+
+  - result
+    - threshold, mask_num にかなり敏感
+
+    <img src='./data/info/images/readme/45.png' width='300'>
+
+- nb049
+  - nocallデータセットの作成
+  - [ff1010 のデータセット](http://machine-listening.eecs.qmul.ac.uk/bird-audio-detection-challenge/)から一部のデータを抜き出す
+  - 出力先: ```./../data/external_dataset/ff1010bird_selection/wav_32000/```
+
+### 20200914(Mon)
+- kagglenb37
+  - hydra20200906_19565
+  - mask_num = 2 
+  - threshold = 0.8
+  - result
+    - score: 0.554
+
+- kagglenb38
+  - hydra20200914_154416
+  - baselineを10foldにした
+  - threshold = 0.6
+  - result
+    - score: 0.560
+
+### 20200915(Tue)
+- kagglenb39
+  - hydra20200914_154416
+  - baselineを10foldにした
+  - threshold = 0.8
+  - result
+    - score: 0.560
