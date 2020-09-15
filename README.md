@@ -14,6 +14,18 @@ Kaggle-Cornell-Birdcall-Identification
 
 ```
 
+## Pipeline
+- 実行例
+  ```bash
+  python3 pipeline.py --globals.balanced=1 --globals.comment=test
+  ```
+
+- 結果の表示例
+  ```bash
+  python3 show_result.py -d 0
+  ```
+
+
 
 ## Info
 - [issue board](https://github.com/fkubota/kaggle-Cornell-Birdcall-Identification/projects/1)   <---- これ大事だよ
@@ -27,7 +39,7 @@ Kaggle-Cornell-Birdcall-Identification
 
 ## Timeline
 
-<img src='./data/info/images/readme/gantt.png' width='800'>
+<img src='./data/info/images/readme/gantt.png' width='1000'>
 
 ```mermaid
 gantt
@@ -1321,13 +1333,56 @@ kaggglenb21の結果が悪いことの考察
   - [ff1010 のデータセット](http://machine-listening.eecs.qmul.ac.uk/bird-audio-detection-challenge/)から一部のデータを抜き出す
   - 出力先: ```./../data/external_dataset/ff1010bird_selection/wav_32000/```
 
+- nb050
+  - ff1010 dataset をnocallデータセットとして、評価を行なう
+  - 3種類のデータセットでスコアを計算した
+    - nocall, 1bird, some birds
+  - 計算式
+  - ```score = 0.544*nocall*nocall_reduction + ((1-0.544)*(1-some_bird_ratio))*_1bird + ((1-0.544)*some_bird_ratio)*some_bird```
+  - 上式のnocall_reductionとsomebird_ratioを最適化で決定した。
+  - ```(各モデルのLB_score - 各モデルのスコア)**2``` の総和が最も小さくなるように最適化。
+
+    <img src='./data/info/images/readme/46.png' width='500'>
+
+  - パラメータが決まったので、最もスコアの高いモデル、thresholdを決定する。
+    - best_nocall_reductioin 0.6700000000000002
+    - best_some_bird 0.34
+  - result:
+
+    <img src='./data/info/images/readme/47.png' width='500'>
+
+    ---> この解析だと、mask_num=2, threshold=0.8が良いみたい。予想では、0.573のスコアが出るみたい。本当かよ。
+
 ### 20200914(Mon)
 - kagglenb37
   - hydra20200906_19565
+  - nb050の結果を元に、パラメータを変更。予想では、0.573のスコアが出る。
   - mask_num = 2 
   - threshold = 0.8
   - result
     - score: 0.554
+    - 下がりましたねはい。　
+
+- nb051
+  - ff1010 dataset をnocallデータセットとして、評価を行なう
+  - 3種類のデータセットでスコアを計算した
+    - nocall, 1bird, some birds
+
+    <img src='./data/info/images/readme/48.png' width='500'>
+
+    ---> 再現あまりできてない...
+
+
+  - result
+    - best_nocall_reductioin 0.660
+    - best_some_bird 0.33
+
+    <img src='./data/info/images/readme/49.png' width='500'>
+
+- nb052
+  - ff1010データセットがnocallデータセットとして、微妙だと感じたので新しいデータセットを探した。
+  - [このデータセット](https://www.kaggle.com/luisblanche/birdcall-background)をnocallとして使う。
+  - 300KB未満のデータを除いて保存した。
 
 - kagglenb38
   - hydra20200914_154416
@@ -1343,3 +1398,22 @@ kaggglenb21の結果が悪いことの考察
   - threshold = 0.8
   - result
     - score: 0.560
+
+- kagglenb40
+  - ensemble
+    - 10fold_usefold0: 20200914-154416
+    - 10fold_usefold3: 20200914-235041
+    - 5fold_usefold0_balanced: 20200907-003759
+  - threshold = 0.6
+  - result: 
+    - score: 0.566
+
+
+- kagglenb41
+  - ensemble
+    - 10fold_usefold0: 20200914-154416
+    - 10fold_usefold3: 20200914-235041
+    - 5fold_usefold0_balanced: 20200907-003759
+  - threshold = 0.8
+  - result: 
+    - score: 0.566
