@@ -1062,7 +1062,6 @@ kaggglenb21の結果が悪いことの考察
   - 最大は100, 最小は9
   - 下のグラフはファイル数が少ないものを並べた
       <img src='./data/info/images/readme/40.png' width='400'>
-  - ここに方法をまとめる!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 ### 20200907
 - 昨日回した、hydra 19-56-52だけど、foldsを0, 1にしたはずなのに、うまくhydraに反映されてなかった。
@@ -1392,6 +1391,7 @@ kaggglenb21の結果が悪いことの考察
     - score: 0.560
 
 ### 20200915(Tue)
+#### ::: 最終日 :::
 - kagglenb39
   - hydra20200914_154416
   - baselineを10foldにした
@@ -1414,6 +1414,6 @@ kaggglenb21の結果が悪いことの考察
     - 10fold_usefold0: 20200914-154416
     - 10fold_usefold3: 20200914-235041
     - 5fold_usefold0_balanced: 20200907-003759
-  - threshold = 0.8
+  - threshold = 0.5
   - result: 
     - score: 0.566
