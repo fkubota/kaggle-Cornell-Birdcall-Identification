@@ -2,6 +2,15 @@
 # kaggle-Cornell-Birdcall-Identification
 Cornell Birdcall Identification コンペのリポジトリ
 
+- result
+  - public: 0.566
+  - private: 0.599
+  - rank: 114/1390
+
+    <img src='./data/info/leaderboard/20200915_private_0p599_114_1390.png' width='500'>
+
+
+
 - directory tree
 ```
 Kaggle-Cornell-Birdcall-Identification
@@ -110,8 +119,8 @@ gantt
 ## Freesound Audio Tagging 2019
 |Status|Name|Detail|Date|Url|
 |---|---|---|---|---|
-|<font color='Orange'>Done</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
-|<font color='orange'>Done</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるから良い資料のはず。signal base, image base 両方取り入れている。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
+|<font color='gray'>Done</font>|Freesound 7th place solution|アライさんたちのチームの解法。Strength Adaptive CropとCustom CNNが良さそう。|2019|[url](https://www.kaggle.com/hidehisaarai1213/freesound-7th-place-solution)|
+|<font color='gray'>Done</font>|kaggle Freesound Audio Tagging 2019 4th place solution|freesound audio tagging 2019 4th solution。日本語資料。オレの誕生日に発表してるから良い資料のはず。signal base, image base 両方取り入れている。|20190713|[url](https://www.slideshare.net/ssuser20fb43/kaggle-freesound-audio-tagging-2019-4th-place-solution-156063956)|
 
 
 ## Memo
