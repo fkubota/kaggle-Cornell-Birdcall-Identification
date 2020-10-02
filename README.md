@@ -1426,3 +1426,17 @@ kaggglenb21の結果が悪いことの考察
   - threshold = 0.5
   - result: 
     - score: 0.566
+
+
+## Winner Solution
+- [summary](https://www.kaggle.com/c/birdsong-recognition/discussion/183998)
+
+|Rank(prv/pub)|Title|Detail|URL|
+|---|---|---|---|
+|1/7|1st Place Solution|ソリューションの大部分はアライさんのSEDがもとになってる。外部データは使わず、4パターンの水増し(Pink noise, gaussian noise, gaussian snr, Gain)を使った。←gainて意味あんの？？。モデルはdensenetに変更。lossは改造したもの？よくわからん。ensembleはvoting。4票以上入ればその鳥が存在するとしたようだ。ここのモデルはそれほどスコアがよくなかったがアンサンブルでスコアブーストした。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183208)|
+|2/3|2nd place solution|publicでアライさんとずっと競ってた人。コントリビュータなのにすごいと思ってた。spectrogramを保存していた。ハンドラベリングしまくった。現実の世界では、距離が遠いと高周波数帯が減衰するので、0.5の確率で減衰させた。255番目のクラスとして、nocallを入れたがあまりスコアが上がらなかった。大きなネットワークは小さなネットワークより僅かに悪くなった。疑似ラベルはスコアを下げる方向になった。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183269)|
+|3/4|3rd place solution|ソリューションには、データの拡張、モデリング、後処理という3つの主要な側面がある。水増しはtrainとtestデータの性質の違いを埋める重要な役割がある。S/N比0.5でgauussianノイズ入れる。バックグラウンドノイズもいれる(鳥が鳴いていないデータ。ソースはいろいろ。)。modified mixupをつかった(よくわかってない)。ランダムクロップの代わりにoofの予測確率を使った。←これいいな。外部データを使用した方がいい。信頼できるvalidationは持っていなかった。validationのときはファイルの最初の5secを用いた。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183269)|
+
+
+## 鳥コンペ反省会
+hoge and hoge
