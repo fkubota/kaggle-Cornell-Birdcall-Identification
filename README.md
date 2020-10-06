@@ -1437,8 +1437,15 @@ kaggglenb21の結果が悪いことの考察
 |2(3)|publicでアライさんとずっと競ってた人。コントリビュータなのにすごいと思ってた。spectrogramを保存していた。ハンドラベリングしまくった。現実の世界では、距離が遠いと高周波数帯が減衰するので、0.5の確率で減衰させた。255番目のクラスとして、nocallを入れたがあまりスコアが上がらなかった。大きなネットワークは小さなネットワークより僅かに悪くなった。疑似ラベルはスコアを下げる方向になった。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183269)|
 |3(4)|ソリューションには、データの拡張、モデリング、後処理という3つの主要な側面がある。水増しはtrainとtestデータの性質の違いを埋める重要な役割がある。S/N比0.5でgauussianノイズ入れる。バックグラウンドノイズもいれる(鳥が鳴いていないデータ。ソースはいろいろ。)。modified mixupをつかった(よくわかってない)。ランダムクロップの代わりにoofの予測確率を使った。←これいいな。外部データを使用した方がいい。信頼できるvalidationは持っていなかった。validationのときはファイルの最初の5secを用いた。後処理については、[こちら](https://www.kaggle.com/kneroma/the-power-of-postprocessing-resnest50-at-its-best)。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183269)|
 |4(6)|xeno-cantの外部拡張データセットを使った。スペクトログラムの差分(delta)が効いたみたい。secondary_labelを学習に使った。validationにはいくつかのスコアを用いている(discussion見て)。earlystoppingには、mAPを使ったようだ。EfficientNets (B3, B4, B5)を使った。data augmentationはめっちゃ効いた。バックグラウンドノイズデータセットを作成した。exsample test audioには、低周波数が含まれてなかったのでカットした。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183339)|
-|5(5)||[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183300)|
+|5(5)|ドメインシフトとclipwise to framewiseの遷移にうまく対処したかった。snrおよびnocallの分布に関して、ターゲットの分布にできるだけ近い検証/テストセットが必要だった。validationセットでは、nocallの比率を変化させたセットを用意した。nocallを新しいクラスとしてみたが機能しなかった。trust LB。トランジットの問題？あるので、水増しはあまり効かないが多くの時間を費やしてしまった。<---でも最終サブには水増しいれてるらしい。Clipwise-->Framewiseについて。5sec cropの時、secondary labelとnocallの扱いが難しい。これには、label のsmoothingが効いた。clipwise to framewiseの話がおもしろい。これはディスカッションで見たほうがいい。|[url](https://www.kaggle.com/c/birdsong-recognition/discussion/183300)|
 
 
 ## 鳥コンペ反省会
-hoge and hoge
+|著者|Ref|
+|---|---|
+|trtd|[url](https://docs.google.com/presentation/d/1E7fcFxzmHFAypB3ToyxhjW8IjKKRehzDjffIFD5TUW0/edit#slide=id.p)|
+|ymicky06|[url](https://docs.google.com/presentation/d/1QAcl5dMW_d-J3B8AEidv737ELGq8yo9g2wOanMGL83M/edit#slide=id.p)|
+|fkubota|[url](https://speakerdeck.com/fkubota/niao-konpedecan-bai-sitahua-tokonpefalsequ-rizu-mifang)|
+|enu_kuro|[url](https://zenn.dev/enu_kuro/articles/d8ff124a232c576756c4)|
+|nino_pira|[url](https://docs.google.com/presentation/d/e/2PACX-1vS70DWBHs8Vurd_CoqwUSWN4V2BLUJjSh2QEwd9ehWe_F3z78iRwHawpV6bAXbUuRrHZVTeEcwIl4XK/pub?start=false&loop=false&delayms=3000&slide=id.p)|
+|arai|[url](https://speakerdeck.com/koukyo1994/niao-konpefan-sheng-hui-zi-liao)|
